@@ -1,23 +1,27 @@
 #!/bin/bash
 
 function _git_branch_completion {
-	local branches
-	branches=$(git branch 2>/dev/null | awk '{print $NF}')
-	branches_local=$(git branches 2>/dev/null)
-	echo ${#branches_local[@]}
-	if [[ $COMP_CWORD -le 1 ]]; then
-		COMPREPLY=($(compgen -W "$branches" -- "${COMP_WORDS[COMP_CWORD]}"))
+	local branches_str
+	local branches_arr
+	local num_branches
+	branches_str=$(git branch | awk '{print $NF}')
+	branches_arr=($branches_str)
+	num_branches=${#branches_arr[@]}
+	if [[ $COMP_CWORD -le $num_branches ]]; then
+		COMPREPLY=($(compgen -W "$branches_str" -- "${COMP_WORDS[COMP_CWORD]}"))
 	else
 		COMPREPLY=()
 	fi
 }
 
-function git_delete_branch() {
-	git branch -D $1
-	git push --delete origin $1
+function git_branch_delete() {
+	for branch in "$@"; do
+		git branch -D $branch
+		git push --delete origin $branch
+	done
 }
 
-complete -F _git_branch_completion git_delete_branch
+complete -F _git_branch_completion git_branch_delete
 
 function _poetry_active() {
 	source $(poetry env list --full-path | cut -d' ' -f1)/bin/activate
