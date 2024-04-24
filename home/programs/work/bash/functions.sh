@@ -41,8 +41,9 @@ function poetry_activate() {
 }
 
 function tmux_hsplit() {
-	local bottom_proportion=${1:-50}
-	echo $bottom_proportion
-	local bottom_height="$(($bottom_proportion * $LINES / 100))"
+	local bottom_proportion
+	local bottom_height
+	bottom_proportion=${1:-50}
+	bottom_height="$((bottom_proportion * $LINES / 100))"
 	tmux split-window -v -l $bottom_height -c $PWD \; select-pane -U
 }
