@@ -10,11 +10,12 @@ local config = function()
 	dap.defaults.fallback.focus_terminal = true
 
 	-- python
-	local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-	local python_path = vim.fn.exepath("python") ~= "" and vim.fn.exepath("python") or vim.fn.exepath("python3") -- use the path for 'python', if it exists, else use the path for 'python3'
+	--local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+	local python_path = vim.g.python3_host_prog
+
 	dap.adapters["python"] = {
 		type = "executable",
-		command = debugpy_path,
+		command = python_path,
 		args = { "-m", "debugpy.adapter" },
 		options = {
 			source_filetype = "python",

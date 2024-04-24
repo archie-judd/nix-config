@@ -17,6 +17,8 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withPython3 = true;
+    withNodeJs = true;
 
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter
@@ -70,14 +72,13 @@
       pyright
       nixd
       nodePackages.eslint
-      black
-      isort
       prettierd
       shfmt
       stylua
       nixfmt
-      python311Packages.debugpy
     ];
+
+    extraPython3Packages = pyPkgs: with pyPkgs; [ black isort debugpy ];
   };
 
   home.file."./.config/nvim/" = {
