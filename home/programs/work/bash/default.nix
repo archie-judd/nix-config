@@ -10,6 +10,8 @@
     shellAliases = {
       ls = "eza";
       reload = ''exec "$SHELL"'';
+      vsp = "tmux_vsplit";
+      hsp = "tmux_hsplit";
     };
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
