@@ -56,7 +56,7 @@
 
   # Key remaps
   services.keyd = {
-    enable = true;
+    enable = false;
     keyboards = {
       default = {
         ids = [ "*" ];
@@ -120,7 +120,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ git vim wget curl gcc ];
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    wget
+    curl
+    libgtop # for gnome tophat to work
+  ];
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
@@ -143,6 +149,8 @@
     gnome-font-viewer
     gnome-characters
     gnome-logs
+    gnome-disk-utility
+    file-roller
     simple-scan
     epiphany # web browser
     geary # email reader
@@ -161,4 +169,9 @@
 
   system.stateVersion = "23.11";
 
+  environment.variables = {
+    GI_TYPELIB_PATH =
+      "/run/current-system/sw/lib/girepository-1.0"; # for gnome tophat to work
+  };
 }
+

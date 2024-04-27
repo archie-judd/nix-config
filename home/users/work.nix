@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../programs/common ../programs/work ];
+  imports = [ ../programs/common ../programs/work ../packages/work ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -21,6 +21,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [ ripgrep eza ];
-
+  home.packages = with pkgs; [
+    ripgrep
+    eza
+    spotify
+    _1password
+    _1password-gui
+    awscli2
+    solaar
+    slack
+    poetry
+  ];
 }
