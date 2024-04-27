@@ -9,13 +9,12 @@ local config = function()
 	dap.defaults.fallback.terminal_win_cmd = string.format("below %ssplit new", terminal_height)
 	dap.defaults.fallback.focus_terminal = true
 
-	-- python
-	--local debugpy_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-	local python_path = vim.g.python3_host_prog
+	local debugger_path = vim.g.python3_host_prog
+	local python_path = vim.fn.exepath("python") ~= "" and vim.fn.exepath("python") or vim.fn.exepath("python3") -- use the path for 'python', if it exists, else use the path for 'python3'
 
 	dap.adapters["python"] = {
 		type = "executable",
-		command = python_path,
+		command = debugger_path,
 		args = { "-m", "debugpy.adapter" },
 		options = {
 			source_filetype = "python",
