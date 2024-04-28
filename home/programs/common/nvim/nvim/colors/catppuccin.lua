@@ -1,6 +1,6 @@
 local config = function()
 	local catppuccin = require("catppuccin")
-	catppuccin.setup({ flavour = "macchiato" })
+	catppuccin.setup({ flavour = "mocha" })
 end
 
 config()
