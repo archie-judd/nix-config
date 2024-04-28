@@ -30,6 +30,5 @@
     awscli2
     solaar
     slack
-    poetry
   ];
 }
