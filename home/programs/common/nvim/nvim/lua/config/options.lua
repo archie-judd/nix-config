@@ -5,6 +5,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.completeopt = "menuone,noinsert,preview"
 vim.o.shortmess = "ltToCcF"
+vim.o.directory = "."
 vim.g.persistent_autocomplete = true
 vim.g.persistent_signature_help = true
 vim.cmd.colorscheme("catppuccin-mocha")
