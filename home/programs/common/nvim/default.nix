@@ -75,7 +75,7 @@
       prettierd
       shfmt
       stylua
-      nixfmt
+      nixfmt-classic
     ];
 
     extraPython3Packages = pyPkgs: with pyPkgs; [ black isort debugpy ];

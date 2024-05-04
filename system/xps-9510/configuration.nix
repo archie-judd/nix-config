@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -51,17 +50,20 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "gb";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      layout = "gb";
+    };
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Configure console keymap
   console.keyMap = "uk";
 
   # Key remaps
   services.keyd = {
-    enable = false;
+    enable = true;
     keyboards = {
       default = {
         ids = [ "*" ];
@@ -77,6 +79,14 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Kolide
+  environment.etc."kolide-k2/secret" = {
+    mode = "0600";
+    text =
+      "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWxlcmEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MTA1MTc0NTgiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.QiAcUmPdEVjtbU54UFNMejXIxSEPzT4oBIKyJ2rUXgsQxPVjlCbYn1Qrf8dRPjjbVsUbGY6tV3L0B-3lF6G00tVUhlWQnVlKM6VfzDYHZEAYL5TxtsRQIOaiRBWcrhHSENhsJUzn4poJICTCaOyTXNgb-LibW1_JzCEr8IS7m4fA4VMNu-uv7QKDwmaPpUjCfE7-CE0VgdFSaGFMbNjyVi32nEz1VbdDnV-hYuToyLhUTUrpZuFWld6AP-JN_ZjhgjGdEWuNs5H824Y_n6myKLQkghC68jEG7h1o0avmeB7LT_CJWebxBUn54M-askH_k9lecFeC01scumMTJ5aKzg";
+  };
+  services.kolide-launcher.enable = true;
 
   fonts = {
     enableDefaultPackages = true;
@@ -118,9 +128,10 @@
     isNormalUser = true;
     description = "Archie";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        #  thunderbird
+      ];
   };
 
   # Install firefox.
