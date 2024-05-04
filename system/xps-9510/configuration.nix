@@ -157,6 +157,7 @@
     curl
     libgtop # for gnome tophat to work
     gtop # for top hat
+    xclip # get the clipboard working
   ];
 
   environment.gnome.excludePackages = (with pkgs; [

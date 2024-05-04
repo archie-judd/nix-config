@@ -76,9 +76,11 @@
       shfmt
       stylua
       nixfmt-classic
+      black
+      isort
     ];
 
-    extraPython3Packages = pyPkgs: with pyPkgs; [ black isort debugpy ];
+    extraPython3Packages = pyPkgs: with pyPkgs; [ debugpy ];
   };
 
   home.file."./.config/nvim/" = {
