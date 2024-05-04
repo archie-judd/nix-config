@@ -10,6 +10,7 @@
       safe.Directory = "/etc/nixos";
       push.default = "nothing";
     };
+    ignores = [ "*~" "*.swp" ];
   };
 
 }
