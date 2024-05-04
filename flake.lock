@@ -20,7 +20,7 @@
         "type": "github"
       }
     },
-    "kolide": {
+    "kolide-launcher": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -60,7 +60,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "kolide": "kolide",
+        "kolide-launcher": "kolide-launcher",
         "nixpkgs": "nixpkgs"
       }
     }
