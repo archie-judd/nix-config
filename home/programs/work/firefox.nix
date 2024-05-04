@@ -5,6 +5,7 @@
     enable = true;
     profiles = {
       archie = {
+        containersForce = true;
         containers = {
           dev = {
             color = "green";
