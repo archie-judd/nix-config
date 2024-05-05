@@ -11,8 +11,8 @@
       "--extended"
       "--color='bg+:-1,fg+:-1,fg:#AEACAA,fg+:#FFFBF6'"
     ];
-    defaultCommand = "fdfind --type file --hidden --follow --exclude .git";
-    changeDirWidgetCommand = "fdfind --hidden";
-    fileWidgetCommand = "fdfind --type file --hidden --follow --exclude .git";
+    defaultCommand = "fd --type file --hidden --follow --exclude .git";
+    changeDirWidgetCommand = "fd --hidden";
+    fileWidgetCommand = "fd --type file --hidden --follow --exclude .git";
   };
 }

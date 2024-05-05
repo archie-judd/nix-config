@@ -3,7 +3,7 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.google-chrome;
+    package = pkgs.chromium;
   };
 
 }

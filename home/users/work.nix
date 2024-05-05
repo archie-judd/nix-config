@@ -1,7 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../programs/common ../programs/work ../packages/work ];
+  imports = [
+    ../modules/alacritty
+    ../modules/bash
+    ../modules/nvim
+    ../modules/tmux
+    ../modules/chromium.nix
+    ../modules/firefox.nix
+    ../modules/fzf.nix
+    ../modules/gnome.nix
+    ../modules/starship.nix
+    ../modules/git.nix
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -23,6 +34,7 @@
 
   home.packages = with pkgs; [
     ripgrep
+    fd
     eza
     spotify
     _1password

@@ -17,7 +17,7 @@
       xps-9510 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./system/xps-9510/configuration.nix
+          ./system/hosts/xps-9510/configuration.nix
           kolide-launcher.nixosModules.kolide-launcher
           home-manager.nixosModules.home-manager
           {

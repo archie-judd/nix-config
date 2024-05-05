@@ -14,6 +14,9 @@
       hsp = "tmux_hsplit";
       gsp = "cd /home/archie/repos/gridshare-planning";
       gs = "cd /home/archie/repos/gridshare-edge";
+      no = "cd /home/archie/repos/notes";
+      sc = "cd /home/archie/repos/python_scripts";
+      nc = "cd /home/archie/repos/nix-configuration";
     };
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
