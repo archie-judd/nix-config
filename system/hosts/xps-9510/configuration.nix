@@ -8,6 +8,11 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/gnome.nix
+    ../../modules/keyd.nix
+    ../../modules/kolide.nix
+    ../../modules/fonts.nix
+    ../../modules/nix-ld.nix
+    ../../modules/hyprland.nix
   ];
 
   # Bootloader.
@@ -91,7 +96,7 @@
     isNormalUser = true;
     description = "Archie";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ firefox ];
   };
 
   # Allow unfree packages
@@ -104,52 +109,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
-  # ADDITIONS:
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Key remaps
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = [ "*" ];
-        settings = {
-          main = {
-            capslock = "overload(control, esc)";
-            esc = "capslock";
-          };
-        };
-      };
-    };
-  };
-
-  # Kolide
-  environment.etc."kolide-k2/secret" = {
-    mode = "0600";
-    text =
-      "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWxlcmEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MTA1MTc0NTgiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.QiAcUmPdEVjtbU54UFNMejXIxSEPzT4oBIKyJ2rUXgsQxPVjlCbYn1Qrf8dRPjjbVsUbGY6tV3L0B-3lF6G00tVUhlWQnVlKM6VfzDYHZEAYL5TxtsRQIOaiRBWcrhHSENhsJUzn4poJICTCaOyTXNgb-LibW1_JzCEr8IS7m4fA4VMNu-uv7QKDwmaPpUjCfE7-CE0VgdFSaGFMbNjyVi32nEz1VbdDnV-hYuToyLhUTUrpZuFWld6AP-JN_ZjhgjGdEWuNs5H824Y_n6myKLQkghC68jEG7h1o0avmeB7LT_CJWebxBUn54M-askH_k9lecFeC01scumMTJ5aKzg";
-  };
-  services.kolide-launcher.enable = true;
-
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs;
-      [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "JetBrainsMono" ];
-        sansSerif = [ "JetBrainsMono" ];
-        monospace = [ "JetBrainsMono" ];
-      };
-    };
-  };
-
-  # Nix-ld to resolve LD_LIBRARY_PATH issues with python
-  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
