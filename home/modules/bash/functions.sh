@@ -23,23 +23,6 @@ function git_branch_delete() {
 
 complete -F _git_branch_completion git_branch_delete
 
-function _poetry_active() {
-	source $(poetry env list --full-path | cut -d' ' -f1)/bin/activate
-}
-function poetry_activate() {
-	if deactivate; then
-		echo current python environment deactivated
-		sleep 2
-	else
-		echo not currently in a python environment
-	fi
-	if poetry_activate; then
-		echo poetry activated: $(poetry env list --full-path | cut -d' ' -f1)/bin/activate
-	else
-		echo cannot find poetry environment at: $(poetry env list --full-path | cut -d' ' -f1)/bin/activate
-	fi
-}
-
 function tmux_hsplit() {
 	local bottom_proportion
 	local bottom_height
