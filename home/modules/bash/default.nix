@@ -12,6 +12,9 @@
       reload = ''exec "$SHELL"'';
       vsp = "tmux_vsplit";
       hsp = "tmux_hsplit";
+      gsp = "cd /home/archie/repos/gridshare-planning";
+      gs = "cd /home/archie/repos/gridshare-edge";
+      nc = "cd /home/archie/repos/nix-configuration";
     };
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
