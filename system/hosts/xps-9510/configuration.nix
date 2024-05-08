@@ -12,7 +12,7 @@
     ../../modules/kolide.nix
     ../../modules/fonts.nix
     ../../modules/nix-ld.nix
-    ../../modules/hyprland.nix
+    # ../../modules/hyprland.nix
   ];
 
   # Bootloader.
@@ -49,10 +49,12 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  # services.xserver.synaptics.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = false;
+  };
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
