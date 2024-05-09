@@ -9,7 +9,7 @@
       init.defaultBranch = "main";
       push.default = "nothing";
     };
-    ignores = [ "*~" "*.swp" ];
+    ignores = [ "*~" "*.swp" "*.swo" ];
   };
 
 }
