@@ -5,13 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+  imports = [
+    ./hardware-configuration.nix # Include the results of the hardware scan.
     ../../modules/gnome.nix
     ../../modules/keyd.nix
     ../../modules/kolide.nix
     ../../modules/fonts.nix
     ../../modules/nix-ld.nix
+    ../../modules/docker.nix
     # ../../modules/hyprland.nix
   ];
 
@@ -95,7 +96,7 @@
   users.users.archie = {
     isNormalUser = true;
     description = "Archie";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ]; # docker added
     packages = with pkgs; [ firefox ];
   };
 
@@ -133,4 +134,5 @@
 
   # Enable nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
+
 }
