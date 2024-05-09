@@ -6,7 +6,8 @@
     ../modules/bash
     ../modules/nvim
     ../modules/tmux
-    ../modules/hyprland
+    #../modules/hyprland
+    ../modules/direnv.nix
     ../modules/waybar
     ../modules/chromium.nix
     ../modules/firefox.nix
