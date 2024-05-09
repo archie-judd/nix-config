@@ -53,7 +53,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
     enable = true;
-    wayland = false;
+    wayland = true;
   };
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -64,8 +64,6 @@
       layout = "gb";
     };
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -112,16 +110,27 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
+  # ADDITIONS:
+
+  # Minimum required packages
   environment.systemPackages = with pkgs; [
     git
     vim
     wget
     curl
-    xclip # get the clipboard working
-    wl-clipboard
+    xclip # get the clipboard working (unsure if needed)
+    wl-clipboard # get the clipboard working (unsure if needed)
   ];
 
-  #services.xserver.excludePackages = [ pkgs.xterm ];
+  # Enable flake and new CLI
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Remove documentation app
   documentation.nixos.enable = false;
 
+  # Enable wayland for electron apps
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+
+  # Enable nvidia drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
