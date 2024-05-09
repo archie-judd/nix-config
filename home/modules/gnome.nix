@@ -27,7 +27,7 @@
       magnifier-zoom-in = [ ];
       magnifier-zoom-out = [ ];
       screenreader = [ ];
-      screensaver = [ ];
+      screensaver = [ "<Shift><Super>BackSpace" ];
     };
     "org/gnome/desktop/wm/keybindings" = {
       begin-move = [ ];
@@ -65,7 +65,7 @@
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
       switch-to-workspace-4 = [ "<Super>4" ];
-      switch-to-workspace-last = [ "<Shift><Super>BackSpace" ];
+      switch-to-workspace-last = [ ];
       switch-to-workspace-left = [ "<Shift><Super>p" ];
       switch-to-workspace-right = [ "<Shift><Super>n" ];
       switch-windows = [ ];
