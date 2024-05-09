@@ -6,15 +6,15 @@
     ../modules/bash
     ../modules/nvim
     ../modules/tmux
-    #../modules/hyprland
     ../modules/direnv.nix
-    ../modules/waybar
     ../modules/chromium.nix
     ../modules/firefox.nix
     ../modules/fzf.nix
     ../modules/gnome.nix
     ../modules/starship.nix
     ../modules/git.nix
+    #../modules/hyprland
+    #../modules/waybar
   ];
 
   # Home Manager needs a bit of information about you and the
