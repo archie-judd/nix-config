@@ -10,13 +10,13 @@ function M.core()
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "python",
 		callback = function(event)
-			vim.opt.colorcolumn = "89"
+			vim.o.colorcolumn = "89"
 		end,
 	})
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "lua",
 		callback = function(event)
-			vim.opt.colorcolumn = "121"
+			vim.o.colorcolumn = "121"
 		end,
 	})
 	vim.api.nvim_create_autocmd("FileType", {
@@ -35,10 +35,18 @@ function M.core()
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "typescript",
 		callback = function(event)
-			vim.opt.colorcolumn = "101"
-			vim.opt.tabstop = 2
-			vim.opt.shiftwidth = 4
-			vim.opt.expandtab = true
+			vim.o.colorcolumn = "101"
+			vim.o.tabstop = 2
+			vim.o.shiftwidth = 4
+			vim.o.expandtab = true
+		end,
+	})
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "nix",
+		callback = function(event)
+			vim.o.tabstop = 2
+			vim.o.shiftwidth = 2
+			vim.o.expandtab = true
 		end,
 	})
 	vim.api.nvim_create_autocmd("FileType", {
@@ -60,7 +68,7 @@ function M.oil()
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "oil",
 		callback = function(event)
-			vim.opt.colorcolumn = ""
+			vim.o.colorcolumn = ""
 		end,
 	})
 end
