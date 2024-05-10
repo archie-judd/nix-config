@@ -119,6 +119,7 @@
     vim
     wget
     curl
+    htop
     xclip # get the clipboard working (unsure if needed)
     wl-clipboard # get the clipboard working (unsure if needed)
   ];
@@ -130,7 +131,7 @@
   documentation.nixos.enable = false;
 
   # Enable wayland for electron apps
-  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+  # environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   # Enable nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
