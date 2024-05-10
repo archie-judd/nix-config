@@ -17,6 +17,11 @@
             id = 2;
             icon = "circle";
           };
+          google = {
+            color = "blue";
+            id = 3;
+            icon = "circle";
+          };
         };
         bookmarks = [{
           name = "toolbar";

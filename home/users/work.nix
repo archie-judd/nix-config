@@ -7,12 +7,12 @@
     ../modules/nvim
     ../modules/tmux
     ../modules/direnv.nix
-    ../modules/chromium.nix
     ../modules/firefox.nix
     ../modules/fzf.nix
     ../modules/gnome.nix
     ../modules/starship.nix
     ../modules/git.nix
+    #../modules/chromium.nix
     #../modules/hyprland
     #../modules/waybar
   ];
@@ -44,6 +44,6 @@
     _1password-gui
     awscli2
     solaar
-    slack
+    #slack
   ];
 }
