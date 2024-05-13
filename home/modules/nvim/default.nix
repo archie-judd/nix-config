@@ -34,6 +34,7 @@
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.yaml
       nvim-treesitter-parsers.bash
+      nvim-treesitter-textobjects
       oil-nvim
       catppuccin-nvim
       telescope-nvim
