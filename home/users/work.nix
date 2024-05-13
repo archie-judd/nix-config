@@ -39,12 +39,11 @@
     ripgrep
     fd
     eza
-    spotify
     _1password
     _1password-gui
     awscli2
     solaar
     nix-direnv
-    #slack
+    slack # because firefox huddles don't work
   ];
 }
