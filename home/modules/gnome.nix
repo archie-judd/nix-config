@@ -16,6 +16,10 @@
         "dash-to-dock@micxgx.gmail.com"
       ];
     };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "dark";
+      show-battery-percentage = true;
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"

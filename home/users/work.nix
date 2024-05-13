@@ -44,6 +44,7 @@
     _1password-gui
     awscli2
     solaar
+    nix-direnv
     #slack
   ];
 }
