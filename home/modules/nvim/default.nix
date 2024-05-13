@@ -34,6 +34,7 @@
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.yaml
       nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.c
       nvim-treesitter-textobjects
       oil-nvim
       catppuccin-nvim
@@ -63,6 +64,7 @@
     ];
 
     extraPackages = with pkgs; [
+      gcc
       ripgrep
       fd
       nodePackages.bash-language-server

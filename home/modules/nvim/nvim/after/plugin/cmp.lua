@@ -27,8 +27,6 @@ local config = function()
 				c = function()
 					if cmp.visible() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-					else
-						vim.api.nvim_feedkeys(t("<Down>"), "n", true)
 					end
 				end,
 				i = function(fallback)
@@ -43,8 +41,6 @@ local config = function()
 				c = function()
 					if cmp.visible() then
 						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
-					else
-						vim.api.nvim_feedkeys(t("<Up>"), "n", true)
 					end
 				end,
 				i = function(fallback)
@@ -60,6 +56,7 @@ local config = function()
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
+			{ name = "nvim_lsp_signature_help" },
 		}),
 	})
 

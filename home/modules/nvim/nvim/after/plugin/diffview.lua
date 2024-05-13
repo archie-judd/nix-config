@@ -12,7 +12,11 @@ local config = function()
 				win_opts = {},
 			},
 		},
-		keymaps = { file_panel = { ["-"] = false } },
+		keymaps = {
+			file_panel = {
+				["-"] = false,
+			},
+		},
 	})
 	mappings.diffview()
 	autocommands.diffview()
