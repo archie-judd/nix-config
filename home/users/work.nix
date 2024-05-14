@@ -45,5 +45,6 @@
     solaar
     nix-direnv
     slack # because firefox huddles don't work
+    spotify # because firefox huddles don't work
   ];
 }

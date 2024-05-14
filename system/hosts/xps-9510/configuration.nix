@@ -137,4 +137,7 @@
   # Enable nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Enable tailscale
+  services.tailscale.enable = true;
+
 }
