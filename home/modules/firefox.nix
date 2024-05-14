@@ -37,6 +37,10 @@
               url = "https://gcanti.github.io/fp-ts/modules/";
             }
             {
+              name = "docs";
+              url = "http://docs";
+            }
+            {
               name = "bob";
               url = "https://app.hibob.com/home";
             }
