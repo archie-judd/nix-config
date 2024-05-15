@@ -15,6 +15,14 @@
         "clipboard-indicator@tudmotu.com"
         "dash-to-dock@micxgx.gmail.com"
       ];
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "Alacritty.desktop"
+        "firefox.desktop"
+        "org.gnome.Settings.desktop"
+        "slack.desktop"
+        "spotify.desktop"
+      ];
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "dark";
