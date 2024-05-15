@@ -74,6 +74,7 @@
       ruff
       pyright
       nixd
+      nodePackages.vscode-langservers-extracted
       nodePackages.eslint
       prettierd
       shfmt

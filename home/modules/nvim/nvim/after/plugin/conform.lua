@@ -12,6 +12,11 @@ local config = function()
 			sh = { { "shfmt" } },
 			nix = { { "nixfmt" } },
 		},
+		format_on_save = {
+			timeout_ms = 5000,
+			lsp_fallback = true,
+		},
+		log_level = vim.log.levels.DEBUG,
 		formatters = {
 			black = {
 				prepend_args = { "--preview" },
