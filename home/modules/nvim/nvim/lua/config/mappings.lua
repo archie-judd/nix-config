@@ -176,9 +176,7 @@ end
 ---@param bufnr integer
 function M.lspconfig(bufnr)
 	local telescope_builtin = require("telescope.builtin")
-	local lsp_completion_utils = require("utils.lsp_completion")
 
-	-- Buffer local mappings.
 	vim.keymap.set(
 		"n",
 		"<C-]>",
@@ -200,15 +198,9 @@ function M.lspconfig(bufnr)
 		vim.lsp.buf.hover,
 		{ silent = true, noremap = true, buffer = bufnr, desc = "Lsp: hover" }
 	)
-	vim.keymap.set("i", "<C-k>", function()
+	vim.keymap.set("n", "<C-k>", function()
 		vim.lsp.buf.signature_help()
 	end, { silent = true, noremap = true, buffer = bufnr, desc = "Lsp: signature help" })
-	vim.keymap.set({ "n", "i" }, "<C-s>", function()
-		lsp_completion_utils.toggle_persistent_signature_help(bufnr)
-	end, { silent = true, noremap = true, buffer = bufnr, desc = "Lsp: toggle persistent signature help" })
-	vim.keymap.set({ "n", "i" }, "<C-a>", function()
-		lsp_completion_utils.toggle_persistent_autocomplete(bufnr)
-	end, { silent = true, expr = true, noremap = true, desc = "Lsp: toggle persistent omnifunc autocomplete" })
 	vim.keymap.set(
 		"n",
 		"<Leader>ca",

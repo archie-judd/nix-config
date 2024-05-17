@@ -47,6 +47,7 @@
       cmp-path
       cmp-dap
       cmp-cmdline
+      lsp_signature-nvim
       vim-markdown-toc
       markdown-preview-nvim
       conform-nvim

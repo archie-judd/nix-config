@@ -6,7 +6,7 @@ local config = function()
 		enabled = function()
 			local enabled = (
 				vim.api.nvim_get_option_value("buftype", { buf = 0 }) ~= "prompt" or cmp_dap.is_dap_buffer()
-			) and vim.g.persistent_autocomplete
+			)
 			return enabled
 		end,
 		view = {
@@ -52,7 +52,7 @@ local config = function()
 				end,
 			}),
 			["<C-e>"] = cmp.mapping.abort(),
-			["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },

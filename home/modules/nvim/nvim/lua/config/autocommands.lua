@@ -156,28 +156,11 @@ function M.telescope()
 	})
 end
 
--- Autocommands for persisting signature help windows in insert mode. Deletes the autocommand group when insert mode is
--- left.
----@param bufnr integer
-function M.signature_help(bufnr)
-	local group = vim.api.nvim_create_augroup("PersistentSignatureHelp", { clear = true })
-	vim.api.nvim_create_autocmd("CursorMovedI", {
-		group = group,
-		buffer = bufnr,
-		callback = function(event)
-			require("utils.lsp_completion").signature_help(bufnr)
-		end,
-	})
-end
-
 function M.lspconfig()
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 		callback = function(event)
 			require("config.mappings").lspconfig(event.buf)
-			if vim.g.persistent_signature_help == true then
-				require("utils.lsp_completion").turn_persistent_signature_help_on(event.buf)
-			end
 		end,
 	})
 end
