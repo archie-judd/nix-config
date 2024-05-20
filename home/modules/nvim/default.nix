@@ -4,14 +4,15 @@
   programs.neovim = {
     enable = true;
 
-    package = pkgs.neovim-unwrapped.overrideAttrs (_: {
-      src = pkgs.fetchFromGitHub {
-        owner = "neovim";
-        repo = "neovim";
-        rev = "344906a08f0972108eb912c87af32b275ecf318e";
-        hash = "sha256-h5lyhF+FMLrz1RHDZC6oRKG3RR7v26Mas085ga+9EYo=";
-      };
-    });
+    package = pkgs.neovim-unwrapped;
+    #package = pkgs.neovim-unwrapped.overrideAttrs (_: {
+    #  src = pkgs.fetchFromGitHub {
+    #    owner = "neovim";
+    #    repo = "neovim";
+    #    rev = "344906a08f0972108eb912c87af32b275ecf318e";
+    #    hash = "sha256-h5lyhF+FMLrz1RHDZC6oRKG3RR7v26Mas085ga+9EYo=";
+    #  };
+    #});
 
     defaultEditor = true;
     viAlias = true;
