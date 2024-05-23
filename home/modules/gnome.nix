@@ -25,7 +25,7 @@
       ];
     };
     "org/gnome/desktop/interface" = {
-      color-scheme = "dark";
+      color-scheme = "prefer-dark";
       show-battery-percentage = true;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
