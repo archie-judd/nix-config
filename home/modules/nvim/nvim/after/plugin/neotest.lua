@@ -9,6 +9,7 @@ local config = function()
 					cwd = "${workspaceFolder}",
 					env = { PYTHONPATH = "${workspaceFolder}" },
 					console = "integratedTerminal",
+					justMyCode = false, -- enable debugging of third party packages
 				},
 			}),
 		},

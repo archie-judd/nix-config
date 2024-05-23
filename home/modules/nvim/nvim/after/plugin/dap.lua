@@ -30,6 +30,7 @@ local config = function()
 			console = "integratedTerminal",
 			pythonPath = python_path,
 			env = { PYTHONPATH = "${workspaceFolder}" },
+			justMyCode = false, -- enable debugging of third party packages
 		},
 	}
 
