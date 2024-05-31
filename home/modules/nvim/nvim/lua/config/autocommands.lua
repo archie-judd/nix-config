@@ -1,12 +1,6 @@
 local M = {}
 
 function M.core()
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		pattern = "*",
-		callback = function(event)
-			require("conform").format({ bufnr = event.buf })
-		end,
-	})
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "python",
 		callback = function(event)
