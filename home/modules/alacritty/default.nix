@@ -13,6 +13,7 @@
           lines = 30;
         };
       };
+      shell = { program = "tmux"; };
     };
   };
 }
