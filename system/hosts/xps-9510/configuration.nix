@@ -13,7 +13,6 @@
     ../../modules/fonts.nix
     ../../modules/nix-ld.nix
     ../../modules/docker.nix
-    # ../../modules/hyprland.nix
   ];
 
   # Bootloader.

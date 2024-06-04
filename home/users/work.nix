@@ -12,9 +12,6 @@
     ../modules/gnome.nix
     ../modules/starship.nix
     ../modules/git.nix
-    #../modules/chromium.nix
-    #../modules/hyprland
-    #../modules/waybar
   ];
 
   # Home Manager needs a bit of information about you and the
