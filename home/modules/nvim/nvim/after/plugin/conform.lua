@@ -11,6 +11,7 @@ local config = function()
 			markdown = { { "prettierd" } },
 			sh = { { "shfmt" } },
 			nix = { { "nixfmt" } },
+			haskell = { { "ormolu" } },
 		},
 		format_on_save = {
 			timeout_ms = 5000,

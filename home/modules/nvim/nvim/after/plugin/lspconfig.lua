@@ -15,6 +15,7 @@ local config = function()
 	lspconfig.marksman.setup({ capabilities = capabilities })
 	lspconfig.bashls.setup({ capabilities = capabilities })
 	lspconfig.nixd.setup({ capabilities = capabilities })
+	lspconfig.hls.setup({ capabilities = capabilities })
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })

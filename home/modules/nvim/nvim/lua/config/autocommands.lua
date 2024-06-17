@@ -35,6 +35,15 @@ function M.core()
 		end,
 	})
 	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "haskell",
+		callback = function(event)
+			vim.o.tabstop = 8
+			vim.o.softtabstop = 2
+			vim.o.shiftwidth = 2
+			vim.o.colorcolumn = "101"
+		end,
+	})
+	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "nix",
 		callback = function(event)
 			vim.o.tabstop = 2

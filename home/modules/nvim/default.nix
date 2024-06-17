@@ -27,6 +27,7 @@
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.yaml
       nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.haskell
       nvim-treesitter-parsers.c
       nvim-treesitter-textobjects
       oil-nvim
@@ -63,6 +64,7 @@
       fd
       bash-language-server
       nodePackages.typescript-language-server
+      haskell-language-server
       lua-language-server
       marksman
       ruff
@@ -76,6 +78,7 @@
       nixfmt-classic
       black
       isort
+      ormolu
     ];
 
     extraPython3Packages = pyPkgs: with pyPkgs; [ debugpy ];

@@ -141,4 +141,6 @@
   # Enable tailscale
   services.tailscale.enable = true;
 
+  # Haskell lsp issue
+  nixpkgs.config.allowBroken = true;
 }
