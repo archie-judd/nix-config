@@ -61,7 +61,7 @@
       gcc
       ripgrep
       fd
-      nodePackages.bash-language-server
+      bash-language-server
       nodePackages.typescript-language-server
       lua-language-server
       marksman
@@ -78,7 +78,7 @@
       isort
     ];
 
-    extraPython3Packages = pyPkgs: with pyPkgs; [ pynvim debugpy docformatter ];
+    extraPython3Packages = pyPkgs: with pyPkgs; [ debugpy ];
   };
 
   home.file."./.config/nvim/" = {
