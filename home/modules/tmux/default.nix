@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
@@ -6,13 +6,13 @@
     mouse = true;
     terminal = "xterm-256color";
     escapeTime = 30;
-    plugins = with pkgs; [
+    plugins = [
       {
-        plugin = tmuxPlugins.yank;
+        plugin = pkgs.tmuxPlugins.yank;
         extraConfig = builtins.readFile ./tmux-yank.conf;
       }
       {
-        plugin = tmuxPlugins.catppuccin;
+        plugin = pkgs.tmuxPlugins.catppuccin;
         extraConfig = builtins.readFile ./tmux-catppuccin.conf;
       }
     ];

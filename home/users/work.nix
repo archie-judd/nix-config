@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -32,16 +32,16 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    ripgrep
-    fd
-    eza
-    _1password
-    _1password-gui
-    awscli2
-    solaar
-    nix-direnv
-    slack # because firefox huddles don't work
-    spotify # because firefox huddles don't work
+  home.packages = [
+    pkgs.ripgrep
+    pkgs.fd
+    pkgs.eza
+    pkgs._1password
+    pkgs._1password-gui
+    pkgs.awscli2
+    pkgs.solaar
+    pkgs.nix-direnv
+    pkgs.slack # because firefox huddles don't work
+    pkgs.spotify # because firefox huddles don't work
   ];
 }

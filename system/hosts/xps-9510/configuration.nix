@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -97,7 +97,7 @@
     isNormalUser = true;
     description = "Archie";
     extraGroups = [ "networkmanager" "wheel" "docker" ]; # docker added
-    packages = with pkgs; [ firefox ];
+    packages = [ pkgs.firefox ];
   };
 
   # Allow unfree packages
@@ -116,14 +116,14 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # stop slack crashing
 
   # Minimum required packages
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    curl
-    htop
-    xclip # get the clipboard working (unsure if needed)
-    wl-clipboard # get the clipboard working (unsure if needed)
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.vim
+    pkgs.wget
+    pkgs.curl
+    pkgs.htop
+    pkgs.xclip # get the clipboard working (unsure if needed)
+    pkgs.wl-clipboard # get the clipboard working (unsure if needed)
   ];
 
   # Enable flake and new CLI
@@ -141,6 +141,4 @@
   # Enable tailscale
   services.tailscale.enable = true;
 
-  # Haskell lsp issue
-  nixpkgs.config.allowBroken = true;
 }

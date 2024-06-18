@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    gnomeExtensions.tophat # system resource monitor
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.dash-to-dock
+  home.packages = [
+    pkgs.gnomeExtensions.tophat # system resource monitor
+    pkgs.gnomeExtensions.clipboard-indicator
+    pkgs.gnomeExtensions.dash-to-dock
   ];
 
   dconf.settings = {
