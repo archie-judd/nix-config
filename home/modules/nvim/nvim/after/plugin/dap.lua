@@ -9,13 +9,9 @@ local config = function()
 	dap.defaults.fallback.terminal_win_cmd = string.format("below %ssplit new", terminal_height)
 	dap.defaults.fallback.focus_terminal = true
 
+	-- python
 	local python_debugger_path = vim.g.python3_host_prog
 	local python_path = vim.fn.exepath("python") ~= "" and vim.fn.exepath("python") or vim.fn.exepath("python3") -- use the path for 'python', if it exists, else use the path for 'python3'
-	local js_debug_path = vim.fs.joinpath(
-		vim.fs.root(vim.fn.exepath("js-debug"), "lib"),
-		"lib/node_modules/js-debug/dist/src/dapDebugServer.js"
-	)
-
 	dap.adapters["python"] = {
 		type = "executable",
 		command = python_debugger_path,
@@ -39,6 +35,10 @@ local config = function()
 	}
 
 	-- typescript / javscript
+	local js_debug_path = vim.fs.joinpath(
+		vim.fs.root(vim.fn.exepath("js-debug"), "lib"),
+		"lib/node_modules/js-debug/dist/src/dapDebugServer.js"
+	)
 	dap.adapters["pwa-node"] = {
 		type = "server",
 		host = "localhost",
