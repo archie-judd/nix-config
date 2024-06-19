@@ -13,75 +13,76 @@
     withPython3 = true;
     withNodeJs = true;
 
-    plugins = with pkgs.vimPlugins; [
-      nvim-treesitter
-      nvim-treesitter-parsers.python
-      nvim-treesitter-parsers.markdown
-      nvim-treesitter-parsers.javascript
-      nvim-treesitter-parsers.typescript
-      nvim-treesitter-parsers.lua
-      nvim-treesitter-parsers.vim
-      nvim-treesitter-parsers.vimdoc
-      nvim-treesitter-parsers.json
-      nvim-treesitter-parsers.html
-      nvim-treesitter-parsers.nix
-      nvim-treesitter-parsers.yaml
-      nvim-treesitter-parsers.bash
-      nvim-treesitter-parsers.haskell
-      nvim-treesitter-parsers.c
-      nvim-treesitter-textobjects
-      oil-nvim
-      catppuccin-nvim
-      telescope-nvim
-      telescope-live-grep-args-nvim
-      nvim-lspconfig
-      neodev-nvim
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-path
-      cmp-dap
-      cmp-cmdline
-      lsp_signature-nvim
-      vim-markdown-toc
-      markdown-preview-nvim
-      conform-nvim
-      nvim-dap
-      diffview-nvim
-      nvim-web-devicons
-      eyeliner-nvim
-      vim-fugitive
-      gitsigns-nvim
-      lualine-nvim
-      mini-nvim
-      neotest
-      neotest-python
-      tmux-nvim
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter
+      pkgs.vimPlugins.nvim-treesitter-parsers.python
+      pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+      pkgs.vimPlugins.nvim-treesitter-parsers.javascript
+      pkgs.vimPlugins.nvim-treesitter-parsers.typescript
+      pkgs.vimPlugins.nvim-treesitter-parsers.lua
+      pkgs.vimPlugins.nvim-treesitter-parsers.vim
+      pkgs.vimPlugins.nvim-treesitter-parsers.vimdoc
+      pkgs.vimPlugins.nvim-treesitter-parsers.json
+      pkgs.vimPlugins.nvim-treesitter-parsers.html
+      pkgs.vimPlugins.nvim-treesitter-parsers.nix
+      pkgs.vimPlugins.nvim-treesitter-parsers.yaml
+      pkgs.vimPlugins.nvim-treesitter-parsers.bash
+      pkgs.vimPlugins.nvim-treesitter-parsers.haskell
+      pkgs.vimPlugins.nvim-treesitter-parsers.c
+      pkgs.vimPlugins.nvim-treesitter-textobjects
+      pkgs.vimPlugins.oil-nvim
+      pkgs.vimPlugins.catppuccin-nvim
+      pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.telescope-live-grep-args-nvim
+      pkgs.vimPlugins.nvim-lspconfig
+      pkgs.vimPlugins.neodev-nvim
+      pkgs.vimPlugins.nvim-cmp
+      pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-path
+      pkgs.vimPlugins.cmp-dap
+      pkgs.vimPlugins.cmp-cmdline
+      pkgs.vimPlugins.lsp_signature-nvim
+      pkgs.vimPlugins.vim-markdown-toc
+      pkgs.vimPlugins.markdown-preview-nvim
+      pkgs.vimPlugins.conform-nvim
+      pkgs.vimPlugins.nvim-dap
+      pkgs.vimPlugins.diffview-nvim
+      pkgs.vimPlugins.nvim-web-devicons
+      pkgs.vimPlugins.eyeliner-nvim
+      pkgs.vimPlugins.vim-fugitive
+      pkgs.vimPlugins.gitsigns-nvim
+      pkgs.vimPlugins.lualine-nvim
+      pkgs.vimPlugins.mini-nvim
+      pkgs.vimPlugins.neotest
+      pkgs.vimPlugins.neotest-python
+      pkgs.vimPlugins.tmux-nvim
     ];
 
-    extraPackages = with pkgs; [
-      gcc
-      ripgrep
-      fd
-      bash-language-server
-      nodePackages.typescript-language-server
-      haskell-language-server
-      lua-language-server
-      marksman
-      ruff
-      pyright
-      nixd
-      nodePackages.vscode-langservers-extracted
-      nodePackages.eslint
-      prettierd
-      shfmt
-      stylua
-      nixfmt-classic
-      black
-      isort
-      ormolu
+    extraPackages = [
+      pkgs.gcc
+      pkgs.ripgrep
+      pkgs.fd
+      pkgs.bash-language-server
+      pkgs.nodePackages.typescript-language-server
+      pkgs.haskell-language-server
+      pkgs.lua-language-server
+      pkgs.marksman
+      pkgs.ruff
+      pkgs.pyright
+      pkgs.nixd
+      pkgs.nodePackages.vscode-langservers-extracted
+      pkgs.nodePackages.eslint
+      pkgs.prettierd
+      pkgs.shfmt
+      pkgs.stylua
+      pkgs.nixfmt-classic
+      pkgs.black
+      pkgs.isort
+      pkgs.ormolu
+      pkgs.vscode-js-debug
     ];
 
-    extraPython3Packages = pyPkgs: with pyPkgs; [ debugpy ];
+    extraPython3Packages = pyPkgs: [ pyPkgs.debugpy ];
   };
 
   home.file."./.config/nvim/" = {
