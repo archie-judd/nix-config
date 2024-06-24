@@ -1,7 +1,6 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.splitright = true
-vim.o.clipboard = "unnamed"
 vim.o.pumheight = 10
 vim.o.completeopt = "menuone,noinsert,preview"
 vim.o.shortmess = "c" -- 'c' means 'don't show ins-completion mode messages'
