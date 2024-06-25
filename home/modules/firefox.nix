@@ -50,6 +50,10 @@
                 "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
             }
             {
+              name = "ChatGPT";
+              url = "https://chatgpt.com/";
+            }
+            {
               name = "AWS";
               bookmarks = [
                 {
