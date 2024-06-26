@@ -1,32 +1,5 @@
 local M = {}
 
----@param bufname string
----@return boolean
-function M.is_bufname_repl_or_terminal(bufname)
-	if string.find(bufname, "%[dap%-repl%]") == nil and string.find(bufname, "%[dap%-terminal%]") == nil then
-		return false
-	else
-		return true
-	end
-end
-
-function M.restart_in_correct_buf()
-	local dap = require("dap")
-	local bufname = vim.api.nvim_buf_get_name(0)
-	local tabnr = vim.api.nvim_get_current_tabpage()
-	if not M.is_bufname_repl_or_terminal(bufname) then
-		dap.restart()
-	else
-		for i, win in ipairs(vim.fn.getwininfo()) do
-			local bufname = vim.api.nvim_buf_get_name(win.bufnr)
-			if not M.is_bufname_repl_or_terminal(bufname) and win.tabnr == tabnr then
-				vim.api.nvim_set_current_win(win.winid)
-				dap.restart()
-			end
-		end
-	end
-end
-
 ---@return boolean
 function M.dap_is_active()
 	return require("dap").status ~= ""
