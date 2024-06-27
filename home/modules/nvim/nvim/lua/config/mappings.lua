@@ -419,7 +419,7 @@ function M.markdown_preview()
 end
 
 function M.typescript()
-	vim.keymap.set("n", "<Leader>1", "o(x)<Space>=><Space>x,", {
+	vim.keymap.set("n", "<Leader>1", "o(x)<Space>=><Space>x,<Esc>,", {
 		buffer = true,
 		noremap = true,
 		silent = true,

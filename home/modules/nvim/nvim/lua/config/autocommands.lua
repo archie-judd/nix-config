@@ -32,7 +32,7 @@ function M.core()
 			vim.o.colorcolumn = "101"
 			vim.o.tabstop = 2
 			vim.o.shiftwidth = 2
-			require("conifg.mappings").typescript()
+			require("config.mappings").typescript()
 		end,
 	})
 	vim.api.nvim_create_autocmd("FileType", {
