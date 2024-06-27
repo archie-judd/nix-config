@@ -55,11 +55,24 @@ local config = function()
 		{
 			type = "pwa-node",
 			request = "launch",
-			name = "Launch Current File (Typescript)",
+			name = "Launch Current File (node)",
 			cwd = "${workspaceFolder}",
 			program = "${file}",
 			outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
 			skipFiles = { "<node_internals>/**", "node_modules/**" },
+			sourceMaps = true,
+		},
+		{
+			-- Debug using ts-node (not node), with the transpile-only option, to skip type checking
+			type = "pwa-node",
+			request = "launch",
+			name = "Launch Current File (ts-node -transpile-only)",
+			runtimeExecutable = "node",
+			runtimeArgs = { "-r", "ts-node/register/transpile-only" },
+			args = { "${file}" },
+			sourceMaps = true,
+			cwd = "${workspaceFolder}",
+			outFiles = { "${workspaceFolder}/**/**/*", "!**/node_modules/**" },
 		},
 	}
 	mappings.dap()
