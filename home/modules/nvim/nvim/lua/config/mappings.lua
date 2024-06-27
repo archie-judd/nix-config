@@ -418,4 +418,13 @@ function M.markdown_preview()
 	)
 end
 
+function M.typescript()
+	vim.keymap.set("n", "<Leader>1", "o(x)<Space>=><Space>x,", {
+		buffer = true,
+		noremap = true,
+		silent = true,
+		desc = "Typescript: insert newline and identity function",
+	})
+end
+
 return M
