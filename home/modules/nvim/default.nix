@@ -29,6 +29,7 @@
       pkgs.vimPlugins.nvim-treesitter-parsers.bash
       pkgs.vimPlugins.nvim-treesitter-parsers.haskell
       pkgs.vimPlugins.nvim-treesitter-parsers.c
+      pkgs.vimPlugins.nvim-treesitter-parsers.sql
       pkgs.vimPlugins.nvim-treesitter-textobjects
       pkgs.vimPlugins.oil-nvim
       pkgs.vimPlugins.catppuccin-nvim
@@ -75,6 +76,7 @@
       pkgs.prettierd
       pkgs.shfmt
       pkgs.stylua
+      pkgs.sqls
       pkgs.nixfmt-classic
       pkgs.black
       pkgs.isort
