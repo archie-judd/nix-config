@@ -113,7 +113,8 @@
 
   # ADDITIONS:
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # stop slack crashing
+  # TODO: remove when slack stops crashing
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1"; # stop slack crashing
 
   # Minimum required packages
   environment.systemPackages = [
