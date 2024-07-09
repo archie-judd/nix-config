@@ -4,18 +4,23 @@ local config = function()
 	local lspconfig = require("lspconfig")
 	local neodev = require("neodev")
 
+	local capabilities = cmp_nvim_lsp.default_capabilities()
+
 	neodev.setup({})
 	autocommands.lspconfig()
 
-	local capabilities = cmp_nvim_lsp.default_capabilities()
 	lspconfig.pyright.setup({ capabilities = capabilities })
 	lspconfig.lua_ls.setup({ capabilities = capabilities })
 	lspconfig.eslint.setup({ capabilities = capabilities })
-	lspconfig.tsserver.setup({ capabilities = capabilities })
 	lspconfig.marksman.setup({ capabilities = capabilities })
 	lspconfig.bashls.setup({ capabilities = capabilities })
 	lspconfig.nixd.setup({ capabilities = capabilities })
 	lspconfig.hls.setup({ capabilities = capabilities })
+	lspconfig.sqlls.setup({ capabilities = capabilities })
+	lspconfig.tsserver.setup({
+		on_attach = autocommands.tsserver,
+		capabilities = capabilities,
+	})
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })

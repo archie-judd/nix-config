@@ -77,24 +77,6 @@ end
 
 function M.dap()
 	local dap = require("dap")
-	vim.api.nvim_create_autocmd("BufFilePost", {
-		pattern = "*\\[dap-terminal\\]*",
-		callback = function(event)
-			vim.keymap.set("n", "<C-c>", function()
-				dap.terminate()
-				dap.close()
-				dap.repl.close()
-				vim.api.nvim_buf_delete(event.buf, { force = true })
-			end, {
-				buffer = event.buf,
-				silent = true,
-				noremap = true,
-				desc = "Dap: terminate and close",
-			})
-			local winid = vim.api.nvim_get_current_win()
-			vim.wo[winid].winfixbuf = true
-		end,
-	})
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = "dap-repl",
 		callback = function(event)
@@ -165,6 +147,20 @@ function M.lspconfig()
 		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 		callback = function(event)
 			require("config.mappings").lspconfig(event.buf)
+		end,
+	})
+end
+
+function M.tsserver()
+	-- Organise imports on save
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		callback = function(event)
+			local command_params = {
+				command = "_typescript.organizeImports",
+				arguments = { vim.api.nvim_buf_get_name(0) },
+				title = "Organise Imports",
+			}
+			vim.lsp.buf.execute_command(command_params)
 		end,
 	})
 end
