@@ -9,6 +9,24 @@ local config = function()
 	neodev.setup({})
 	autocommands.lspconfig()
 
+	local function tsserver_organize_imports()
+		local params = {
+			command = "_typescript.organizeImports",
+			arguments = { vim.api.nvim_buf_get_name(0) },
+			title = "",
+		}
+		vim.lsp.buf.execute_command(params)
+	end
+
+	lspconfig.tsserver.setup({
+		capabilities = capabilities,
+		commands = {
+			OrganizeImports = {
+				tsserver_organize_imports,
+				description = "Organize Imports",
+			},
+		},
+	})
 	lspconfig.pyright.setup({ capabilities = capabilities })
 	lspconfig.lua_ls.setup({ capabilities = capabilities })
 	lspconfig.eslint.setup({ capabilities = capabilities })
@@ -17,10 +35,6 @@ local config = function()
 	lspconfig.nixd.setup({ capabilities = capabilities })
 	lspconfig.hls.setup({ capabilities = capabilities })
 	lspconfig.sqlls.setup({ capabilities = capabilities })
-	lspconfig.tsserver.setup({
-		on_attach = autocommands.tsserver,
-		capabilities = capabilities,
-	})
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
