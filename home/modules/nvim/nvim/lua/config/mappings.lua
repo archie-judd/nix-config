@@ -419,11 +419,17 @@ function M.markdown_preview()
 end
 
 function M.typescript()
-	vim.keymap.set("n", "<Leader>1", "o(x)<Space>=><Space>x,<Esc>,", {
+	vim.keymap.set("n", "<Leader>1", "o(x)<Space>=><Space>x,<Esc>", {
 		buffer = true,
 		noremap = true,
 		silent = true,
-		desc = "Typescript: insert newline and identity function",
+		desc = "Typescript: insert identity function on new line",
+	})
+	vim.keymap.set("n", "<Leader>2", "a,(x)<Space>=><Space>x<Esc>", {
+		buffer = true,
+		noremap = true,
+		silent = true,
+		desc = "Typescript: insert identity function on current line",
 	})
 end
 
