@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "archie";
-  home.homeDirectory = "/home/archie";
+  home.homeDirectory = "/Users/archie";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -14,7 +14,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -27,9 +27,7 @@
     ../modules/nvim
     ../modules/tmux
     ../modules/direnv.nix
-    ../modules/firefox.nix
     ../modules/fzf.nix
-    ../modules/gnome.nix
     ../modules/starship.nix
     ../modules/git.nix
   ];
@@ -40,10 +38,6 @@
     pkgs.eza
     pkgs._1password
     pkgs._1password-gui
-    pkgs.awscli2
-    pkgs.solaar
     pkgs.nix-direnv
-    pkgs.slack # because firefox huddles don't work
-    pkgs.spotify # because firefox huddles don't work
   ];
 }
