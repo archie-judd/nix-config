@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   fonts = {
-    enableDefaultPackages = true;
     packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
 
+  } // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
+    enableDefaultPackages = true;
     fontconfig = {
       defaultFonts = {
         serif = [ "JetBrainsMono" ];

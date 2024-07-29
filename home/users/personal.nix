@@ -39,5 +39,7 @@
     pkgs._1password
     pkgs._1password-gui
     pkgs.nix-direnv
+    pkgs.transmission_3
+    pkgs.rectangle
   ];
 }

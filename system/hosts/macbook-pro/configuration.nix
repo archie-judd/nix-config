@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # List packages installed in system profile. To search by name, run:
@@ -29,10 +29,12 @@
     shell = pkgs.bash;
   };
 
-  fonts.packages =
-    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
+  imports = [ ../../modules/fonts.nix ];
   # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
 
+  system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide-time-modifier = 0.75;
+
+  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 }
