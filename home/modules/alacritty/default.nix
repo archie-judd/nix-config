@@ -44,6 +44,10 @@
             chars = "\\u001bc";
           }];
         };
+        shell = {
+          program = /etc/profiles/per-user/archie/bin/bash;
+          args = [ "-l" "-c" "tmux-attach || tmux" ];
+        };
       };
   };
 }

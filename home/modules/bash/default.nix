@@ -15,6 +15,9 @@
       gsp = "cd $HOME/repos/gridshare-planning";
       gs = "cd $HOME/repos/gridshare-edge";
       nc = "cd $HOME/.config/nix";
+      vi = "nvim";
+      vim = "nvim";
+      vimdiff = "nvim -d";
     };
     sessionVariables = { PROMPT_COMMAND = "history -a;history -c;history -r"; };
     shellOptions = [ "histappend" "checkwinsize" ];
