@@ -17,13 +17,15 @@
 
   #ADDITIONS:
 
-  programs.bash.enable = true;
   environment.shells = [ pkgs.bash ];
+  programs.bash.enable = true;
   users.users.archie = {
     home = "/Users/archie";
     shell = pkgs.bash;
   };
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
+
+  services.karabiner-elements.enable = true;
 
 }
