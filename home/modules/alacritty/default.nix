@@ -37,6 +37,13 @@
             style = "BoldItalic";
           };
         };
+        keyboard = {
+          bindings = [{
+            key = "c";
+            mods = "Option";
+            chars = "\\u001bc";
+          }];
+        };
       };
   };
 }
