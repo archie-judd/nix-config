@@ -17,15 +17,22 @@
 
   #ADDITIONS:
 
+  nixpkgs.config.allowUnfree = true;
+  nix.extraOptions = "experimental-features = nix-command flakes";
+
   environment.shells = [ pkgs.bash ];
+  # include bash as a system-wide shell
   programs.bash.enable = true;
+  # set bash as default for my user
   users.users.archie = {
     home = "/Users/archie";
     shell = pkgs.bash;
   };
-  nixpkgs.config.allowUnfree = true;
-  nix.extraOptions = "experimental-features = nix-command flakes";
 
+  fonts.packages =
+    [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+
+  # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
 
 }

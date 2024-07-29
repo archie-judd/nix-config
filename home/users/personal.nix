@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -22,7 +22,7 @@
   # ADDITIONS:
 
   imports = [
-    ../modules/alacritty-mac
+    ../modules/alacritty
     ../modules/bash
     ../modules/nvim
     ../modules/tmux

@@ -9,7 +9,7 @@
       init.defaultBranch = "main";
       push.default = "nothing";
     };
-    ignores = [ "*~" "*.swp" "*.swo" ];
+    ignores = [ "*~" "*.swp" "*.swo" ".DS_Store" ];
   };
 
 }
