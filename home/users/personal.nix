@@ -22,7 +22,7 @@
   # ADDITIONS:
 
   imports = [
-    ../modules/alacritty
+    ../modules/alacritty-mac
     ../modules/bash
     ../modules/nvim
     ../modules/tmux
