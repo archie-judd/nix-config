@@ -5,15 +5,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../../modules/gnome.nix
-    ../../modules/keyd.nix
-    ../../modules/kolide.nix
-    ../../modules/fonts.nix
-    ../../modules/nix-ld.nix
-    ../../modules/docker.nix
-  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -113,8 +104,15 @@
 
   # ADDITIONS:
 
-  # TODO: remove when slack stops crashing
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1"; # stop slack crashing
+  imports = [
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    ../../modules/gnome.nix
+    ../../modules/keyd.nix
+    ../../modules/kolide.nix
+    ../../modules/fonts.nix
+    ../../modules/nix-ld.nix
+    ../../modules/docker.nix
+  ];
 
   # Minimum required packages
   environment.systemPackages = [
@@ -132,9 +130,6 @@
 
   # Remove documentation app
   documentation.nixos.enable = false;
-
-  # Enable wayland for electron apps
-  # environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   # Enable nvidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
