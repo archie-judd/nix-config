@@ -20,16 +20,18 @@
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
 
-  environment.shells = [ pkgs.bash ];
-  # include bash as a system-wide shell
+  # A list of permissable shells for login accounts
+  environment.shells = [ pkgs.bashInteractive ];
+  # enable bash as an interactive shell 
   programs.bash.enable = true;
-  # set bash as default for my user
+  # the users's default shell
   users.users.archie = {
     home = "/Users/archie";
-    shell = pkgs.bash;
+    shell = pkgs.bashInteractive;
   };
 
   imports = [ ../../modules/fonts.nix ];
+
   # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
 
@@ -37,5 +39,6 @@
   system.defaults.dock.autohide-time-modifier = 0.75;
   system.defaults.dock.show-recents = false;
 
+  # trackpad speed (1.0 - 3.0)
   system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 }
