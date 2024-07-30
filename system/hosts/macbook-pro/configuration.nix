@@ -42,4 +42,6 @@
 
   # trackpad speed (1.0 - 3.0)
   system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
+
+  system.startup.chime = false;
 }
