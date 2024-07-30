@@ -22,6 +22,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, nix-darwin, kolide-launcher
     , nixpkgs-fzf, ... }: {
+
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
