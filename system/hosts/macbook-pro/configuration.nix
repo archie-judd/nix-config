@@ -20,6 +20,8 @@
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
 
+  imports = [ ../../modules/fonts.nix ];
+
   # A list of permissable shells for login accounts
   environment.shells = [ pkgs.bashInteractive ];
   # enable bash as an interactive shell 
@@ -29,8 +31,6 @@
     home = "/Users/archie";
     shell = pkgs.bashInteractive;
   };
-
-  imports = [ ../../modules/fonts.nix ];
 
   # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
