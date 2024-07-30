@@ -30,11 +30,14 @@
     shell = pkgs.bashInteractive;
   };
 
+  # don't use 'natural scrolling' for mice
+  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+
   # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
 
   system.defaults.dock.autohide = true;
-  system.defaults.dock.autohide-time-modifier = 0.75;
+  system.defaults.dock.autohide-time-modifier = 0.4;
   system.defaults.dock.show-recents = false;
 
   # trackpad speed (1.0 - 3.0)
