@@ -33,6 +33,7 @@
   ];
 
   home.packages = [
+    pkgs.bashInteractive
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza

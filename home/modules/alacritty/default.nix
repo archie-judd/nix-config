@@ -13,7 +13,7 @@
         };
       };
       shell = {
-        program = "${pkgs.bash}/bin/bash";
+        program = "${pkgs.bashInteractive}/bin/bash";
         args = [ "-l" "-c" "tmux-attach || tmux" ];
       };
     } # Linux-only settings:
