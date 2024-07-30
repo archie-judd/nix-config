@@ -35,6 +35,7 @@
 
   system.defaults.dock.autohide = true;
   system.defaults.dock.autohide-time-modifier = 0.75;
+  system.defaults.dock.show-recents = false;
 
   system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 }

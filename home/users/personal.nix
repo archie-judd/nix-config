@@ -42,5 +42,6 @@
     pkgs.nix-direnv
     pkgs.transmission_3
     pkgs.rectangle
+    pkgs.spotify
   ];
 }

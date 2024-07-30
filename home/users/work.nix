@@ -44,7 +44,7 @@
     pkgs.awscli2
     pkgs.solaar
     pkgs.nix-direnv
-    pkgs.slack # because firefox huddles don't work
-    pkgs.spotify # because firefox huddles don't work
+    pkgs.slack
+    pkgs.spotify
   ];
 }
