@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = [ pkgs.vim ];
-
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
@@ -21,6 +17,8 @@
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   imports = [ ../../modules/fonts.nix ];
+
+  environment.systemPackages = [ pkgs.vim ];
 
   # A list of permissable shells for login accounts
   environment.shells = [ pkgs.bashInteractive ];

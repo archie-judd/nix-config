@@ -114,7 +114,6 @@
     ../../modules/docker.nix
   ];
 
-  # Minimum required packages
   environment.systemPackages = [
     pkgs.git
     pkgs.vim
