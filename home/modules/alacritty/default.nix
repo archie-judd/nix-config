@@ -12,10 +12,13 @@
           lines = 30;
         };
       };
+      shell = {
+        program = "${pkgs.bash}/bin/bash";
+        args = [ "-l" "-c" "tmux-attach || tmux" ];
+      };
     } # Linux-only settings:
       // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
         font = { size = 10; };
-        shell = { program = "tmux"; }; # couldn't get this option working on mac
       } # Mac-only settings:
       // lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin {
         font = {
@@ -37,16 +40,13 @@
             style = "BoldItalic";
           };
         };
+        # Send alt-c for Option-c (so fzf alt-c command works) 
         keyboard = {
           bindings = [{
             key = "c";
             mods = "Option";
             chars = "\\u001bc";
           }];
-        };
-        shell = {
-          program = /etc/profiles/per-user/archie/bin/bash;
-          args = [ "-l" "-c" "tmux-attach || tmux" ];
         };
       };
   };
