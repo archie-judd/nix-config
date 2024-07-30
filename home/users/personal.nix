@@ -43,5 +43,6 @@
     pkgs.transmission_3
     pkgs.rectangle
     pkgs.spotify
+    pkgs.vlc-bin-universal
   ];
 }
