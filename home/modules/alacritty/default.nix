@@ -40,14 +40,7 @@
             style = "BoldItalic";
           };
         };
-        # Send alt-c for Option-c (so fzf alt-c command works) 
-        keyboard = {
-          bindings = [{
-            key = "c";
-            mods = "Option";
-            chars = "\\u001bc";
-          }];
-        };
+        window = { option_as_alt = "Both"; };
       };
   };
 }
