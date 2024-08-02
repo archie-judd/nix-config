@@ -30,8 +30,8 @@
     shell = pkgs.bashInteractive;
   };
 
-  # don't use 'natural scrolling' for mice
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+  # use 'natural scrolling'  
+  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
 
   # don't try to symlink the json, it breaks stuff
   services.karabiner-elements.enable = true;
