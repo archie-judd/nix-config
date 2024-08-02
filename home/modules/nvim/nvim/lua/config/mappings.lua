@@ -5,56 +5,6 @@ function M.core()
 	vim.g.mapleader = ";"
 	vim.keymap.set("i", "<C-x>", "<C-x>", { silent = true, noremap = true })
 
-	-- Use leader to yank and put from system clipboard
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>y",
-		'"+y',
-		{ silent = true, noremap = false, desc = "Yank: yank selection to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>Y",
-		'"+y$',
-		{ silent = true, noremap = false, desc = "Yank: yank to end of line to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>yy",
-		'"+yy',
-		{ silent = true, noremap = false, desc = "Yank: yank line to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>d",
-		'"+d',
-		{ silent = true, noremap = false, desc = "Delete: delete selection and yank to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>D",
-		'"+d$',
-		{ silent = true, noremap = false, desc = "Delete: delete to end of line and yank to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>dd",
-		'"+dd',
-		{ silent = true, noremap = false, desc = "Delete: delete line and yank to system clipboard" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>p",
-		'"+p',
-		{ silent = true, noremap = false, desc = "Put: put from system clipboard at cursor" }
-	)
-	vim.keymap.set(
-		{ "n", "v" },
-		"<Leader>P",
-		'"+P',
-		{ silent = true, noremap = false, desc = "Put: put from system clipboard before cursor" }
-	)
-
 	-- Close floating windows
 	vim.keymap.set("n", "<C-c>", ":fc<CR>", { silent = true, noremap = true, desc = "Floating windows: close topmost" })
 
