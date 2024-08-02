@@ -26,6 +26,24 @@ function M.core()
 	)
 	vim.keymap.set(
 		{ "n", "v" },
+		"<Leader>d",
+		'"+d',
+		{ silent = true, noremap = false, desc = "Delete: delete selection and yank to system clipboard" }
+	)
+	vim.keymap.set(
+		{ "n", "v" },
+		"<Leader>D",
+		'"+d$',
+		{ silent = true, noremap = false, desc = "Delete: delete to end of line and yank to system clipboard" }
+	)
+	vim.keymap.set(
+		{ "n", "v" },
+		"<Leader>dd",
+		'"+dd',
+		{ silent = true, noremap = false, desc = "Delete: delete line and yank to system clipboard" }
+	)
+	vim.keymap.set(
+		{ "n", "v" },
 		"<Leader>p",
 		'"+p',
 		{ silent = true, noremap = false, desc = "Put: put from system clipboard at cursor" }
