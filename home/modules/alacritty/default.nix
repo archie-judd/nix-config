@@ -14,7 +14,7 @@
       };
       shell = {
         program = "${pkgs.bashInteractive}/bin/bash";
-        args = [ "-l" "-c" "tmux-attach || tmux" ];
+        args = [ "-l" ];
       };
     } # Linux-only settings:
       // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
