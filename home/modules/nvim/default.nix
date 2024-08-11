@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   programs.neovim = {
@@ -26,7 +26,7 @@
       pkgs.vimPlugins.nvim-treesitter-parsers.bash
       pkgs.vimPlugins.nvim-treesitter-parsers.haskell
       pkgs.vimPlugins.nvim-treesitter-parsers.c
-      pkgs.vimPlugins.nvim-treesitter-parsers.sql
+      pkgs-stable.vimPlugins.nvim-treesitter-parsers.sql
       pkgs.vimPlugins.nvim-treesitter-textobjects
       pkgs.vimPlugins.oil-nvim
       pkgs.vimPlugins.catppuccin-nvim

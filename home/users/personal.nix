@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, radio-6-to-spotify, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -37,12 +37,13 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs._1password
-    pkgs._1password-gui
+    pkgs-stable._1password # 1password-8.10.36 on unstable was broken
+    pkgs-stable._1password-gui # 1password-8.10.36 on unstable was broken
     pkgs.nix-direnv
-    pkgs.transmission_3
+    pkgs.transmission_4
     pkgs.rectangle
     pkgs.spotify
     pkgs.vlc-bin-universal
+    radio-6-to-spotify.packages.${pkgs.system}.default
   ];
 }

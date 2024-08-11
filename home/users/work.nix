@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -39,8 +39,8 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs._1password
-    pkgs._1password-gui
+    pkgs-stable._1password # 1password-8.10.36 on unstable was broken
+    pkgs-stable._1password-gui # 1password-8.10.36 on unstable was broken
     pkgs.awscli2
     pkgs.solaar
     pkgs.nix-direnv
