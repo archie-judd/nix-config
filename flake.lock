@@ -201,16 +201,16 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1723416806,
-        "narHash": "sha256-kEDHA64i/nJvRHKII5al+XiIjUWpqqsV/iXdnR2CX2U=",
+        "lastModified": 1723457259,
+        "narHash": "sha256-HtsS3atUkaV2s1/9PZqsfX7h31p64K32NK6kt8gZRls=",
         "owner": "archie-judd",
         "repo": "radio-6-to-spotify",
-        "rev": "731f06e953440c03fbe35822b03e564ef8b5b2a6",
+        "rev": "9075d42e118655c4ab024394df0be8832fa18545",
         "type": "github"
       },
       "original": {
         "owner": "archie-judd",
-        "ref": "v0.0.2",
+        "ref": "v0.0.3",
         "repo": "radio-6-to-spotify",
         "type": "github"
       }
