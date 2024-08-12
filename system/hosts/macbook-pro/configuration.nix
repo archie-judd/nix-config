@@ -41,6 +41,9 @@
   system.defaults.dock.autohide-time-modifier = 0.4;
   system.defaults.dock.show-recents = false;
 
+  # default to list view in finder
+  system.defaults.finder.FXPreferredViewStyle = "Nlsv";
+
   # trackpad speed (1.0 - 3.0)
   system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 3.0;
 
