@@ -398,7 +398,7 @@ function M.vim_markdown_toc()
 	vim.keymap.set(
 		{ "n", "v" },
 		"<Leader>tc",
-		":GenTocMarked<CR>",
+		":GenTocGFM<CR>",
 		{ buffer = true, noremap = true, silent = true, desc = "Vim-markdown-toc: generate table of contents" }
 	)
 end
