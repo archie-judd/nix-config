@@ -12,7 +12,7 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    radio-6-to-spotify.url = "github:archie-judd/radio-6-to-spotify?ref=v0.0.3";
+    radio-6-to-spotify.url = "github:archie-judd/radio-6-to-spotify?ref=v0.0.4";
     radio-6-to-spotify.inputs.nixpkgs.follows = "nixpkgs";
 
     kolide-launcher = {
