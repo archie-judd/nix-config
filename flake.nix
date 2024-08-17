@@ -13,7 +13,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     bbc-to-spotify.url =
-      "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.3";
+      "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
     bbc-to-spotify.inputs.nixpkgs.follows = "nixpkgs";
 
     kolide-launcher = {
