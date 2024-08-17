@@ -17,7 +17,7 @@
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 
-  imports = [ ../../modules/fonts.nix ];
+  imports = [ ../../modules/fonts.nix ../../modules/karabiner ];
 
   environment.systemPackages = [ pkgs.vim ];
 
@@ -33,9 +33,6 @@
 
   # use 'natural scrolling'  
   system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
-
-  # don't try to symlink the json, it breaks stuff
-  services.karabiner-elements.enable = true;
 
   system.defaults.dock.autohide = true;
   system.defaults.dock.autohide-time-modifier = 0.4;
