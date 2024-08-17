@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, radio-6-to-spotify, ... }:
+{ pkgs, pkgs-stable, bbc-to-spotify, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -44,6 +44,7 @@
     pkgs.rectangle
     pkgs.spotify
     pkgs.vlc-bin-universal
-    radio-6-to-spotify.packages.${pkgs.system}.default
+    bbc-to-spotify.packages.${pkgs.system}.default
+    pkgs.maccy # clipboard manager
   ];
 }

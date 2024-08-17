@@ -12,8 +12,9 @@
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    radio-6-to-spotify.url = "github:archie-judd/radio-6-to-spotify?ref=v0.0.4";
-    radio-6-to-spotify.inputs.nixpkgs.follows = "nixpkgs";
+    bbc-to-spotify.url =
+      "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.2";
+    bbc-to-spotify.inputs.nixpkgs.follows = "nixpkgs";
 
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
@@ -26,7 +27,7 @@
   };
 
   outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, nix-darwin
-    , radio-6-to-spotify, kolide-launcher, nixpkgs-fzf, ... }: {
+    , bbc-to-spotify, kolide-launcher, nixpkgs-fzf, ... }: {
 
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
@@ -79,7 +80,7 @@
                   inherit system;
                   config.allowUnfree = true;
                 };
-                radio-6-to-spotify = radio-6-to-spotify;
+                bbc-to-spotify = bbc-to-spotify;
               };
             }
           ];
