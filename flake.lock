@@ -9,16 +9,16 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1724070948,
-        "narHash": "sha256-hWbEwOkH/cjqDz5ERFWYZKYOktwJWX8V1Ch7Vcelg78=",
+        "lastModified": 1724085906,
+        "narHash": "sha256-WWI0yGI1Uzq4fgOrRSnqUEYKC/WYsOBBww8paUEPDXc=",
         "owner": "archie-judd",
         "repo": "bbc-to-spotify",
-        "rev": "ef28520a07115e7a268f9298386976c1b265515a",
+        "rev": "2cf0188365906f5e8d41371067bf3bf838dadca1",
         "type": "github"
       },
       "original": {
         "owner": "archie-judd",
-        "ref": "refs/tags/v0.0.2",
+        "ref": "refs/tags/v0.0.3",
         "repo": "bbc-to-spotify",
         "type": "github"
       }
