@@ -120,8 +120,8 @@
     pkgs.wget
     pkgs.curl
     pkgs.htop
-    pkgs.xclip # get the clipboard working (unsure if needed)
-    pkgs.wl-clipboard # get the clipboard working (unsure if needed)
+    # pkgs.xclip # get the clipboard working (unsure if needed)
+    # pkgs.wl-clipboard # get the clipboard working (unsure if needed)
   ];
 
   # Enable flake and new CLI

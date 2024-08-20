@@ -45,6 +45,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
               home-manager.users.archie = import ./home/users/work.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-fzf = import nixpkgs-fzf { inherit system; };

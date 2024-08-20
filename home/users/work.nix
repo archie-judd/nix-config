@@ -32,6 +32,7 @@
     ../modules/gnome.nix
     ../modules/starship.nix
     ../modules/git.nix
+    ../modules/xdg.nix
   ];
 
   home.packages = [
