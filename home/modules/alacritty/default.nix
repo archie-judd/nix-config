@@ -24,19 +24,20 @@
         font = {
           size = 14;
           normal = {
-            family = "JetBrainsMono Nerd Font";
+            # Go to the fonts app, hit command-i, and click on "details" to get the family
+            family = "SauceCodePro NF";
             style = "Regular";
           };
           bold = {
-            family = "JetBrainsMono Nerd Font";
+            family = "SauceCodePro NF";
             style = "Bold";
           };
           italic = {
-            family = "JetBrainsMono Nerd Font";
+            family = "SauceCodePro NF";
             style = "Italic";
           };
           bold_italic = {
-            family = "JetBrainsMono Nerd Font";
+            family = "SauceCodePro NF";
             style = "BoldItalic";
           };
         };

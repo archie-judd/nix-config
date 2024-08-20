@@ -2,7 +2,7 @@
 
 {
   fonts = {
-    packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    packages = [ (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ]; }) ];
 
   } # add these attributes if nixOS:
     // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
