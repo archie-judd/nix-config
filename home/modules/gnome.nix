@@ -147,7 +147,10 @@
       night-light-enabled = true;
       night-light-temperature = "uint32 3090";
     };
-
+    "org/gnome/desktop/default-applications/terminal" = {
+      exec = "alacritty";
+      exec-arg = "";
+    };
   };
 
 }
