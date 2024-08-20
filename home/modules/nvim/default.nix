@@ -68,7 +68,7 @@
       pkgs.ruff
       pkgs.pyright
       pkgs.nixd
-      pkgs.nodePackages.vscode-langservers-extracted
+      pkgs-stable.nodePackages.vscode-langservers-extracted # vscode-langservers-extracted-4.10.0 failed on unstable 2024-08-20
       pkgs.nodePackages.eslint
       pkgs.prettierd
       pkgs.shfmt
