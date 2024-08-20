@@ -46,5 +46,6 @@
     pkgs.vlc-bin-universal
     bbc-to-spotify.packages.${pkgs.system}.default
     pkgs.maccy # clipboard manager
+    pkgs.chromium
   ];
 }
