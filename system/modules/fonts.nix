@@ -9,9 +9,9 @@
       enableDefaultPackages = true;
       fontconfig = {
         defaultFonts = {
-          serif = [ "JetBrainsMono" ];
-          sansSerif = [ "JetBrainsMono" ];
-          monospace = [ "JetBrainsMono" ];
+          serif = [ "SourceCodePro" ];
+          sansSerif = [ "SourceCodePro" ];
+          monospace = [ "SourceCodePro" ];
         };
       };
     };
