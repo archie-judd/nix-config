@@ -54,6 +54,8 @@
       pkgs-stable.vimPlugins.neotest # neotest-5.4.0-unstable failed to build
       pkgs.vimPlugins.neotest-python
       pkgs.vimPlugins.tmux-nvim
+      pkgs.vimPlugins.copilot-lua
+      pkgs.vimPlugins.copilot-cmp
     ];
 
     extraPackages = [

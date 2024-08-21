@@ -16,6 +16,7 @@ local config = function()
 		},
 		completion = { completeopt = "menu,menuone,noinsert" },
 		mapping = cmp.mapping.preset.insert({
+			["<C-f>"] = cmp.mapping({ i = cmp.mapping.complete() }),
 			["<C-g>"] = cmp.mapping(function()
 				if cmp.visible_docs() then
 					cmp.close_docs()
@@ -23,15 +24,19 @@ local config = function()
 					cmp.open_docs()
 				end
 			end),
-			["<C-n>"] = cmp.mapping({
-				c = function()
-					if cmp.visible() then
-						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-					end
-				end,
+			["<C-u>"] = cmp.mapping({
 				i = function(fallback)
 					if cmp.visible() then
-						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+						cmp.mapping.scroll_docs(-4)
+					else
+						fallback()
+					end
+				end,
+			}),
+			["<C-d>"] = cmp.mapping({
+				i = function(fallback)
+					if cmp.visible() then
+						cmp.mapping.scroll_docs(4)
 					else
 						fallback()
 					end
@@ -52,11 +57,12 @@ local config = function()
 				end,
 			}),
 			["<C-e>"] = cmp.mapping.abort(),
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
+			{ name = "copilot" },
 		}),
 	})
 
