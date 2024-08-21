@@ -26,8 +26,8 @@
       "github:nixos/nixpkgs/a2eb207f45e4a14a1e3019d9e3863d1e208e2295";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-stable, home-manager, nix-darwin
-    , bbc-to-spotify, kolide-launcher, nixpkgs-fzf, ... }: {
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, nix-darwin, bbc-to-spotify
+    , kolide-launcher, nixpkgs-fzf, ... }: {
 
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
