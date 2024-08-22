@@ -41,7 +41,7 @@
             style = "BoldItalic";
           };
         };
-        window = { option_as_alt = "Both"; };
+        window = { option_as_alt = "OnlyRight"; };
       };
   };
 }
