@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, bbc-to-spotify, neovim-config, ... }:
+{ pkgs, bbc-to-spotify, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -38,8 +38,8 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs-stable._1password # 1password-8.10.36 on unstable was broken
-    pkgs-stable._1password-gui # 1password-8.10.36 on unstable was broken
+    pkgs._1password # 1password-8.10.36 on unstable was broken
+    pkgs._1password-gui # 1password-8.10.36 on unstable was broken
     pkgs.nix-direnv
     pkgs.transmission_4
     pkgs.rectangle

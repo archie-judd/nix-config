@@ -3,8 +3,8 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,14 +27,14 @@
       "github:nixos/nixpkgs/a2eb207f45e4a14a1e3019d9e3863d1e208e2295";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, nix-darwin, bbc-to-spotify
-    , neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
+    , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
 
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           specialArgs = {
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
             };
@@ -50,7 +50,7 @@
               home-manager.users.archie = import ./home/users/work.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-fzf = import nixpkgs-fzf { inherit system; };
-                pkgs-stable = import nixpkgs-stable {
+                pkgs-unstable = import nixpkgs-unstable {
                   inherit system;
                   config.allowUnfree = true;
                 };
@@ -65,7 +65,7 @@
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
           specialArgs = {
-            pkgs-stable = import nixpkgs-stable {
+            pkgs-unstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
             };
@@ -79,7 +79,7 @@
               home-manager.users.archie = import ./home/users/personal.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-fzf = import nixpkgs-fzf { inherit system; };
-                pkgs-stable = import nixpkgs-stable {
+                pkgs-unstable = import nixpkgs-unstable {
                   inherit system;
                   config.allowUnfree = true;
                 };

@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, neovim-config, ... }:
+{ pkgs, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -41,9 +41,9 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs-stable._1password # 1password-8.10.36 on unstable was broken
-    pkgs-stable._1password-gui # 1password-8.10.36 on unstable was broken
-    pkgs-stable.awscli2 # awscli2-2.17.18 failed to build on unstable
+    pkgs._1password # 1password-8.10.36 on unstable was broken
+    pkgs._1password-gui # 1password-8.10.36 on unstable was broken
+    pkgs.awscli2 # awscli2-2.17.18 failed to build on unstable
     pkgs.solaar
     pkgs.nix-direnv
     pkgs.slack
