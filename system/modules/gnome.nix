@@ -1,38 +1,38 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   environment.gnome.excludePackages = [
-    pkgs.gnome-contacts
-    pkgs.gnome-clocks
-    pkgs.gnome-music
-    pkgs.gnome-weather
-    pkgs.gnome-maps
-    pkgs.gnome-characters
-    pkgs.gnome-logs
-    pkgs.gnome-calendar
-    pkgs.gnome-photos
-    pkgs.gnome-tour
-    pkgs.gnome-text-editor
-    pkgs.gnome-connections
-    pkgs.gnome-terminal
-    pkgs.gnome-calculator
-    pkgs.gnome-system-monitor
-    pkgs.gnome-font-viewer
-    pkgs.gnome-disk-utility
-    pkgs.gedit
-    pkgs.snapshot
-    pkgs.cheese # webcam tool
-    pkgs.file-roller
-    pkgs.simple-scan
-    pkgs.epiphany # web browser
-    pkgs.geary # email reader
-    pkgs.evince # document viewer
-    pkgs.totem # video player
-    pkgs.yelp # help viewer
-    pkgs.tali # poker game
-    pkgs.iagno # go game
-    pkgs.hitori # sudoku game
-    pkgs.atomix # puzzle game
+    pkgs-unstable.gnome-contacts
+    pkgs-unstable.gnome-clocks
+    pkgs-unstable.gnome-music
+    pkgs-unstable.gnome-weather
+    pkgs-unstable.gnome-maps
+    pkgs-unstable.gnome-characters
+    pkgs-unstable.gnome-logs
+    pkgs-unstable.gnome-calendar
+    pkgs-unstable.gnome-photos
+    pkgs-unstable.gnome-tour
+    pkgs-unstable.gnome-text-editor
+    pkgs-unstable.gnome-connections
+    pkgs-unstable.gnome-terminal
+    pkgs-unstable.gnome-calculator
+    pkgs-unstable.gnome-system-monitor
+    pkgs-unstable.gnome-font-viewer
+    pkgs-unstable.gnome-disk-utility
+    pkgs-unstable.gedit
+    pkgs-unstable.snapshot
+    pkgs-unstable.cheese # webcam tool
+    pkgs-unstable.file-roller
+    pkgs-unstable.simple-scan
+    pkgs-unstable.epiphany # web browser
+    pkgs-unstable.geary # email reader
+    pkgs-unstable.evince # document viewer
+    pkgs-unstable.totem # video player
+    pkgs-unstable.yelp # help viewer
+    pkgs-unstable.tali # poker game
+    pkgs-unstable.iagno # go game
+    pkgs-unstable.hitori # sudoku game
+    pkgs-unstable.atomix # puzzle game
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ];
