@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, bbc-to-spotify, ... }:
+{ pkgs, pkgs-stable, bbc-to-spotify, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -24,7 +24,6 @@
   imports = [
     ../modules/alacritty
     ../modules/bash
-    ../modules/nvim
     ../modules/tmux
     ../modules/direnv.nix
     ../modules/fzf.nix
@@ -44,7 +43,8 @@
     pkgs.rectangle
     pkgs.spotify
     pkgs.vlc-bin-universal
-    bbc-to-spotify.packages.${pkgs.system}.default
     pkgs.maccy # clipboard manager
+    bbc-to-spotify.packages.${pkgs.system}.default
+    neovim-config.packages.${pkgs.system}.default
   ];
 }

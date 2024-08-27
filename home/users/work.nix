@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, pkgs-stable, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -24,7 +24,6 @@
   imports = [
     ../modules/alacritty
     ../modules/bash
-    ../modules/nvim
     ../modules/tmux
     ../modules/direnv.nix
     ../modules/firefox.nix
@@ -47,5 +46,6 @@
     pkgs.nix-direnv
     pkgs.slack
     pkgs.spotify
+    neovim-config.packages.${pkgs.system}.default
   ];
 }

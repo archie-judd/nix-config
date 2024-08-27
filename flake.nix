@@ -16,6 +16,9 @@
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.3";
     bbc-to-spotify.inputs.nixpkgs.follows = "nixpkgs";
 
+    neovim-config.url = "github:archie-judd/neovim-config";
+    neovim-config.inputs.nixpkgs.follows = "nixpkgs";
+
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +30,7 @@
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, nix-darwin, bbc-to-spotify
-    , kolide-launcher, nixpkgs-fzf, ... }: {
+    , neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
 
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
@@ -53,6 +56,7 @@
                   inherit system;
                   config.allowUnfree = true;
                 };
+                neovim-config = neovim-config;
               };
             }
           ];
@@ -81,6 +85,7 @@
                   inherit system;
                   config.allowUnfree = true;
                 };
+                neovim-config = neovim-config;
                 bbc-to-spotify = bbc-to-spotify;
               };
             }
