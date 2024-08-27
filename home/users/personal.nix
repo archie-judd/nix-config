@@ -21,6 +21,8 @@
 
   # ADDITIONS:
 
+  home.sessionVariables = { EDITOR = "nvim"; };
+
   imports = [
     ../modules/alacritty
     ../modules/bash
