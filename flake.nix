@@ -27,18 +27,12 @@
       "github:nixos/nixpkgs/a2eb207f45e4a14a1e3019d9e3863d1e208e2295";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
+  outputs = { nixpkgs, home-manager, nix-darwin, bbc-to-spotify, neovim-config
+    , kolide-launcher, nixpkgs-fzf, ... }: {
 
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          };
           modules = [
             ./system/hosts/xps-9510/configuration.nix
             kolide-launcher.nixosModules.kolide-launcher
@@ -49,11 +43,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.archie = import ./home/users/work.nix;
               home-manager.extraSpecialArgs = {
-                pkgs-fzf = import nixpkgs-fzf { inherit system; };
-                pkgs-unstable = import nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
+                pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
               };
             }
@@ -64,12 +54,6 @@
       darwinConfigurations = {
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          };
           modules = [
             ./system/hosts/macbook-pro/configuration.nix
             home-manager.darwinModules.home-manager
@@ -78,11 +62,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.archie = import ./home/users/personal.nix;
               home-manager.extraSpecialArgs = {
-                pkgs-fzf = import nixpkgs-fzf { inherit system; };
-                pkgs-unstable = import nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
+                pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
                 bbc-to-spotify = bbc-to-spotify;
               };

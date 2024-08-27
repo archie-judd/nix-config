@@ -1,38 +1,39 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   environment.gnome.excludePackages = [
-    pkgs-unstable.gnome-contacts
-    pkgs-unstable.gnome-clocks
-    pkgs-unstable.gnome-music
-    pkgs-unstable.gnome-weather
-    pkgs-unstable.gnome-maps
-    pkgs-unstable.gnome-characters
-    pkgs-unstable.gnome-logs
-    pkgs-unstable.gnome-calendar
-    pkgs-unstable.gnome-photos
-    pkgs-unstable.gnome-tour
-    pkgs-unstable.gnome-text-editor
-    pkgs-unstable.gnome-connections
-    pkgs-unstable.gnome-terminal
-    pkgs-unstable.gnome-calculator
-    pkgs-unstable.gnome-system-monitor
-    pkgs-unstable.gnome-font-viewer
-    pkgs-unstable.gnome-disk-utility
-    pkgs-unstable.gedit
-    pkgs-unstable.snapshot
-    pkgs-unstable.cheese # webcam tool
-    pkgs-unstable.file-roller
-    pkgs-unstable.simple-scan
-    pkgs-unstable.epiphany # web browser
-    pkgs-unstable.geary # email reader
-    pkgs-unstable.evince # document viewer
-    pkgs-unstable.totem # video player
-    pkgs-unstable.yelp # help viewer
-    pkgs-unstable.tali # poker game
-    pkgs-unstable.iagno # go game
-    pkgs-unstable.hitori # sudoku game
-    pkgs-unstable.atomix # puzzle game
+    pkgs.gnome-photos
+    pkgs.gnome-tour
+    pkgs.gedit
+    pkgs.snapshot
+    pkgs.gnome-text-editor
+    pkgs.gnome-connections
+    pkgs.gnome.cheese # webcam tool
+    pkgs.gnome.gnome-contacts
+    pkgs.gnome.gnome-clocks
+    pkgs.gnome.gnome-calendar
+    pkgs.gnome.gnome-music
+    pkgs.gnome.gnome-terminal
+    pkgs.gnome.gnome-weather
+    pkgs.gnome.gnome-calculator
+    pkgs.gnome.gnome-maps
+    pkgs.gnome.gnome-system-monitor
+    pkgs.gnome.gnome-font-viewer
+    pkgs.gnome.gnome-characters
+    pkgs.gnome.gnome-logs
+    pkgs.gnome.gnome-disk-utility
+    pkgs.gnome.file-roller
+    pkgs.gnome.simple-scan
+    pkgs.gnome.epiphany # web browser
+    pkgs.gnome.geary # email reader
+    pkgs.gnome.evince # document viewer
+    pkgs.gnome.gnome-characters
+    pkgs.gnome.totem # video player
+    pkgs.gnome.tali # poker game
+    pkgs.gnome.iagno # go game
+    pkgs.gnome.hitori # sudoku game
+    pkgs.gnome.atomix # puzzle game
+    pkgs.gnome.yelp
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ];
