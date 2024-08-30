@@ -14,7 +14,7 @@
     bbc-to-spotify.url =
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.3";
 
-    neovim-config.url = "github:archie-judd/neovim-config?ref=refs/tags/v0.0.2";
+    neovim-config.url = "github:archie-judd/neovim-config?ref=refs/tags/v0.0.3";
 
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
