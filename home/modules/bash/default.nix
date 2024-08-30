@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.bash = {
@@ -22,6 +22,7 @@
     sessionVariables = { PROMPT_COMMAND = "history -a;history -c;history -r"; };
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
+      source ${pkgs.git}/share/bash-completion/completions/git
       source ${./functions.sh}
     '';
   };
