@@ -16,7 +16,7 @@ function git_tag_delete() {
 	done
 }
 
-__git_complete git_tag_delete _git_branch
+__git_complete git_tag_delete _git_tag
 
 function tmux_hsplit() {
 	local bottom_proportion
