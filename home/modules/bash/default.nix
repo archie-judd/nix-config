@@ -14,7 +14,7 @@
       hsp = "tmux_hsplit";
       gsp = "cd $HOME/repos/gridshare-planning";
       gs = "cd $HOME/repos/gridshare-edge";
-      nc = "cd $HOME/.config/nix";
+      nc = "cd $HOME/repos/nix-config";
       vi = "nvim";
       vim = "nvim";
       vimdiff = "nvim -d";
