@@ -18,7 +18,7 @@
         },
         "rules": [
           {
-            "description": "Left control to escape.",
+            "description": "Left control to escape",
             "manipulators": [
               {
                 "from": {
