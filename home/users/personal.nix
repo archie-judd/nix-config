@@ -27,6 +27,7 @@
     ../modules/alacritty
     ../modules/bash
     ../modules/tmux
+    ../modules/karabiner
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix

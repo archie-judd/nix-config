@@ -17,7 +17,7 @@
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 
-  imports = [ ../../modules/fonts.nix ../../modules/karabiner ];
+  imports = [ ../../modules/fonts.nix ../../modules/karabiner.nix ];
 
   environment.systemPackages = [ pkgs.vim ];
 
