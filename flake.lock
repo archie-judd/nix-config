@@ -124,16 +124,16 @@
         "nixpkgs-unstable": "nixpkgs-unstable"
       },
       "locked": {
-        "lastModified": 1725034868,
-        "narHash": "sha256-93dyCujBNuK9j8d6fzxMKSVbsrHM9mhGsrsptaK4lG0=",
+        "lastModified": 1725986812,
+        "narHash": "sha256-fA7Rio0B3EMZMeg2KMOAIl88RsnAT8LOwGZOh1rBtLw=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "3337c4aafd2a64e2c681c3c4e5252f17d5e2f9c2",
+        "rev": "11e4cdc40a73bba95ff36306d635f0a39d70ab71",
         "type": "github"
       },
       "original": {
         "owner": "archie-judd",
-        "ref": "refs/tags/v0.0.3",
+        "ref": "refs/heads/main",
         "repo": "neovim-config",
         "type": "github"
       }
