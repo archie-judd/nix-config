@@ -54,6 +54,27 @@
               url = "https://chatgpt.com/";
             }
             {
+              name = "Google";
+              bookmarks = [
+                {
+                  name = "Mail";
+                  url = "https://mail.google.com";
+                }
+                {
+                  name = "Calendar";
+                  url = "https://calendar.google.com";
+                }
+                {
+                  name = "Sheets";
+                  url = "https://docs.google.com/spreadsheets";
+                }
+                {
+                  name = "Docs";
+                  url = "https://docs.google.com/document";
+                }
+              ];
+            }
+            {
               name = "AWS";
               bookmarks = [
                 {
