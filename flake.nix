@@ -32,7 +32,6 @@
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./system/hosts/xps-9510/configuration.nix
             kolide-launcher.nixosModules.kolide-launcher
@@ -45,6 +44,7 @@
               home-manager.extraSpecialArgs = {
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
+                nixpkgs = nixpkgs;
               };
             }
           ];
@@ -54,7 +54,6 @@
       darwinConfigurations = {
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./system/hosts/macbook-pro/configuration.nix
             home-manager.darwinModules.home-manager
@@ -66,6 +65,7 @@
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
                 bbc-to-spotify = bbc-to-spotify;
+                nixpkgs = nixpkgs;
               };
             }
           ];

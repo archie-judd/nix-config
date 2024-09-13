@@ -61,6 +61,4 @@
   # disable startup chime
   system.startup.chime = false;
 
-  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgsTest.flake = nixpkgs;
 }

@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, ... }:
+{ pkgs, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -50,4 +50,7 @@
     pkgs.spotify
     neovim-config.packages.${pkgs.system}.default
   ];
+
+  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
+  nix.registry.nixpkgs.flake = nixpkgs;
 }
