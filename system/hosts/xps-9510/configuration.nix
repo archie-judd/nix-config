@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, nixpkgs, ... }:
 
 {
 
@@ -134,5 +134,8 @@
 
   # Enable tailscale
   services.tailscale.enable = true;
+
+  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
+  nix.registry.nixpkgsTest.flake = nixpkgs;
 
 }

@@ -32,6 +32,7 @@
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
+          specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./system/hosts/xps-9510/configuration.nix
             kolide-launcher.nixosModules.kolide-launcher
@@ -53,6 +54,7 @@
       darwinConfigurations = {
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
+          specialArgs = { nixpkgs = nixpkgs; };
           modules = [
             ./system/hosts/macbook-pro/configuration.nix
             home-manager.darwinModules.home-manager
