@@ -12,7 +12,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     bbc-to-spotify.url =
-      "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.3";
+      "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
 
     neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
