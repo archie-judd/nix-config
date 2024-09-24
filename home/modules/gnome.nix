@@ -44,7 +44,7 @@
     "org/gnome/desktop/wm/keybindings" = {
       begin-move = [ ];
       begin-resize = [ ];
-      close = [ "<Super>c" ];
+      close = [ "<Super>q" ];
       cycle-group = [ ];
       cycle-group-backward = [ ];
       cycle-panels = [ ];
