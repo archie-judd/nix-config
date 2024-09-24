@@ -61,6 +61,9 @@
   # disable startup chime
   system.startup.chime = false;
 
+  # more stable to get from homebrew
+  services.karabiner-elements.enable = false;
+
   # Install GUI programs with homebrew
   homebrew = {
     enable = true;
