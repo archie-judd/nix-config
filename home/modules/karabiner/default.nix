@@ -4,7 +4,7 @@
     source = ./karabiner;
     recursive = false;
     onChange = ''
-      /bin/launchctl kickstart -k gui/`id -u`/org.pqrs.karabiner.karabiner_console_user_server
+      /bin/launchctl kickstart -k gui/`id -u`/org.pqrs.service.agent.karabiner_console_user_server
     '';
   };
 }

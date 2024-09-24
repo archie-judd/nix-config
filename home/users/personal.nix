@@ -39,18 +39,13 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs._1password # 1password-8.10.36 on unstable was broken
-    pkgs._1password-gui # 1password-8.10.36 on unstable was broken
     pkgs.nix-direnv
     pkgs.transmission_4
-    pkgs.rectangle
-    pkgs.spotify
-    pkgs.vlc-bin-universal
-    pkgs.maccy # clipboard manager
     bbc-to-spotify.packages.${pkgs.system}.default
     neovim-config.packages.${pkgs.system}.default
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
+
 }

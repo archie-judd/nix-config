@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Auto upgrade nix package and the daemon service.
@@ -17,7 +17,7 @@
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 
-  imports = [ ../../modules/fonts.nix ../../modules/karabiner.nix ];
+  imports = [ ../../modules/fonts.nix ];
 
   environment.systemPackages = [ pkgs.vim ];
 
@@ -60,5 +60,19 @@
 
   # disable startup chime
   system.startup.chime = false;
+
+  # Install GUI programs with homebrew
+  homebrew = {
+    enable = true;
+    casks = [
+      "1password"
+      "karabiner-elements"
+      "vlc"
+      "rectangle"
+      "spotify"
+      "maccy"
+      "istat-menus@6"
+    ];
+  };
 
 }
