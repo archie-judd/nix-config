@@ -135,4 +135,7 @@
   # Enable tailscale
   services.tailscale.enable = true;
 
+  # Enable X11 forwarding for ssh
+  programs.ssh.forwardX11 = true;
+
 }
