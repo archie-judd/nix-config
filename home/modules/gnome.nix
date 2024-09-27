@@ -39,7 +39,7 @@
       magnifier-zoom-in = [ ];
       magnifier-zoom-out = [ ];
       screenreader = [ ];
-      screensaver = [ "<Shift><Super>BackSpace" ];
+      screensaver = [ "<Shift><Super>q" ];
     };
     "org/gnome/desktop/wm/keybindings" = {
       begin-move = [ ];
