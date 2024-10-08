@@ -169,4 +169,10 @@
     	ForwardX11 no
   '';
 
+  # Use the latest linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Intel camera driver
+  hardware.ipu6.enable = true;
+  hardware.ipu6.platform = "ipu6epmtl";
 }
