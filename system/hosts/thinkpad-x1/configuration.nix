@@ -5,12 +5,17 @@
 { pkgs, ... }:
 
 {
+  # imports = [ # Include the results of the hardware scan.
+  #   ./hardware-configuration.nix
+  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "xps-9510"; # Define your hostname.
+  boot.initrd.luks.devices."luks-51ea6824-b967-4525-85fa-1058a46e0716".device =
+    "/dev/disk/by-uuid/51ea6824-b967-4525-85fa-1058a46e0716";
+  networking.hostName = "thinkpad-x1"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -42,18 +47,13 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      variant = "";
-      layout = "gb";
-    };
+  services.xserver.xkb = {
+    layout = "gb";
+    variant = "";
   };
 
   # Configure console keymap
@@ -63,7 +63,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -80,19 +79,50 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-  services.libinput.touchpad.tapping = true;
+  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.archie = {
     isNormalUser = true;
     description = "Archie";
-    extraGroups = [ "networkmanager" "wheel" "docker" ]; # docker added
-    packages = [ pkgs.firefox ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    # packages = with pkgs;
+    # [
+    #  thunderbird
+    # ];
   };
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  # environment.systemPackages = with pkgs; [
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
+  # ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -100,9 +130,9 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
-  # ADDITIONS:
+  # ADDITIONS
 
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
@@ -129,13 +159,14 @@
   # Remove documentation app
   documentation.nixos.enable = false;
 
-  # Enable nvidia drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   # Enable tailscale
   services.tailscale.enable = true;
 
   # Enable X11 forwarding for ssh
   programs.ssh.forwardX11 = true;
+  programs.ssh.extraConfig = ''
+    Host github.com
+    	ForwardX11 no
+  '';
 
 }

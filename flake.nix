@@ -49,6 +49,25 @@
             }
           ];
         };
+        thinkpad-x1 = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          modules = [
+            ./system/hosts/thinkpad-x1/configuration.nix
+            kolide-launcher.nixosModules.kolide-launcher
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.archie = import ./home/users/work.nix;
+              home-manager.extraSpecialArgs = {
+                pkgs-fzf = import nixpkgs-fzf { system = system; };
+                neovim-config = neovim-config;
+                nixpkgs = nixpkgs;
+              };
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
