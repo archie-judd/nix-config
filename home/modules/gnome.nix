@@ -3,6 +3,7 @@
 {
   home.packages = [
     pkgs.gnomeExtensions.tophat # system resource monitor
+    pkgs.gnomeExtensions.vitals # power inidicator
     pkgs.gnomeExtensions.clipboard-indicator
     pkgs.gnomeExtensions.dash-to-dock
   ];
