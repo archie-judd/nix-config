@@ -12,9 +12,9 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "tophat@fflewddur.github.io"
         "clipboard-indicator@tudmotu.com"
         "dash-to-dock@micxgx.gmail.com"
+        "Vitals@CoreCoding.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
