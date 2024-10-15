@@ -16,6 +16,7 @@
         program = "${pkgs.bashInteractive}/bin/bash";
         args = [ "-l" ];
       };
+      terminal = { osc52 = "CopyPaste"; };
     } # Linux-only settings:
       // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
         font = { size = 10; };

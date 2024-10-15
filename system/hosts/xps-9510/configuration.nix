@@ -114,14 +114,8 @@
     ../../modules/docker.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.git
-    pkgs.vim
-    pkgs.wget
-    pkgs.curl
-    pkgs.htop
-    pkgs.wl-clipboard # get the clipboard working
-  ];
+  environment.systemPackages =
+    [ pkgs.git pkgs.vim pkgs.wget pkgs.curl pkgs.htop ];
 
   # Enable flake and new CLI
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
