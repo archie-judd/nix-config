@@ -48,6 +48,8 @@
     pkgs.nix-direnv
     pkgs.slack
     pkgs.spotify
+    pkgs.chromium
+    pkgs.libreoffice
     neovim-config.packages.${pkgs.system}.default
   ];
 
