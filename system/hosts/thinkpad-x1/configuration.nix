@@ -162,17 +162,18 @@
   # Enable tailscale
   services.tailscale.enable = true;
 
-  # Enable X11 forwarding for ssh
-  programs.ssh.forwardX11 = true;
-  programs.ssh.extraConfig = ''
-    Host github.com
-    	ForwardX11 no
-  '';
-
   # Use the latest linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Intel camera driver
   hardware.ipu6.enable = true;
   hardware.ipu6.platform = "ipu6epmtl";
+
+  # Enable Avahi ip resolution
+  services.avahi = {
+    enable = true;
+    nssmdns4 =
+      true; # Enable name switch service for ipV4 addresses (to find .local names).
+  };
+
 }
