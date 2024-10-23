@@ -72,6 +72,10 @@
                   name = "Docs";
                   url = "https://docs.google.com/document";
                 }
+                {
+                  name = "Drive";
+                  url = "https://drive.google.com/drive";
+                }
               ];
             }
             {
