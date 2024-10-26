@@ -96,7 +96,7 @@
     };
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [ ];
-      screenshot = [ ];
+      screenshot = [ "<Shift><Super>s" ];
       screenshot-window = [ ];
       show-screen-recording-ui = [ ];
       show-screenshot-ui = [ "<Super>s" ];
