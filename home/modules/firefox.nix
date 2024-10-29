@@ -107,6 +107,14 @@
                   name = "gridshare_planning";
                   url = "https://github.com/lunar-energy/gridshare-planning";
                 }
+                {
+                  name = "neovim-config";
+                  url = "https://github.com/archie-judd/neovim-config";
+                }
+                {
+                  name = "nix-config";
+                  url = "https://github.com/archie-judd/nix-config";
+                }
               ];
             }
             {
