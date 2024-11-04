@@ -12,6 +12,7 @@
       "spotify"
       "maccy"
       "google-chrome"
+      "whatsapp"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
