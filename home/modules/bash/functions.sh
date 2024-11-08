@@ -7,7 +7,7 @@ function git_branch_delete() {
 	done
 }
 
-__git_complete git_branch_delete _git_branch
+__git_complete git_branch_delete _git_switch
 
 function git_tag_delete() {
 	for tag in "$@"; do
