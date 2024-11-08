@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   home.packages = [
@@ -6,6 +6,7 @@
     pkgs.gnomeExtensions.vitals # power inidicator
     pkgs.gnomeExtensions.clipboard-indicator
     pkgs.gnomeExtensions.dash-to-dock
+    pkgs-unstable.gnome.pomodoro
   ];
 
   dconf.settings = {
