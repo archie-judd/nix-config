@@ -38,5 +38,6 @@ function tmux_vsplit() {
 function nvim_rtp() {
 	# remove trailing slash
 	local runtimepath="${1%/}"
-	nvim --cmd "set runtimepath^=$runtimepath" -u "$runtimepath/init.lua"
+	shift
+	nvim --cmd "set runtimepath^=$runtimepath" -u "$runtimepath/init.lua" "$@"
 }
