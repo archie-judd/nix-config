@@ -178,15 +178,24 @@
             }
 
             {
-              name = "News";
+              name = "Nix";
               bookmarks = [
                 {
-                  name = "BBC";
-                  url = "https://www.bbc.co.uk/news";
+                  name = "NixOS Search";
+                  url = "https://search.nixos.org/packages";
                 }
                 {
-                  name = "Financial Times";
-                  url = "https://www.ft.com";
+                  name = "NixHub";
+                  url = "https://www.nixhub.io/packages/python";
+                }
+                {
+                  name = "Home Manager Options";
+                  url =
+                    "https://nix-community.github.io/home-manager/options.xhtml";
+                }
+                {
+                  name = "Nix Darwin Options";
+                  url = "https://daiderd.com/nix-darwin/manual/index.html";
                 }
 
               ];
