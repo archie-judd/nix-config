@@ -143,11 +143,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1732037211,
-        "narHash": "sha256-T065GFiHpzU2QVxeVTzKbXtgci3GAqF42DxVYkXNVmQ=",
+        "lastModified": 1732042397,
+        "narHash": "sha256-ETx7n5EH+3yQ1N2oquT7B44L7bcjZEMyeF7w1mPV474=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "6e066a596301f5d19ce8b93c3a106531135c3af1",
+        "rev": "f50f655b746a0549d636c1a2cfceac1690029d4b",
         "type": "github"
       },
       "original": {
@@ -427,11 +427,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1732028315,
-        "narHash": "sha256-AefGimj2PfQd4il572WXtCRsvHJgMBVKbUBS1e/OUcg=",
+        "lastModified": 1732042244,
+        "narHash": "sha256-u6bID3g+gcaR00FNcgosGdmWS0i/VDZax9vssvn1lsU=",
         "owner": "archie-judd",
         "repo": "telescope-words.nvim",
-        "rev": "93b65e7709a83bdbfe7fbd054fe7d56a804148d0",
+        "rev": "ee84d7683a7c31840994ef7a8279b8a0cc784ac3",
         "type": "github"
       },
       "original": {
