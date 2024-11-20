@@ -95,7 +95,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1726989464,
@@ -114,7 +116,9 @@
     },
     "kolide-launcher": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1727884248,
@@ -139,11 +143,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1732042397,
-        "narHash": "sha256-ETx7n5EH+3yQ1N2oquT7B44L7bcjZEMyeF7w1mPV474=",
+        "lastModified": 1732068299,
+        "narHash": "sha256-w7XcmUmAuIHFEeyw4X/rMCsIrnRzSoKOflc0cPsE+EA=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "f50f655b746a0549d636c1a2cfceac1690029d4b",
+        "rev": "79195fd52f81a59fb070871d53f2119974212bd4",
         "type": "github"
       },
       "original": {
@@ -155,7 +159,9 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1732016537,
@@ -173,7 +179,11 @@
     },
     "nix-github-actions": {
       "inputs": {
-        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "poetry2nix",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1703863825,
@@ -304,7 +314,10 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
-        "nixpkgs": ["bbc-to-spotify", "nixpkgs"],
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "nixpkgs"
+        ],
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
@@ -414,11 +427,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1732042244,
-        "narHash": "sha256-u6bID3g+gcaR00FNcgosGdmWS0i/VDZax9vssvn1lsU=",
+        "lastModified": 1732067885,
+        "narHash": "sha256-1ylmrKUrbdG4ubLFaEJgu6JkPNZiFVLOcFs31jVI/LM=",
         "owner": "archie-judd",
         "repo": "telescope-words.nvim",
-        "rev": "ee84d7683a7c31840994ef7a8279b8a0cc784ac3",
+        "rev": "770aa5dfe91c9549f01729351ee833d2361b01d6",
         "type": "github"
       },
       "original": {
@@ -430,7 +443,11 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "poetry2nix",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1719749022,
