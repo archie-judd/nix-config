@@ -95,9 +95,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1726989464,
@@ -116,9 +114,7 @@
     },
     "kolide-launcher": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1727884248,
@@ -159,9 +155,7 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1732016537,
@@ -179,11 +173,7 @@
     },
     "nix-github-actions": {
       "inputs": {
-        "nixpkgs": [
-          "bbc-to-spotify",
-          "poetry2nix",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1703863825,
@@ -314,10 +304,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
-        "nixpkgs": [
-          "bbc-to-spotify",
-          "nixpkgs"
-        ],
+        "nixpkgs": ["bbc-to-spotify", "nixpkgs"],
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
@@ -443,11 +430,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": [
-          "bbc-to-spotify",
-          "poetry2nix",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1719749022,
