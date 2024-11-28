@@ -6,7 +6,7 @@
     pkgs.gnomeExtensions.vitals # power inidicator
     pkgs.gnomeExtensions.clipboard-indicator
     pkgs.gnomeExtensions.dash-to-dock
-    pkgs-unstable.gnome.pomodoro
+    pkgs-unstable.gnome-pomodoro
   ];
 
   dconf.settings = {
