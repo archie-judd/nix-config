@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   # imports = [ # Include the results of the hardware scan.
@@ -157,7 +157,7 @@
   services.tailscale.enable = true;
 
   # Use the latest linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
 
   # Intel camera driver
   hardware.ipu6.enable = true;

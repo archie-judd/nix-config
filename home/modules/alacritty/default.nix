@@ -4,7 +4,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ ./catppuccin-mocha.toml ];
+      general = { import = [ ./catppuccin-mocha.toml ]; };
       env = { TERM = "xterm-256color"; };
       window = {
         dimensions = {
@@ -12,12 +12,14 @@
           lines = 30;
         };
       };
-      shell = {
-        program = "${pkgs.bashInteractive}/bin/bash";
-        args = [ "-l" ];
+      terminal = {
+        shell = {
+          program = "${pkgs.bashInteractive}/bin/bash";
+          args = [ "-l" ];
+        };
+        osc52 = "CopyPaste";
       };
-      terminal = { osc52 = "CopyPaste"; };
-    } # Linux-only settings:
+    } # Linux-only settings
       // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
         font = { size = 10; };
       } # Mac-only settings:

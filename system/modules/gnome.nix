@@ -8,32 +8,32 @@
     pkgs.snapshot
     pkgs.gnome-text-editor
     pkgs.gnome-connections
-    pkgs.gnome.cheese # webcam tool
-    pkgs.gnome.gnome-contacts
-    pkgs.gnome.gnome-clocks
-    pkgs.gnome.gnome-calendar
-    pkgs.gnome.gnome-music
-    pkgs.gnome.gnome-terminal
-    pkgs.gnome.gnome-weather
-    pkgs.gnome.gnome-calculator
-    pkgs.gnome.gnome-maps
-    pkgs.gnome.gnome-system-monitor
-    pkgs.gnome.gnome-font-viewer
-    pkgs.gnome.gnome-characters
-    pkgs.gnome.gnome-logs
-    pkgs.gnome.gnome-disk-utility
-    pkgs.gnome.file-roller
-    pkgs.gnome.simple-scan
-    pkgs.gnome.epiphany # web browser
-    pkgs.gnome.geary # email reader
-    pkgs.gnome.evince # document viewer
-    pkgs.gnome.gnome-characters
-    pkgs.gnome.totem # video player
-    pkgs.gnome.tali # poker game
-    pkgs.gnome.iagno # go game
-    pkgs.gnome.hitori # sudoku game
-    pkgs.gnome.atomix # puzzle game
-    pkgs.gnome.yelp
+    pkgs.cheese # webcam tool
+    pkgs.gnome-contacts
+    pkgs.gnome-clocks
+    pkgs.gnome-calendar
+    pkgs.gnome-music
+    pkgs.gnome-terminal
+    pkgs.gnome-weather
+    pkgs.gnome-calculator
+    pkgs.gnome-maps
+    pkgs.gnome-system-monitor
+    pkgs.gnome-font-viewer
+    pkgs.gnome-characters
+    pkgs.gnome-logs
+    pkgs.gnome-disk-utility
+    pkgs.file-roller
+    pkgs.simple-scan
+    pkgs.epiphany # web browser
+    pkgs.geary # email reader
+    pkgs.evince # document viewer
+    pkgs.gnome-characters
+    pkgs.totem # video player
+    pkgs.tali # poker game
+    pkgs.iagno # go game
+    pkgs.hitori # sudoku game
+    pkgs.atomix # puzzle game
+    pkgs.yelp
   ];
 
   services.xserver.excludePackages = [ pkgs.xterm ];

@@ -41,9 +41,9 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs._1password # 1password-8.10.36 on unstable was broken
-    pkgs._1password-gui # 1password-8.10.36 on unstable was broken
-    pkgs.awscli2 # awscli2-2.17.18 failed to build on unstable
+    pkgs._1password-cli
+    pkgs._1password-gui
+    pkgs.awscli2
     pkgs.solaar
     pkgs.nix-direnv
     pkgs.slack
