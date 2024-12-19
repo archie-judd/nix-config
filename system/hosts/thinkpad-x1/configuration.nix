@@ -173,4 +173,8 @@
       true; # Enable name switch service for ipV4 addresses (to find .local names).
   };
 
+  # To get solaaar working
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
 }
