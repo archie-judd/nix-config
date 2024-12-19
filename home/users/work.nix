@@ -50,6 +50,7 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
+    pkgs.gromit-mpx
     neovim-config.packages.${pkgs.system}.default
   ];
 
