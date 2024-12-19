@@ -95,7 +95,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1733050161,
@@ -114,7 +116,9 @@
     },
     "kolide-launcher": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1727884248,
@@ -139,11 +143,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1734083911,
-        "narHash": "sha256-QFOfKFf8VaZUhbYi51yXSN2cuV+FGOQQ2ZYhdp4jF+c=",
+        "lastModified": 1734605569,
+        "narHash": "sha256-hFcQ42WeXJ9TL6Y6LRkp6R3xd/7fuLXoYpntR2SWObE=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "412ab06d0434e0393beb3923b3cc156f8a524fb4",
+        "rev": "8b21e55d579e4812fcabadb0da204bca310639e5",
         "type": "github"
       },
       "original": {
@@ -155,7 +159,9 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1733047432,
@@ -173,7 +179,11 @@
     },
     "nix-github-actions": {
       "inputs": {
-        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "poetry2nix",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1703863825,
@@ -304,7 +314,10 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nix-github-actions": "nix-github-actions",
-        "nixpkgs": ["bbc-to-spotify", "nixpkgs"],
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "nixpkgs"
+        ],
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
@@ -430,7 +443,11 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": ["bbc-to-spotify", "poetry2nix", "nixpkgs"]
+        "nixpkgs": [
+          "bbc-to-spotify",
+          "poetry2nix",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1719749022,
