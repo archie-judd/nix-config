@@ -5,6 +5,7 @@
   homebrew = {
     enable = true;
     casks = [
+      "steam"
       "1password"
       "karabiner-elements"
       "vlc"
