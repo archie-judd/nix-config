@@ -30,6 +30,7 @@
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
     , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
 
+      # NixOS configurations
       nixosConfigurations = {
         xps-9510 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
@@ -79,6 +80,7 @@
         };
       };
 
+      # Darwin configurations
       darwinConfigurations = {
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
@@ -103,6 +105,8 @@
           ];
         };
       };
+
+      # Home manager only configurations
       homeConfigurations = rec {
         system = "x86_64-linux";
         archiejudd = home-manager.lib.homeManagerConfiguration {
