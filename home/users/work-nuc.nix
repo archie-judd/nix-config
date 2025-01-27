@@ -34,6 +34,7 @@
   ];
 
   home.packages = [
+    pkgs.nodejs # stop copilot picking up the system node and complaining it is out-of-date
     pkgs.bashInteractive
     pkgs.ripgrep
     pkgs.fd

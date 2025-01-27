@@ -105,8 +105,8 @@
       };
       homeConfigurations = rec {
         system = "x86_64-linux";
-        pkgs = import nixpkgs { inherit system; };
         archiejudd = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { inherit system; };
           modules = [ ./home/users/work-nuc.nix ];
           extraSpecialArgs = {
             pkgs-unstable = import nixpkgs-unstable { inherit system; };
