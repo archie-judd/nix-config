@@ -44,7 +44,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.archie = import ./home/users/work.nix;
+              home-manager.users.archie = import ./home/users/work-laptop.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-unstable = import nixpkgs-unstable { inherit system; };
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
@@ -67,7 +67,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.archie = import ./home/users/work.nix;
+              home-manager.users.archie = import ./home/users/work-laptop.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-unstable = import nixpkgs-unstable { inherit system; };
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
@@ -101,6 +101,19 @@
               };
             }
           ];
+        };
+      };
+      homeConfigurations = rec {
+        system = "x86_64-linux";
+        pkgs = import nixpkgs { inherit system; };
+        archiejudd = home-manager.lib.homeManagerConfiguration {
+          modules = [ ./home/users/work-nuc.nix ];
+          extraSpecialArgs = {
+            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+            pkgs-fzf = import nixpkgs-fzf { system = system; };
+            nixpkgs = nixpkgs;
+            neovim-config = neovim-config;
+          };
         };
       };
     };
