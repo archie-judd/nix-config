@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.bash = {
@@ -20,12 +20,17 @@
       vimdiff = "nvim -d";
       fkill = "ps | fzf | awk '{print $1}' | xargs kill -9";
     };
-    sessionVariables = { PROMPT_COMMAND = "history -a;history -c;history -r"; };
+    sessionVariables = {
+      PROMPT_COMMAND = "history -a;history -c;history -r";
+    } // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
+      SHELL = "${pkgs.bashInteractive}/bin/bash";
+    }; # Force shell for nix-darwin
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
       source ${pkgs.git}/share/bash-completion/completions/git
       source ${./functions.sh}
     '';
+    profileExtra = "source ~/.bashrc";
   };
 
 }

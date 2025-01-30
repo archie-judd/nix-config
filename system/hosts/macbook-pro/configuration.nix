@@ -30,9 +30,11 @@
   # enable bash as an interactive shell 
   programs.bash.enable = true;
   # the users's default shell
+  users.knownUsers = [ "archie" ];
   users.users.archie = {
     home = "/Users/archie";
     shell = pkgs.bashInteractive;
+    uid = 501;
   };
 
 }
