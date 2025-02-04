@@ -29,8 +29,14 @@
     initExtra = ''
       source ${pkgs.git}/share/bash-completion/completions/git
       source ${./functions.sh}
-    '';
+      	'';
     profileExtra = "source ~/.bashrc";
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    initExtra = ''
+      source ${pkgs.git}/share/bash-completion/completions/git
+      source ${./functions.sh}
+      eval "$(/opt/homebrew/bin/brew shellenv)" 
+      	''; # Add homebrew to path
   };
 
 }

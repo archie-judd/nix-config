@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  # Install GUI programs and AppStore apps with homebrew
+  # Install GUI programs and AppStore apps with homebrew. Does not install homebrew!
   homebrew = {
     enable = true;
     casks = [
