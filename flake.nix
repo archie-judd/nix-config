@@ -93,7 +93,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.archie = import ./home/users/personal.nix;
+              home-manager.users.archie = import ./home/users/personal-mac.nix;
               home-manager.extraSpecialArgs = {
                 pkgs-unstable = import nixpkgs-unstable { inherit system; };
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
