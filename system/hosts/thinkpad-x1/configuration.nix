@@ -159,8 +159,8 @@
   # Enable tailscale
   services.tailscale.enable = true;
 
-  # Use the latest linux kernel
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
+  # Use the latest linux kernel and patch it to fix the webcam
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Intel camera driver
   hardware.ipu6.enable = false;
