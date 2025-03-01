@@ -13,6 +13,9 @@
 
   #ADDITIONS:
 
+  nix.package =
+    pkgs.nixVersions.nix_2_23; # issue with direnv is 2:24: https://github.com/direnv/direnv/issues/1345
+
   nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = "experimental-features = nix-command flakes";
