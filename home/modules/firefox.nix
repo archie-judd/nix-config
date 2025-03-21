@@ -7,19 +7,9 @@
       archie = {
         containersForce = true;
         containers = {
-          dev = {
-            color = "green";
-            id = 1;
-            icon = "circle";
-          };
-          prod = {
-            color = "red";
-            id = 2;
-            icon = "circle";
-          };
-          google = {
-            color = "blue";
-            id = 3;
+          personal = {
+            color = "purple";
+            id = 4;
             icon = "circle";
           };
         };

@@ -9,7 +9,7 @@
       init.defaultBranch = "main";
       push.default = "nothing";
     };
-    ignores = [ "*~" "*.swp" "*.swo" ".DS_Store" ];
+    ignores = [ "*~" "*.swp" "*.swo" ".DS_Store" "fontlist-v330.json" ];
   };
 
 }
