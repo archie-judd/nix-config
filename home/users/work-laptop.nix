@@ -39,6 +39,7 @@
   home.packages = [
     pkgs.bashInteractive
     pkgs.ripgrep
+    pkgs.jq
     pkgs.fd
     pkgs.eza
     pkgs._1password-cli
