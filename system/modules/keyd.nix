@@ -14,6 +14,15 @@
           };
         };
       };
+      hhkb = {
+        ids = [ "04fe:0021:4f1b03d7" ];
+        settings = {
+          main = {
+            control = "overload(control, esc)";
+            esc = "control";
+          };
+        };
+      };
     };
   };
 }
