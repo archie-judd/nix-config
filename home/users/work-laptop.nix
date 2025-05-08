@@ -27,6 +27,7 @@
     ../modules/alacritty
     ../modules/bash
     ../modules/tmux
+    ../modules/gromit-mpx
     ../modules/direnv.nix
     ../modules/firefox.nix
     ../modules/fzf.nix
@@ -51,7 +52,6 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs.gromit-mpx
     neovim-config.packages.${pkgs.system}.default
   ];
 

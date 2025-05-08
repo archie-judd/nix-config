@@ -86,6 +86,8 @@
       switch-windows-backward = [ ];
       toggle-maximized = [ "<Super>z" ];
       unmaximize = [ ];
+      switch-input-source = [ "<Super>space" ];
+      switch-input-source-backward = [ "<Shift><Super>space" ];
     };
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ "<Super>h" ];
