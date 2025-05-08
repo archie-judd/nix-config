@@ -52,6 +52,7 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
+    pkgs.gh
     neovim-config.packages.${pkgs.system}.default
   ];
 
