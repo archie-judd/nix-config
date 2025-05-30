@@ -14,8 +14,8 @@
           };
         };
       };
-      hhkb = {
-        ids = [ "04fe:0021:4f1b03d7" ];
+      hhkb_hybrid_type_s = {
+        ids = [ "04fe:0021:f26878c3" ];
         settings = {
           main = {
             control = "overload(control, esc)";
