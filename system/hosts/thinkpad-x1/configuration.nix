@@ -134,9 +134,6 @@
 
   # ADDITIONS
 
-  nix.package =
-    pkgs.nixVersions.nix_2_23; # issue with direnv is 2:24: https://github.com/direnv/direnv/issues/1345
-
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ../../modules/gnome.nix
