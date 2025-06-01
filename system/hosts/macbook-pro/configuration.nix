@@ -1,20 +1,16 @@
 { pkgs, ... }:
 
 {
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Create /etc/zshrc that loads the nix-darwin environment.
   # programs.zsh.enable = true; # default shell on catalina
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 
   #ADDITIONS:
 
-  nix.package =
-    pkgs.nixVersions.nix_2_23; # issue with direnv is 2:24: https://github.com/direnv/direnv/issues/1345
+  system.primaryUser = "archie";
 
   nixpkgs.config.allowUnfree = true;
 
