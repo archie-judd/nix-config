@@ -92,6 +92,7 @@
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ "<Super>h" ];
       toggle-tiled-right = [ "<Super>l" ];
+      switch-monitor = [ ];
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
