@@ -15,7 +15,10 @@
         };
       };
       hhkb_hybrid_type_s = {
-        ids = [ "04fe:0021:f26878c3" ];
+        ids = [
+          "04fe:0021:4f1b03d7" # bluetooth
+          "04fe:0021:38fc4e01" # usb
+        ];
         settings = {
           main = {
             control = "overload(control, esc)";
