@@ -41,3 +41,38 @@ function nvim_rtp() {
 	shift
 	nvim --cmd "set runtimepath^=$runtimepath" -u "$runtimepath/init.lua" "$@"
 }
+
+# This function will convert a JSON file to a single line using jq.
+function onelineify_json() {
+	local json_file="$1"
+	jq -c . "$json_file" >"$json_file.tmp" && mv "$json_file.tmp" "$json_file"
+}
+
+function onelineify_json_git_diff() {
+	git diff --name-only | grep '\.json$' | while read -r json_file; do
+		onelineify_json "$json_file"
+	done
+}
+
+function check_py_init_files() {
+	local root_dir="$1"
+	local missing_init_dirs=()
+
+	# Find all subdirectories excluding __pycache__ and other cache dirs
+	while IFS= read -r subdir; do
+		# Check if __init__.py exists in the subdirectory
+		if [[ ! -f "$subdir/__init__.py" ]]; then
+			missing_init_dirs+=("$subdir")
+		fi
+	done < <(find "$root_dir" -type d \( ! -name "__pycache__" ! -name "*.cache" \))
+
+	# Print subdirectories missing __init__.py
+	if [[ ${#missing_init_dirs[@]} -gt 0 ]]; then
+		echo "Subdirectories missing __init__.py:"
+		for dir in "${missing_init_dirs[@]}"; do
+			echo "$dir"
+		done
+	else
+		echo "All subdirectories have __init__.py files."
+	fi
+}
