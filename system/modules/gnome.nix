@@ -10,12 +10,10 @@
     pkgs.gnome-connections
     pkgs.cheese # webcam tool
     pkgs.gnome-contacts
-    pkgs.gnome-clocks
     pkgs.gnome-calendar
     pkgs.gnome-music
     pkgs.gnome-terminal
     pkgs.gnome-weather
-    pkgs.gnome-calculator
     pkgs.gnome-maps
     pkgs.gnome-system-monitor
     pkgs.gnome-font-viewer
