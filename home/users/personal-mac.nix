@@ -41,6 +41,7 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
+    pkgs.nix-prefetch-git
     bbc-to-spotify.packages.${pkgs.system}.default
     neovim-config.packages.${pkgs.system}.default
   ];
