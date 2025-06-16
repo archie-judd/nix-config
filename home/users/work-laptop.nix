@@ -53,7 +53,6 @@
     pkgs.chromium
     pkgs.libreoffice
     pkgs.gh
-    pkgs.nix-prefetch-git
     neovim-config.packages.${pkgs.system}.default
   ];
 
