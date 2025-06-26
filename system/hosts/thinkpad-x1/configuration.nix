@@ -174,4 +174,12 @@
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
 
+  # Printing drivers
+  services.printing.drivers = with pkgs; [
+    gutenprint
+    gutenprintBin
+    canon-cups-ufr2 # Canon's official driver package
+    cups-filters
+  ];
+
 }
