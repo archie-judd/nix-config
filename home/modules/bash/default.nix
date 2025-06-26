@@ -12,9 +12,6 @@
       reload = ''exec "$SHELL"'';
       vsp = "tmux_vsplit";
       hsp = "tmux_hsplit";
-      gsp = "cd $HOME/workspaces/gridshare-planning";
-      gs = "cd $HOME/workspaces/gridshare-edge";
-      nc = "cd $HOME/workspaces/nix-config";
       vi = "nvim";
       vim = "nvim";
       vimdiff = "nvim -d";
