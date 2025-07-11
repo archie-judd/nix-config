@@ -16,6 +16,8 @@
       vim = "nvim";
       vimdiff = "nvim -d";
       fkill = "ps | fzf | awk '{print $1}' | xargs kill -9";
+      tmux =
+        "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
     };
     sessionVariables = {
       PROMPT_COMMAND = "history -a;history -c;history -r";
