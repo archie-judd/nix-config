@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = [
@@ -6,16 +6,17 @@
     pkgs.gnomeExtensions.vitals # power inidicator
     pkgs.gnomeExtensions.clipboard-indicator
     pkgs.gnomeExtensions.dash-to-dock
-    pkgs-unstable.gnome-pomodoro
+    pkgs.gnomeExtensions.gnome-bedtime # bedtime greyscale filter
   ];
 
   dconf.settings = {
     "org/gnome/shell" = {
-      disable-user-extensions = false;
+      disable-user-extensions = true;
       enabled-extensions = [
         "clipboard-indicator@tudmotu.com"
         "dash-to-dock@micxgx.gmail.com"
         "Vitals@CoreCoding.com"
+        "gnomebedtime@ionutbortis.gmail.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
