@@ -11,7 +11,7 @@
 
   dconf.settings = {
     "org/gnome/shell" = {
-      disable-user-extensions = true;
+      disable-user-extensions = false;
       enabled-extensions = [
         "clipboard-indicator@tudmotu.com"
         "dash-to-dock@micxgx.gmail.com"
