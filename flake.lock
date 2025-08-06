@@ -27,11 +27,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1750800837,
-        "narHash": "sha256-V6GzoVlWxCk14C8dF8XEIkWxCZsS43PrjYtdKn+NMrM=",
+        "lastModified": 1754443967,
+        "narHash": "sha256-x4VSBDdcij4BkvIzkFnGVtJvq+ow1rTtZk9MWeTlzpE=",
         "owner": "archie-judd",
         "repo": "blink-cmp-words",
-        "rev": "f6190f584075476ee9abd5aa736ef9085c9b2694",
+        "rev": "b9b5c351c7ea5e074c70e5c024b4e8b0c9d42627",
         "type": "github"
       },
       "original": {
@@ -159,11 +159,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746473343,
-        "narHash": "sha256-F0YpvaRbAjh4qKrBGip+CxvAkCIY3yKVKGitK1gsqkk=",
+        "lastModified": 1754409882,
+        "narHash": "sha256-KB3wHSrFMzQemZoAU6WHmD/p3iGwj59B/Dw/LyjnMXc=",
         "owner": "kolide",
         "repo": "nix-agent",
-        "rev": "73d5caa7acefdf77d77fcee5ef4e482dbcaf8e47",
+        "rev": "9861a1c126514d11a7100edae87ddfce31be909c",
         "type": "github"
       },
       "original": {
@@ -182,11 +182,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1753710309,
-        "narHash": "sha256-VtmwHJXtY8a9PNWbljr+LRdRhefT8eVG7j5NjNQGAxY=",
+        "lastModified": 1754444310,
+        "narHash": "sha256-8xckFLdmyRGD1fC1iK1hKQsFFRZZLL5LEi7P7c3Pzs4=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "3524dde802e5b6b099f5cf409fa345ed0ab586db",
+        "rev": "3fe8ee4ae96f0b5084f796a5c84f55730a2c8fb6",
         "type": "github"
       },
       "original": {
@@ -273,11 +273,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1752950548,
-        "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
+        "lastModified": 1754214453,
+        "narHash": "sha256-Q/I2xJn/j1wpkGhWkQnm20nShYnG7TI99foDBpXm1SY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c87b95e25065c028d31a94f06a62927d18763fdf",
+        "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
         "type": "github"
       },
       "original": {
@@ -289,11 +289,11 @@
     },
     "nixpkgs-unstable_2": {
       "locked": {
-        "lastModified": 1753549186,
-        "narHash": "sha256-Znl7rzuxKg/Mdm6AhimcKynM7V3YeNDIcLjBuoBcmNs=",
+        "lastModified": 1754214453,
+        "narHash": "sha256-Q/I2xJn/j1wpkGhWkQnm20nShYnG7TI99foDBpXm1SY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "17f6bd177404d6d43017595c5264756764444ab8",
+        "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
         "type": "github"
       },
       "original": {
@@ -321,11 +321,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1753115646,
-        "narHash": "sha256-yLuz5cz5Z+sn8DRAfNkrd2Z1cV6DaYO9JMrEz4KZo/c=",
+        "lastModified": 1754292888,
+        "narHash": "sha256-1ziydHSiDuSnaiPzCQh1mRFBsM2d2yRX9I+5OPGEmIE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "92c2e04a475523e723c67ef872d8037379073681",
+        "rev": "ce01daebf8489ba97bd1609d185ea276efdeb121",
         "type": "github"
       },
       "original": {
@@ -353,11 +353,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1753489912,
-        "narHash": "sha256-uDCFHeXdRIgJpYmtcUxGEsZ+hYlLPBhR83fdU+vbC1s=",
+        "lastModified": 1754292888,
+        "narHash": "sha256-1ziydHSiDuSnaiPzCQh1mRFBsM2d2yRX9I+5OPGEmIE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "13e8d35b7d6028b7198f8186bc0347c6abaa2701",
+        "rev": "ce01daebf8489ba97bd1609d185ea276efdeb121",
         "type": "github"
       },
       "original": {
@@ -499,11 +499,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1750720215,
-        "narHash": "sha256-rqus2jQM0655cAmGpuyGwhljoASvGCNWRdfFpaXrRfs=",
+        "lastModified": 1754443824,
+        "narHash": "sha256-wpxlZM5Z4U0Y3B0QToq0H9BrMTmTOBllgMb+9yOEFxk=",
         "owner": "archie-judd",
         "repo": "telescope-words.nvim",
-        "rev": "9fc6e5668b6e9bbca6c60165e349e52c12c88573",
+        "rev": "398f24a5e8f8d51c335665c23205428f6a517a33",
         "type": "github"
       },
       "original": {
