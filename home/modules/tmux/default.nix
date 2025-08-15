@@ -15,6 +15,8 @@
         plugin = pkgs.tmuxPlugins.catppuccin;
         extraConfig = builtins.readFile ./tmux-catppuccin.conf;
       }
+
+      { plugin = pkgs.tmuxPlugins.open; }
     ];
     extraConfig = builtins.readFile ./tmux-extra.conf;
   };
