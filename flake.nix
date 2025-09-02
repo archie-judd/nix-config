@@ -27,8 +27,10 @@
       "github:nixos/nixpkgs/a2eb207f45e4a14a1e3019d9e3863d1e208e2295";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
+    , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }:
+    let overlays = import ./overlays;
+    in {
 
       # NixOS configurations
       nixosConfigurations = {
@@ -42,6 +44,7 @@
             kolide-launcher.nixosModules.kolide-launcher
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
@@ -60,11 +63,13 @@
           specialArgs = {
             pkgs-unstable = import nixpkgs-unstable { inherit system; };
           };
+
           modules = [
             ./system/hosts/thinkpad-x1/configuration.nix
             kolide-launcher.nixosModules.kolide-launcher
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
@@ -91,6 +96,7 @@
             ./system/hosts/macbook-pro/configuration.nix
             home-manager.darwinModules.home-manager
             {
+              nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.archie = import ./home/users/personal-mac.nix;
