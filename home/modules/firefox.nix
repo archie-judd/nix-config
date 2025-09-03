@@ -46,6 +46,10 @@
                 url = "https://claude.ai";
               }
               {
+                name = "Gemini";
+                url = "https://gemini.google.com/app";
+              }
+              {
                 name = "Google";
                 bookmarks = [
                   {
