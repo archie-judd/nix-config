@@ -160,7 +160,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Intel camera driver
-  hardware.ipu6.enable = false;
+  hardware.ipu6.enable = true;
   hardware.ipu6.platform = "ipu6epmtl";
 
   # Enable Avahi ip resolution
