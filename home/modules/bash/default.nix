@@ -20,10 +20,10 @@
         "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
     };
     sessionVariables = {
+      EDITOR =
+        "nvim"; # homeManager.sessionVariables aren't persisted after re-login
       PROMPT_COMMAND = "history -a;history -c;history -r";
-    } // lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
-      SHELL = "${pkgs.bashInteractive}/bin/bash";
-    }; # Force shell for nix-darwin
+    };
     shellOptions = [ "histappend" "checkwinsize" ];
     initExtra = ''
       source ${pkgs.git}/share/bash-completion/completions/git
