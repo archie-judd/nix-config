@@ -170,6 +170,10 @@
                     name = "Confluence";
                     url = "https://lunarenergy.atlassian.net/wiki/home";
                   }
+                  {
+                    name = "Opsgenie";
+                    url = "https://lunarenergy.app.eu.opsgenie.com/alert/list";
+                  }
                 ];
               }
 
