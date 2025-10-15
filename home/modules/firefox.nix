@@ -172,7 +172,8 @@
                   }
                   {
                     name = "Opsgenie";
-                    url = "https://lunarenergy.app.eu.opsgenie.com/alert/list";
+                    url =
+                      "https://lunarenergy.app.eu.opsgenie.com/teams/dashboard/0ab13050-8105-4521-94a6-edb80ab14d83/main";
                   }
                 ];
               }
