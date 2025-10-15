@@ -157,7 +157,7 @@
   services.tailscale.enable = true;
 
   # Use the latest linux kernel and patch it to fix the webcam
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # Intel camera driver
   hardware.ipu6.enable = true;
