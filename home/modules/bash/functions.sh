@@ -2,7 +2,7 @@
 
 function git_branch_delete() {
 	for branch in "$@"; do
-		git branch -d "$branch"
+		git branch -D "$branch"
 		git push -d origin "$branch"
 	done
 }
