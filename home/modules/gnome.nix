@@ -117,12 +117,6 @@
         command = "alacritty -e tmux";
         name = "Terminal";
       };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" =
-      {
-        binding = "<Super>b";
-        command = "firefox";
-        name = "Browser";
-      };
     "org/gnome/shell/extensions/dash-to-dock" = {
       animate-show-apps = true;
       apply-custom-theme = true;
