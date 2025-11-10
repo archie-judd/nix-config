@@ -18,6 +18,25 @@ function git_tag_delete() {
 
 __git_complete git_tag_delete _git_tag
 
+git_review_pr() {
+	if [ "$#" -ne 2 ]; then
+		echo "Usage: git_review_pr <base-branch> <feature-branch>"
+		return 1
+	fi
+	local BASE_BRANCH=$1
+	local FEATURE_BRANCH=$2
+	git fetch origin "$BASE_BRANCH"
+	git checkout "$BASE_BRANCH"
+	git pull origin "$BASE_BRANCH"
+	git fetch origin "$FEATURE_BRANCH"
+	git checkout "$FEATURE_BRANCH"
+	git pull origin "$FEATURE_BRANCH"
+	git reset --soft "$(git merge-base origin/"$BASE_BRANCH" HEAD)"
+	echo "PR review setup complete. You are now on the feature branch with a soft reset to the merge-base."
+}
+
+__git_complete git_review_pr _git_switch
+
 function tmux_hsplit() {
 	local bottom_proportion
 	local bottom_height
