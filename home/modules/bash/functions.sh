@@ -18,7 +18,29 @@ function git_tag_delete() {
 
 __git_complete git_tag_delete _git_tag
 
+function __git_review_pr_cleanup() {
+	local PREVIOUS_BRANCH
+	PREVIOUS_BRANCH=$(git config review.previousbranch)
+
+	if [ -z "$PREVIOUS_BRANCH" ]; then
+		echo "Error: No previous branch found. Please specify: git_review_pr_cleanup <branch>"
+		return 1
+	fi
+
+	git reset --hard HEAD
+	git checkout "$PREVIOUS_BRANCH"
+	git config --unset review.previousbranch
+
+	echo "Cleanup complete. Returned to $PREVIOUS_BRANCH"
+}
+
 function git_review_pr() {
+
+	if [ "$1" = "--cleanup" ] || [ "$1" = "-c" ]; then
+		__git_review_pr_cleanup
+		return $?
+	fi
+
 	if [ "$#" -ne 2 ]; then
 		echo "Usage: git_review_pr <base-branch> <feature-branch>"
 		return 1
@@ -49,26 +71,10 @@ function git_review_pr() {
 	git config review.previousbranch "$PREVIOUS_BRANCH"
 
 	echo "PR review setup complete."
-	echo "To cleanup: git_review_pr_cleanup"
+	echo "To cleanup: git_review_pr -c"
 }
 
 __git_complete git_review_pr _git_switch
-
-git_review_pr_cleanup() {
-	local PREVIOUS_BRANCH
-	PREVIOUS_BRANCH=$(git config review.previousbranch)
-
-	if [ -z "$PREVIOUS_BRANCH" ]; then
-		echo "Error: No previous branch found. Please specify: git_review_pr_cleanup <branch>"
-		return 1
-	fi
-
-	git reset --hard HEAD
-	git checkout "$PREVIOUS_BRANCH"
-	git config --unset review.previousbranch
-
-	echo "Cleanup complete. Returned to $PREVIOUS_BRANCH"
-}
 
 function tmux_hsplit() {
 	local bottom_proportion
