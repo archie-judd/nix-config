@@ -29,39 +29,20 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
     , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }:
-    let overlays = import ./overlays;
+    let
+      overlays = import ./overlays;
+      # Define a predicate to allow specific unfree packages
     in {
 
       # NixOS configurations
       nixosConfigurations = {
-        xps-9510 = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
-          };
-          modules = [
-            ./system/hosts/xps-9510/configuration.nix
-            kolide-launcher.nixosModules.kolide-launcher
-            home-manager.nixosModules.home-manager
-            {
-              nixpkgs.overlays = [ overlays ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.archie = import ./home/users/work-laptop.nix;
-              home-manager.extraSpecialArgs = {
-                pkgs-unstable = import nixpkgs-unstable { inherit system; };
-                pkgs-fzf = import nixpkgs-fzf { system = system; };
-                neovim-config = neovim-config;
-                nixpkgs = nixpkgs;
-              };
-            }
-          ];
-        };
         thinkpad-x1 = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+            pkgs-unstable = import nixpkgs-unstable {
+              system = system;
+              config.allowUnfree = true;
+            };
           };
 
           modules = [
@@ -75,7 +56,10 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.archie = import ./home/users/work-laptop.nix;
               home-manager.extraSpecialArgs = {
-                pkgs-unstable = import nixpkgs-unstable { inherit system; };
+                pkgs-unstable = import nixpkgs-unstable {
+                  system = system;
+                  config.allowUnfree = true;
+                };
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
                 nixpkgs = nixpkgs;
                 neovim-config = neovim-config;
@@ -90,7 +74,10 @@
         macbook-pro = nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
           specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+            pkgs-unstable = import nixpkgs-unstable {
+              system = system;
+              config.allowUnfree = true;
+            };
           };
           modules = [
             ./system/hosts/macbook-pro/configuration.nix
@@ -101,7 +88,10 @@
               home-manager.useUserPackages = true;
               home-manager.users.archie = import ./home/users/personal-mac.nix;
               home-manager.extraSpecialArgs = {
-                pkgs-unstable = import nixpkgs-unstable { inherit system; };
+                pkgs-unstable = import nixpkgs-unstable {
+                  system = system;
+                  config.allowUnfree = true;
+                };
                 pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
                 bbc-to-spotify = bbc-to-spotify;
@@ -114,12 +104,19 @@
 
       # Home manager only configurations
       homeConfigurations = {
+        # Work NUC
         archiejudd = let system = "x86_64-linux";
         in home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            system = system;
+            config.allowUnfree = true;
+          };
           modules = [ ./home/users/work-nuc.nix ];
           extraSpecialArgs = {
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+            pkgs-unstable = import nixpkgs-unstable {
+              system = system;
+              allowUnfree = true;
+            };
             pkgs-fzf = import nixpkgs-fzf { system = system; };
             nixpkgs = nixpkgs;
             neovim-config = neovim-config;
@@ -128,10 +125,16 @@
         # Rpi
         archie = let system = "aarch64-linux";
         in home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            system = system;
+            config.allowUnfree = true;
+          };
           modules = [ ./home/users/personal-rpi.nix ];
           extraSpecialArgs = {
-            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+            pkgs-unstable = import nixpkgs-unstable {
+              system = system;
+              config.allowUnfree = true;
+            };
             pkgs-fzf = import nixpkgs-fzf { system = system; };
             nixpkgs = nixpkgs;
             neovim-config = neovim-config;

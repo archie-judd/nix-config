@@ -18,6 +18,7 @@
       fkill = "ps | fzf | awk '{print $1}' | xargs kill -9";
       tmux =
         "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
+      "??" = "copilot -p";
     };
     sessionVariables = {
       EDITOR =

@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, pkgs-unstable, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -52,7 +52,7 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs.gh
+    pkgs-unstable.github-copilot-cli
     neovim-config.packages.${pkgs.system}.default
   ];
 
