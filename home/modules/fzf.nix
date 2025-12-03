@@ -1,9 +1,8 @@
-{ pkgs, pkgs-fzf, ... }:
+{ pkgs, ... }:
 
 {
   programs.fzf = {
     enable = true;
-    package = pkgs-fzf.fzf;
     enableBashIntegration = true;
     enableZshIntegration = true;
     defaultOptions = [

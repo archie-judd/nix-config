@@ -3,13 +3,13 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     bbc-to-spotify.url =
@@ -21,14 +21,10 @@
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Peg fzf to the gridshare-edge version to avoid conflicts.
-    nixpkgs-fzf.url =
-      "github:nixos/nixpkgs/a2eb207f45e4a14a1e3019d9e3863d1e208e2295";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , bbc-to-spotify, neovim-config, kolide-launcher, nixpkgs-fzf, ... }:
+    , bbc-to-spotify, neovim-config, kolide-launcher, ... }:
     let
       overlays = import ./overlays;
       # Define a predicate to allow specific unfree packages
@@ -60,7 +56,6 @@
                   system = system;
                   config.allowUnfree = true;
                 };
-                pkgs-fzf = import nixpkgs-fzf { system = system; };
                 nixpkgs = nixpkgs;
                 neovim-config = neovim-config;
               };
@@ -92,7 +87,6 @@
                   system = system;
                   config.allowUnfree = true;
                 };
-                pkgs-fzf = import nixpkgs-fzf { system = system; };
                 neovim-config = neovim-config;
                 bbc-to-spotify = bbc-to-spotify;
                 nixpkgs = nixpkgs;
@@ -117,7 +111,6 @@
               system = system;
               allowUnfree = true;
             };
-            pkgs-fzf = import nixpkgs-fzf { system = system; };
             nixpkgs = nixpkgs;
             neovim-config = neovim-config;
           };
@@ -135,7 +128,6 @@
               system = system;
               config.allowUnfree = true;
             };
-            pkgs-fzf = import nixpkgs-fzf { system = system; };
             nixpkgs = nixpkgs;
             neovim-config = neovim-config;
           };
