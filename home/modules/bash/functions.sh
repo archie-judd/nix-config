@@ -92,10 +92,14 @@ function tmux_vsplit() {
 	tmux split-window -h -l $right_width -c "$PWD" \; select-pane -U
 }
 
-# Run neovim with a custom runtime path
 function nvim_rtp() {
 	# remove trailing slash
 	local runtimepath="${1%/}"
 	shift
-	nvim --cmd "set runtimepath^=$runtimepath" -u "$runtimepath/init.lua" "$@"
+	# Use the actual nvim binary, bypassing any wrappers
+	# Set up runtimepath and after directory explicitly
+	command nvim --clean \
+		--cmd "set runtimepath^=$runtimepath" \
+		--cmd "set runtimepath+=$runtimepath/after" \
+		-u "$runtimepath/init.lua" "$@"
 }
