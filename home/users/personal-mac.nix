@@ -43,6 +43,7 @@
     pkgs.transmission_4
     bbc-to-spotify.packages.${pkgs.system}.default
     neovim-config.packages.${pkgs.system}.default
+    neovim-config.packages.${pkgs.system}.nvim-rtp
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake

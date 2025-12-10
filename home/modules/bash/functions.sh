@@ -91,15 +91,3 @@ function tmux_vsplit() {
 	right_width="$((right_proportion * COLUMNS / 100))"
 	tmux split-window -h -l $right_width -c "$PWD" \; select-pane -U
 }
-
-function nvim_rtp() {
-	# remove trailing slash
-	local runtimepath="${1%/}"
-	shift
-	# Use the actual nvim binary, bypassing any wrappers
-	# Set up runtimepath and after directory explicitly
-	command nvim --clean \
-		--cmd "set runtimepath^=$runtimepath" \
-		--cmd "set runtimepath+=$runtimepath/after" \
-		-u "$runtimepath/init.lua" "$@"
-}

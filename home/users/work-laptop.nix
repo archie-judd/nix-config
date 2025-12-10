@@ -54,6 +54,7 @@
     pkgs.libreoffice
     pkgs-unstable.github-copilot-cli
     neovim-config.packages.${pkgs.system}.default
+    neovim-config.packages.${pkgs.system}.nvim-rtp
   ];
 
   # Fixes firefox right-click cursor offset
