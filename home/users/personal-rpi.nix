@@ -40,7 +40,7 @@
     pkgs.fd
     pkgs.eza
     pkgs.nix-direnv
-    neovim-config.packages.${pkgs.system}.default
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
