@@ -25,15 +25,15 @@
 
   imports = [
     ../modules/alacritty
-    ../modules/bash
     ../modules/tmux
     ../modules/gromit-mpx
+    ../modules/git
+    ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/firefox.nix
     ../modules/fzf.nix
     ../modules/gnome.nix
     ../modules/starship.nix
-    ../modules/git
     ../modules/xdg.nix
   ];
 
