@@ -31,7 +31,7 @@
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
-    ../modules/git.nix
+    ../modules/git
   ];
 
   home.packages = [

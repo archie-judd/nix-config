@@ -33,7 +33,7 @@
     ../modules/fzf.nix
     ../modules/gnome.nix
     ../modules/starship.nix
-    ../modules/git.nix
+    ../modules/git
     ../modules/xdg.nix
   ];
 
