@@ -17,9 +17,9 @@
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   imports = [
-    ../../modules/fonts.nix
-    ../../modules/homebrew.nix
-    ../../modules/mac-os.nix
+    ../../modules/fonts
+    ../../modules/homebrew
+    ../../modules/mac-os
   ];
 
   environment.systemPackages = [ pkgs.vim ];

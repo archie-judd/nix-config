@@ -133,12 +133,12 @@
 
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../../modules/gnome.nix
-    ../../modules/keyd.nix
-    ../../modules/kolide.nix
-    ../../modules/fonts.nix
-    ../../modules/nix-ld.nix
-    ../../modules/docker.nix
+    ../../modules/gnome
+    ../../modules/keyd
+    ../../modules/kolide
+    ../../modules/fonts
+    ../../modules/nix-ld
+    ../../modules/docker
   ];
 
   # Allow unfree packages

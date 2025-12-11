@@ -28,13 +28,13 @@
     ../modules/tmux
     ../modules/gromit-mpx
     ../modules/git
-    ../modules/bash.nix
-    ../modules/direnv.nix
-    ../modules/firefox.nix
-    ../modules/fzf.nix
-    ../modules/gnome.nix
-    ../modules/starship.nix
-    ../modules/xdg.nix
+    ../modules/bash
+    ../modules/direnv
+    ../modules/firefox
+    ../modules/fzf
+    ../modules/gnome
+    ../modules/starship
+    ../modules/xdg
   ];
 
   home.packages = [
