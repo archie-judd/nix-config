@@ -6,7 +6,7 @@ let
   git-tag-delete = pkgs.writeShellScriptBin "git-tag-delete"
     (builtins.readFile ./scripts/git-tag-delete.sh);
   git-review-pr = pkgs.writeShellScriptBin "git-review-pr"
-    (builtins.readFile ./scripts/git-branch-delete.sh);
+    (builtins.readFile ./scripts/git-review-pr.sh);
 
 in {
   programs.git = {
