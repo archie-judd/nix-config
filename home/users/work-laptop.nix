@@ -26,7 +26,6 @@
   imports = [
     ../modules/alacritty
     ../modules/tmux
-    ../modules/gromit-mpx
     ../modules/git
     ../modules/bash
     ../modules/direnv
