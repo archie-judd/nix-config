@@ -17,6 +17,7 @@
       "discord"
       "firefox"
       "skim" # PDF reader for latex
+      "claude"
       # "libreoffice" # LibreOffice for apple silicon doesn't work via homebrew
     ];
     masApps = {
