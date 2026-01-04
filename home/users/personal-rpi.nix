@@ -34,8 +34,6 @@
 
   home.packages = [
     pkgs.bashInteractive
-    pkgs.chromium
-    pkgs.chromedriver
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
