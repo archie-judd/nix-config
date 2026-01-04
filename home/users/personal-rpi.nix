@@ -39,7 +39,7 @@
     pkgs.fd
     pkgs.eza
     pkgs.nix-direnv
-    pkgs.nvim
+    pkgs.neovim
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
