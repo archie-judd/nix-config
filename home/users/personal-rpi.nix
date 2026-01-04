@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -33,8 +33,14 @@
     ../modules/starship.nix
   ];
 
-  home.packages =
-    [ pkgs.bashInteractive pkgs.ripgrep pkgs.fd pkgs.eza pkgs.nix-direnv ];
+  home.packages = [
+    pkgs.bashInteractive
+    pkgs.ripgrep
+    pkgs.fd
+    pkgs.eza
+    pkgs.nix-direnv
+    pkgs.nvim
+  ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
