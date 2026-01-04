@@ -26,6 +26,7 @@
   imports = [
     ../modules/alacritty
     ../modules/bash
+    ../modules/tmux
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
