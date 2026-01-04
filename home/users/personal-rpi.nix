@@ -27,20 +27,14 @@
     ../modules/alacritty
     ../modules/bash
     ../modules/tmux
+    ../modules/git
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
-    ../modules/git
   ];
 
-  home.packages = [
-    pkgs.bashInteractive
-    pkgs.ripgrep
-    pkgs.fd
-    pkgs.eza
-    pkgs.nix-direnv
-    neovim-config.packages.${pkgs.system}.nvim-slim
-  ];
+  home.packages =
+    [ pkgs.bashInteractive pkgs.ripgrep pkgs.fd pkgs.eza pkgs.nix-direnv ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
