@@ -12,8 +12,6 @@
       reload = ''exec "$SHELL"'';
       vsp = "tmux-vsplit";
       hsp = "tmux=hsplit";
-      vi = "nvim";
-      vim = "nvim";
       tmux =
         "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
       "??" = "copilot -p";
