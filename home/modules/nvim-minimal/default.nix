@@ -3,9 +3,9 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = true; # Sets $EDITOR to nvim
-    viAlias = false; # Aliases vi -> nvim
-    vimAlias = false; # Aliases vim -> nvim
+    defaultEditor = true;
+    viAlias = false;
+    vimAlias = false;
   };
 
   home.file.".config/nvim/init.lua" = {

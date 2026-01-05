@@ -28,6 +28,7 @@
     ../modules/bash
     ../modules/tmux
     ../modules/git
+    ../modules/nvim-minimal
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
