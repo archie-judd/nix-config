@@ -7,6 +7,7 @@
     pkgs.gnomeExtensions.clipboard-indicator
     pkgs.gnomeExtensions.dash-to-dock
     pkgs.gnomeExtensions.gnome-bedtime # bedtime greyscale filter
+    pkgs.gnomeExtensions.draw-on-gnome # annotate
   ];
 
   dconf.settings = {
@@ -17,6 +18,8 @@
         "dash-to-dock@micxgx.gmail.com"
         "Vitals@CoreCoding.com"
         "gnomebedtime@ionutbortis.gmail.com"
+        "tophat@fflewddur.github.io"
+        "draw-on-gnome@daveprowse.github.io"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
