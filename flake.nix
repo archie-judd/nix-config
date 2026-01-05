@@ -32,8 +32,9 @@
 
       # NixOS configurations
       nixosConfigurations = {
-        thinkpad-x1 = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
+        thinkpad-x1 = let system = "x86_64-linux";
+        in nixpkgs.lib.nixosSystem {
+          system = system;
           specialArgs = {
             pkgs-unstable = import nixpkgs-unstable {
               system = system;
@@ -66,8 +67,9 @@
 
       # Darwin configurations
       darwinConfigurations = {
-        macbook-pro = nix-darwin.lib.darwinSystem rec {
-          system = "aarch64-darwin";
+        macbook-pro = let system = "aarch64-darwin";
+        in nix-darwin.lib.darwinSystem {
+          system = system;
           specialArgs = {
             pkgs-unstable = import nixpkgs-unstable {
               system = system;

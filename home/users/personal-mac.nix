@@ -1,4 +1,4 @@
-{ pkgs, bbc-to-spotify, neovim-config, nixpkgs, ... }:
+{ pkgs, system, bbc-to-spotify, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -41,9 +41,9 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    bbc-to-spotify.packages.${pkgs.system}.default
-    neovim-config.packages.${pkgs.system}.default
-    neovim-config.packages.${pkgs.system}.nvim-rtp
+    bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
