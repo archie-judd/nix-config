@@ -30,3 +30,5 @@ vim.keymap.set(
 	":noh <CR> <CR>",
 	{ silent = true, noremap = true, desc = "Highlight: de-highlight and then press enter" }
 )
+vim.opt.number = true
+vim.opt.relativenumber = true
