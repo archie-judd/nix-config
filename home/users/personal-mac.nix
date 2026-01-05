@@ -25,13 +25,13 @@
 
   imports = [
     ../modules/alacritty
-    ../modules/bash
     ../modules/tmux
     ../modules/karabiner
+    ../modules/git
+    ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
-    ../modules/git
   ];
 
   home.packages = [

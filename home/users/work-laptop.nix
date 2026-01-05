@@ -25,9 +25,9 @@
 
   imports = [
     ../modules/alacritty
-    ../modules/bash
     ../modules/tmux
     ../modules/git
+    ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/firefox.nix
     ../modules/fzf.nix

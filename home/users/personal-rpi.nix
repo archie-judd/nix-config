@@ -25,10 +25,10 @@
 
   imports = [
     ../modules/alacritty
-    ../modules/bash
     ../modules/tmux
     ../modules/git
     ../modules/nvim-minimal
+    ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/fzf.nix
     ../modules/starship.nix
