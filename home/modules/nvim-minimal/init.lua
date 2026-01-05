@@ -19,7 +19,7 @@ vim.keymap.set(
 	":noh <CR> <CR>",
 	{ silent = true, noremap = true, desc = "Highlight: de-highlight and then press enter" }
 )
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { silent = true, noremap = true, desc = "Windows: select window to left" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { silent = true, noremap = true, desc = "Windows: Select window to right" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { silent = true, noremap = true, desc = "Windows: select window below" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { silent = true, noremap = true, desc = "Window: select window above" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true, noremap = true, desc = "Windows: left" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true, noremap = true, desc = "Windows: right" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true, noremap = true, desc = "Windows: below" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true, noremap = true, desc = "Window: above" })
