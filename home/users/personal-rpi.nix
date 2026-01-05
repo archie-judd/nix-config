@@ -40,7 +40,7 @@
     pkgs.fd
     pkgs.eza
     pkgs.nix-direnv
-    pkgs.neovim
+    pkgs.vim
     bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
