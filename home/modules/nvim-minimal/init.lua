@@ -1,3 +1,14 @@
+local tmux = require("tmux")
+
+tmux.setup({
+	copy_sync = { enable = false },
+	resize = {
+		enable_default_keybindings = true,
+		resize_step_x = 5,
+		resize_step_y = 5,
+	},
+})
+
 if vim.fn.has("nvim-0.10") == 1 then
 	vim.g.clipboard = {
 		name = "OSC 52",
