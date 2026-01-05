@@ -131,7 +131,7 @@
               config.allowUnfree = true;
             };
             nixpkgs = nixpkgs;
-            neovim-config = neovim-config;
+	    bbc-to-spotify = bbc-to-spotify;
           };
         };
       };

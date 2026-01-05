@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, ... }:
+{ pkgs, nixpkgs, bbc-to-spotify, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -40,6 +40,7 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.neovim
+    bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
