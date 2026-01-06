@@ -22,7 +22,7 @@ function git_review_pr() {
 	fi
 
 	if [ "$#" -ne 2 ]; then
-		echo "Usage: git_review_pr <base-branch> <feature-branch>"
+		echo "Usage: git-review-pr <base-branch> <feature-branch>"
 		return 1
 	fi
 
@@ -51,7 +51,7 @@ function git_review_pr() {
 	git config review.previousbranch "$PREVIOUS_BRANCH"
 
 	echo "PR review setup complete."
-	echo "To cleanup: git_review_pr -c"
+	echo "To cleanup: git-review-pr -c"
 }
 
 git_review_pr "$@"
