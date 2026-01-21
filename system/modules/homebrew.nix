@@ -19,6 +19,7 @@
       "skim" # PDF reader for latex
       "claude"
       # "libreoffice" # LibreOffice for apple silicon doesn't work via homebrew
+      "nordvpn"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
