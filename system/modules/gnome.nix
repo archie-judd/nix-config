@@ -8,7 +8,6 @@
     pkgs.snapshot
     pkgs.gnome-text-editor
     pkgs.gnome-connections
-    pkgs.cheese # webcam tool
     pkgs.gnome-contacts
     pkgs.gnome-calendar
     pkgs.gnome-music

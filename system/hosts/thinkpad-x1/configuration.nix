@@ -139,6 +139,8 @@
     ../../modules/fonts.nix
     ../../modules/nix-ld.nix
     ../../modules/docker.nix
+    # Commented out because linuxKernel_6_18 caused excessive flickering on this device
+    # ../../modules/thinkpad-camera-fix.nix
   ];
 
   # Allow unfree packages
@@ -156,13 +158,6 @@
   # Enable tailscale
   services.tailscale.enable = true;
   services.tailscale.package = pkgs-unstable.tailscale;
-
-  # Use the latest linux kernel and patch it to fix the webcam
-  boot.kernelPackages = pkgs.linuxPackages;
-
-  # Intel camera driver
-  hardware.ipu6.enable = true;
-  hardware.ipu6.platform = "ipu6epmtl";
 
   # Enable Avahi ip resolution
   services.avahi = {
@@ -182,5 +177,12 @@
     canon-cups-ufr2 # Canon's official driver package
     cups-filters
   ];
+
+  # Nix garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
 }

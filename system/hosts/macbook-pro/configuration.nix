@@ -36,4 +36,11 @@
     uid = 501;
   };
 
+  # Nix garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
 }
