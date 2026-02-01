@@ -181,7 +181,11 @@
   # Nix garbage collection
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    interval = {
+      Weekday = 0;
+      Hour = 0;
+      Minute = 0;
+    };
     options = "--delete-older-than 30d";
   };
 
