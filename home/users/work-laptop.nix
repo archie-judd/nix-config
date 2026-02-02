@@ -51,7 +51,8 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs-unstable.github-copilot-cli
+    pkgs.claude-code
+    pkgs.claude-code-acp
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];

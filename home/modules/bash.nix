@@ -14,7 +14,6 @@
       hsp = "tmux=hsplit";
       tmux =
         "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
-      "??" = "copilot -p";
     };
     sessionVariables = {
       EDITOR =
