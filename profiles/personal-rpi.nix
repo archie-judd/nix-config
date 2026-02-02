@@ -46,4 +46,9 @@
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 }
