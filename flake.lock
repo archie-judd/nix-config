@@ -199,11 +199,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1769684173,
-        "narHash": "sha256-ILe4JAJzHqlEuEomRSUU/YdB4OZb7IDzrOdcOWDm0C8=",
+        "lastModified": 1770041464,
+        "narHash": "sha256-N3ngseeifP3fnfe383xD2x1RfASUrjnpaCjn8pZ9t7s=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "aecfc8fa3aabeca275bf1bc0829620050b4a6b19",
+        "rev": "755197da301e966052f57e3fa7af82c8cf5dc8c3",
         "type": "github"
       },
       "original": {
@@ -274,11 +274,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1769461804,
-        "narHash": "sha256-msG8SU5WsBUfVVa/9RPLaymvi5bI8edTavbIq3vRlhI=",
+        "lastModified": 1769789167,
+        "narHash": "sha256-kKB3bqYJU5nzYeIROI82Ef9VtTbu4uA3YydSk/Bioa8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bfc1b8a4574108ceef22f02bafcf6611380c100d",
+        "rev": "62c8382960464ceb98ea593cb8321a2cf8f9e3e5",
         "type": "github"
       },
       "original": {
@@ -322,11 +322,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1769318308,
-        "narHash": "sha256-Mjx6p96Pkefks3+aA+72lu1xVehb6mv2yTUUqmSet6Q=",
+        "lastModified": 1769900590,
+        "narHash": "sha256-I7Lmgj3owOTBGuauy9FL6qdpeK2umDoe07lM4V+PnyA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1cd347bf3355fce6c64ab37d3967b4a2cb4b878c",
+        "rev": "41e216c0ca66c83b12ab7a98cc326b5db01db646",
         "type": "github"
       },
       "original": {
