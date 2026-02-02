@@ -12,6 +12,8 @@
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+
     bbc-to-spotify.url =
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
 
@@ -24,7 +26,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , bbc-to-spotify, neovim-config, kolide-launcher, ... }:
+    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }:
     let
       overlays = import ./overlays;
       # Define a predicate to allow specific unfree packages
@@ -46,12 +48,16 @@
             ./system/hosts/thinkpad-x1/configuration.nix
             kolide-launcher.nixosModules.kolide-launcher
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             {
               nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.archie = import ./home/users/work-laptop.nix;
+              home-manager.sharedModules = [
+                sops-nix.homeManagerModules.sops
+              ]; # Share sops config with all modules
               home-manager.extraSpecialArgs = {
                 pkgs-unstable = import nixpkgs-unstable {
                   system = system;
@@ -131,7 +137,7 @@
               config.allowUnfree = true;
             };
             nixpkgs = nixpkgs;
-	    bbc-to-spotify = bbc-to-spotify;
+            bbc-to-spotify = bbc-to-spotify;
           };
         };
       };

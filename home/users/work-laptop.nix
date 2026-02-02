@@ -27,6 +27,7 @@
     ../modules/alacritty
     ../modules/tmux
     ../modules/git
+    ../modules/sops
     ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/firefox.nix
