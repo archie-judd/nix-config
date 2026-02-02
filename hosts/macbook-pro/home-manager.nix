@@ -2,7 +2,7 @@
 , ... }: {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.archie = import ../../profiles/personal-mac.nix;
+  home-manager.users.archie = import ./home.nix;
   home-manager.sharedModules =
     [ sops-nix.homeManagerModules.sops ]; # Share sops config with all modules
   home-manager.extraSpecialArgs = {

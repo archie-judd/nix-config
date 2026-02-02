@@ -1,10 +1,10 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, nixpkgs, bbc-to-spotify, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "archiejudd";
-  home.homeDirectory = "/home/archiejudd";
+  home.username = "archie";
+  home.homeDirectory = "/home/archie";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -24,26 +24,31 @@
   home.sessionVariables = { EDITOR = "nvim"; };
 
   imports = [
-    ../modules/home-manager/alacritty
-    ../modules/home-manager/tmux
-    ../modules/home-manager/git
-    ../modules/home-manager/bash.nix
-    ../modules/home-manager/direnv.nix
-    ../modules/home-manager/fzf.nix
-    ../modules/home-manager/starship.nix
+    ../../modules/home-manager/alacritty
+    ../../modules/home-manager/tmux
+    ../../modules/home-manager/git
+    ../../modules/home-manager/nvim-minimal
+    ../../modules/home-manager/bash.nix
+    ../../modules/home-manager/direnv.nix
+    ../../modules/home-manager/fzf.nix
+    ../../modules/home-manager/starship.nix
   ];
 
   home.packages = [
-    pkgs.nodejs # stop copilot picking up the system node and complaining it is out-of-date
     pkgs.bashInteractive
     pkgs.ripgrep
     pkgs.fd
     pkgs.eza
-    pkgs.awscli2
     pkgs.nix-direnv
-    neovim-config.packages.${pkgs.system}.default
+    pkgs.vim
+    bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 }
