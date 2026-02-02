@@ -28,6 +28,7 @@
     ../modules/tmux
     ../modules/karabiner
     ../modules/git
+    ../modules/sops
     ../modules/bash.nix
     ../modules/direnv.nix
     ../modules/fzf.nix

@@ -26,11 +26,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }:
-    let
-      overlays = import ./overlays;
-      # Define a predicate to allow specific unfree packages
-    in {
+    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }: {
 
       # NixOS configurations
       nixosConfigurations = {
@@ -49,8 +45,8 @@
             kolide-launcher.nixosModules.kolide-launcher
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
+            ./overlays.nix
             {
-              nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
@@ -85,8 +81,8 @@
           modules = [
             ./system/hosts/macbook-pro/configuration.nix
             home-manager.darwinModules.home-manager
+            ./overlays.nix
             {
-              nixpkgs.overlays = [ overlays ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.archie = import ./home/users/personal-mac.nix;

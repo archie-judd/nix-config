@@ -1,8 +1,10 @@
 keys:
-  - &archie age19wvsxfjqwt4hfue36xstyw98c90fq2rq6uyygrp6y47rc96zj5vs2zpks2
+  - &thinkpad age19wvsxfjqwt4hfue36xstyw98c90fq2rq6uyygrp6y47rc96zj5vs2zpks2
+  - &mac age1vcnrvnqg7lxxsrfuvphr8sf2vz8cwc3hptskmxhznusdqghfrs6qardu77
 
 creation_rules:
   - path_regex: secrets\.yaml$
     key_groups:
       - age:
-          - *archie
+          - *thinkpad
+          - *mac
