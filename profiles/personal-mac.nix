@@ -42,6 +42,8 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
+    pkgs.claude-code
+    pkgs.claude-code-acp
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
