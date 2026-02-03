@@ -16,7 +16,7 @@ in {
     age.keyFile = "${sopsDir}/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      anthropic-api-key = { path = "${sopsDir}/secrets/anthropic-api-key"; };
+      anthropic-api-key = { };
 
     };
   };

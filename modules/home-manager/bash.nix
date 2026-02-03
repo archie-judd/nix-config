@@ -25,11 +25,9 @@
     initExtra =
 
       # if sops is enabled, load the Anthropic API key into the environment
-      lib.optionalString (config ? sops)
-      (let keyPath = config.sops.secrets.anthropic-api-key.path;
-      in ''
-        [ -f ${keyPath} ] && export ANTHROPIC_API_KEY=$(cat ${keyPath})
-      '')
+      lib.optionalString (config ? sops) ''
+        export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropic-api-key.path})"
+      ''
 
       # on macOS, load Homebrew environment
       + lib.optionalString pkgs.stdenv.isDarwin ''
