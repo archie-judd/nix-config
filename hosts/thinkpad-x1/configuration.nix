@@ -143,9 +143,6 @@
     # ../../modules/nixos/thinkpad-camera-fix.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages =
     [ pkgs.git pkgs.vim pkgs.wget pkgs.curl pkgs.htop ];
 

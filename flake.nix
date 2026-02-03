@@ -23,10 +23,13 @@
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }: {
+    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }:
+    let overlays = import ./overlays.nix;
+    in {
 
       # NixOS configurations
       nixosConfigurations = {
@@ -34,6 +37,7 @@
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
+          overlays = overlays;
           sops-nix = sops-nix;
           neovim-config = neovim-config;
           kolide-launcher = kolide-launcher;
@@ -46,6 +50,7 @@
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
+          overlays = overlays;
           sops-nix = sops-nix;
           neovim-config = neovim-config;
           nix-darwin = nix-darwin;
@@ -59,6 +64,7 @@
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
+          overlays = overlays;
           neovim-config = neovim-config;
         };
         # Rpi
@@ -66,6 +72,7 @@
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
+          overlays = overlays;
           bbc-to-spotify = bbc-to-spotify;
         };
       };
