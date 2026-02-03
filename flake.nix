@@ -31,7 +31,6 @@
     let overlays = import ./overlays.nix;
     in {
 
-      # NixOS configurations
       nixosConfigurations = {
         thinkpad-x1 = import ./hosts/thinkpad-x1 {
           nixpkgs = nixpkgs;
@@ -44,7 +43,6 @@
         };
       };
 
-      # Darwin configurations
       darwinConfigurations = {
         macbook-pro = import ./hosts/macbook-pro {
           nixpkgs = nixpkgs;
@@ -59,16 +57,14 @@
 
       # Home manager only configurations
       homeConfigurations = {
-        # Work NUC
-        archiejudd = import ./hosts/work-nuc {
+        archiejudd = import ./hosts/nuc {
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
           overlays = overlays;
           neovim-config = neovim-config;
         };
-        # Rpi
-        archie = import ./hosts/personal-rpi {
+        archie = import ./hosts/raspberry-pi {
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
