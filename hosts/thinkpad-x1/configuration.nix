@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   # imports = [ # Include the results of the hardware scan.
@@ -58,9 +58,6 @@
 
   # Configure console keymap
   console.keyMap = "uk";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -133,14 +130,18 @@
 
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    # Commented out because linuxKernel_6_18 caused excessive flickering on this device
+    # .camera.nix
+    ./fingerprint.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/keyd.nix
     ../../modules/nixos/kolide.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/docker.nix
-    # Commented out because linuxKernel_6_18 caused excessive flickering on this device
-    # ../../modules/nixos/thinkpad-camera-fix.nix
+    ../../modules/nixos/logitech.nix
+    ../../modules/nixos/printing.nix
+    ../../modules/nixos/tailscale.nix
   ];
 
   environment.systemPackages =
@@ -152,28 +153,12 @@
   # Remove documentation app
   documentation.nixos.enable = false;
 
-  # Enable tailscale
-  services.tailscale.enable = true;
-  services.tailscale.package = pkgs-unstable.tailscale;
-
   # Enable Avahi ip resolution
   services.avahi = {
     enable = true;
     nssmdns4 =
       true; # Enable name switch service for ipV4 addresses (to find .local names).
   };
-
-  # To get solaaar working
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
-
-  # Printing drivers
-  services.printing.drivers = [
-    pkgs.gutenprint
-    pkgs.gutenprintBin
-    pkgs.canon-cups-ufr2 # Canon's official driver package
-    pkgs.cups-filters
-  ];
 
   # Nix garbage collection
   nix.gc = {
