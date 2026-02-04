@@ -42,12 +42,21 @@
                   "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
               }
               {
-                name = "Claude";
-                url = "https://claude.ai";
-              }
-              {
-                name = "Gemini";
-                url = "https://gemini.google.com/app";
+                name = "Anthropic";
+                bookmarks = [
+                  {
+                    name = "Claude";
+                    url = "https://claude.ai";
+                  }
+                  {
+                    name = "Claude Platform";
+                    url = "https://platform.claude.com/dashboard";
+                  }
+                  {
+                    name = "Gemini";
+                    url = "https://gemini.google.com/app";
+                  }
+                ];
               }
               {
                 name = "Google";
