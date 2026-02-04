@@ -199,11 +199,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1770213253,
-        "narHash": "sha256-4MT0gPFPZ8lDuG8urJcdanKAZraehePDGg2frtt0/SQ=",
+        "lastModified": 1770216521,
+        "narHash": "sha256-1tjm1l8PgrptOAPAI8VYVSTrDfej/Qvz0AvlEI81VDw=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "7caff9f05a3a97f7984710bb1b4aaa3a49cebb98",
+        "rev": "7703cafcaa7fce2017102c3345d68926da695fc8",
         "type": "github"
       },
       "original": {
