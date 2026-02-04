@@ -26,7 +26,7 @@
 
       # if sops is enabled, load the Anthropic API key into the environment
       lib.optionalString (config ? sops) ''
-        export ANTHROPIC_API_KEY="$(cat ${config.sops.secrets.anthropic-api-key.path})"
+        export CLAUDE_CODE_OAUTH_TOKEN="$(cat ${config.sops.secrets.claude-code-oauth-token.path})"
       ''
 
       # on macOS, load Homebrew environment
