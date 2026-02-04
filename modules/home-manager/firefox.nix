@@ -52,10 +52,6 @@
                     name = "Claude Platform";
                     url = "https://platform.claude.com/dashboard";
                   }
-                  {
-                    name = "Gemini";
-                    url = "https://gemini.google.com/app";
-                  }
                 ];
               }
               {
@@ -80,6 +76,10 @@
                   {
                     name = "Drive";
                     url = "https://drive.google.com/drive";
+                  }
+                  {
+                    name = "Gemini";
+                    url = "https://gemini.google.com/app";
                   }
                 ];
               }
