@@ -54,7 +54,7 @@
     pkgs.libreoffice
     pkgs.claude-code
     pkgs.claude-code-acp
-    pkgs.opencode
+    pkgs.github-copilot-cli
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
