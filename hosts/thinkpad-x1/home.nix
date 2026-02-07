@@ -35,6 +35,7 @@
     ../../modules/home-manager/gnome.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/xdg.nix
+    ../../modules/home-manager/claude-code.nix
   ];
 
   home.packages = [
@@ -52,8 +53,6 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs.claude-code
-    pkgs.claude-code-acp
     pkgs.github-copilot-cli
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.bash = {
@@ -23,17 +23,10 @@
     };
     shellOptions = [ "histappend" "checkwinsize" ];
     profileExtra = "source ~/.bashrc";
-    initExtra =
-
-      # if sops is enabled, load the Anthropic API key into the environment
-      lib.optionalString (config ? sops) ''
-        export CLAUDE_CODE_OAUTH_TOKEN="$(cat ${config.sops.secrets.claude-code-oauth-token.path})"
-      ''
-
-      # on macOS, load Homebrew environment
-      + lib.optionalString pkgs.stdenv.isDarwin ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      '';
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    initExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)" 
+      	''; # Add homebrew to path
   };
 
 }
