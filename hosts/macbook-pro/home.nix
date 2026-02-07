@@ -33,6 +33,7 @@
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
     ../../modules/home-manager/starship.nix
+    ../../modules/home-manager/claude-code.nix
   ];
 
   home.packages = [
@@ -42,8 +43,6 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    pkgs.claude-code
-    pkgs.claude-code-acp
     pkgs.opencode
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
