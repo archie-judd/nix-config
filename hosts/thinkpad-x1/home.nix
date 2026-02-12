@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, pkgs-unstable, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -53,7 +53,7 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs.github-copilot-cli
+    pkgs-unstable.github-copilot-cli # get acp
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
