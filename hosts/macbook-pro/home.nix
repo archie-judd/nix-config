@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, pkgs-unstable, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -43,7 +43,7 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    pkgs.github-copilot-cli
+    pkgs-unstable.github-copilot-cli # need the --acp feature
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
