@@ -43,7 +43,7 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    pkgs.opencode
+    pkgs.github-copilot-cli
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
