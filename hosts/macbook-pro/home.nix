@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, neovim-config, nixpkgs, ... }:
+{ pkgs, pkgs-unstable, nixpkgs, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the

@@ -17,6 +17,7 @@ in nix-darwin.lib.darwinSystem {
   system = system;
   pkgs = pkgs;
   specialArgs = {
+    nixpkgs = nixpkgs;
     pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;
