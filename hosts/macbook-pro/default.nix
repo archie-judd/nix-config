@@ -1,23 +1,23 @@
 { nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, overlays, sops-nix
 , neovim-config, ... }:
 
-let system = "aarch64-darwin";
-in nix-darwin.lib.darwinSystem {
-  system = system;
+let
+  system = "aarch64-darwin";
   pkgs = import nixpkgs {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-  specialArgs = {
-    pkgs-unstable = import nixpkgs-unstable {
-      system = system;
-      config.allowUnfree = true;
-      overlays = overlays;
-    };
+  pkgs-unstable = import nixpkgs-unstable {
     system = system;
-    nixpkgs = nixpkgs;
-    nixpkgs-unstable = nixpkgs-unstable;
+    config.allowUnfree = true;
+    overlays = overlays;
+  };
+in nix-darwin.lib.darwinSystem {
+  system = system;
+  pkgs = pkgs;
+  specialArgs = {
+    pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;
   };

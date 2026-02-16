@@ -1,23 +1,24 @@
 { nixpkgs, nixpkgs-unstable, home-manager, overlays, sops-nix, neovim-config
 , kolide-launcher, ... }:
 
-let system = "x86_64-linux";
-in nixpkgs.lib.nixosSystem {
-  system = system;
+let
+  system = "x86_64-linux";
   pkgs = import nixpkgs {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-  specialArgs = {
-    pkgs-unstable = import nixpkgs-unstable {
-      system = system;
-      config.allowUnfree = true;
-      overlays = overlays;
-    };
+  pkgs-unstable = import nixpkgs-unstable {
     system = system;
+    config.allowUnfree = true;
+    overlays = overlays;
+  };
+in nixpkgs.lib.nixosSystem {
+  system = system;
+  pkgs = pkgs;
+  specialArgs = {
     nixpkgs = nixpkgs;
-    nixpkgs-unstable = nixpkgs-unstable;
+    pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;
   };
