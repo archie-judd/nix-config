@@ -36,6 +36,7 @@
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/claude-code.nix
+    ../../modules/home-manager/ssl.nix
   ];
 
   home.packages = [
