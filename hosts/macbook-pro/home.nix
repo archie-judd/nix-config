@@ -29,11 +29,11 @@
     ../../modules/home-manager/karabiner
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
+    ../../modules/home-manager/claude-code
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
     ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/claude-code.nix
   ];
 
   home.packages = [

@@ -28,6 +28,7 @@
     ../../modules/home-manager/tmux
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
+    ../../modules/home-manager/claude-code
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/firefox.nix
@@ -35,7 +36,6 @@
     ../../modules/home-manager/gnome.nix
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/xdg.nix
-    ../../modules/home-manager/claude-code.nix
     ../../modules/home-manager/ssl.nix
   ];
 

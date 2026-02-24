@@ -14,10 +14,12 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
+    neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
+
+    claude-code-nix.url = "github:sadjow/claude-code-nix";
+
     bbc-to-spotify.url =
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
-
-    neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
@@ -27,7 +29,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , sops-nix, bbc-to-spotify, neovim-config, kolide-launcher, ... }:
+    , sops-nix, neovim-config, claude-code-nix, bbc-to-spotify, kolide-launcher
+    , ... }:
     let overlays = import ./overlays.nix;
     in {
 
@@ -38,6 +41,7 @@
           home-manager = home-manager;
           overlays = overlays;
           sops-nix = sops-nix;
+          claude-code-nix = claude-code-nix;
           neovim-config = neovim-config;
           kolide-launcher = kolide-launcher;
         };
@@ -50,6 +54,7 @@
           home-manager = home-manager;
           overlays = overlays;
           sops-nix = sops-nix;
+          claude-code-nix = claude-code-nix;
           neovim-config = neovim-config;
           nix-darwin = nix-darwin;
         };

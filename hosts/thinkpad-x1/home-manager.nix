@@ -1,4 +1,4 @@
-{ nixpkgs, pkgs-unstable, sops-nix, neovim-config, ... }: {
+{ nixpkgs, pkgs-unstable, sops-nix, neovim-config, claude-code-nix, ... }: {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
@@ -9,5 +9,6 @@
     nixpkgs = nixpkgs;
     pkgs-unstable = pkgs-unstable;
     neovim-config = neovim-config;
+    claude-code-nix = claude-code-nix;
   };
 }
