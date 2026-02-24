@@ -33,7 +33,6 @@ let
 in lib.mkMerge [
   {
     programs.bash.initExtra = ''
-      ${builtins.readFile ./scripts/claude-new.sh}
       ${builtins.readFile ./scripts/claude-task-completions.sh}
       ${builtins.readFile ./scripts/claude-cd.sh}
       ${builtins.readFile ./scripts/claude-rm.sh}
