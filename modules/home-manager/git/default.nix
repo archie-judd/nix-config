@@ -1,12 +1,10 @@
 { pkgs, ... }:
 
 let
-  git-branch-delete = pkgs.writeShellScriptBin "git-branch-delete"
-    (builtins.readFile ./scripts/git-branch-delete.sh);
-  git-tag-delete = pkgs.writeShellScriptBin "git-tag-delete"
-    (builtins.readFile ./scripts/git-tag-delete.sh);
-  git-review-pr = pkgs.writeShellScriptBin "git-review-pr"
-    (builtins.readFile ./scripts/git-review-pr.sh);
+  git-branch-rm = pkgs.writeShellScriptBin "git-branch-rm"
+    (builtins.readFile ./scripts/git-branch-rm.sh);
+  git-tag-rm = pkgs.writeShellScriptBin "git-tag-rm"
+    (builtins.readFile ./scripts/git-tag-rm.sh);
 
 in {
   programs.git = {
@@ -22,13 +20,12 @@ in {
     ignores = [ "*~" "*.swp" "*.swo" ".DS_Store" "fontlist-v330.json" ];
   };
 
-  home.packages = [ git-branch-delete git-tag-delete git-review-pr ];
+  home.packages = [ git-branch-rm git-tag-rm ];
 
   programs.bash.initExtra = ''
-        source ${pkgs.git}/share/bash-completion/completions/git
-        __git_complete git-branch-delete _git_switch
-        __git_complete git-tag-delete _git_switch
-    		__git_complete git-review-pr _git_switch
-            		'';
+    source ${pkgs.git}/share/bash-completion/completions/git
+    __git_complete git-branch-rm _git_switch
+    __git_complete git-tag-rm _git_switch
+        		'';
 
 }
