@@ -18,7 +18,11 @@
       TOKEN=$(${pkgs.coreutils}/bin/cat ${secretPath})
       mkdir -p "$HOME/.claude"
       touch "$HOME/.claude.json"
-      GIT_DIR=$(${pkgs.git}/bin/git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || echo "$CWD/.git")
+
+      GIT_BIND=""
+      if GIT_DIR=$(${pkgs.git}/bin/git rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+        GIT_BIND="--bind $GIT_DIR $GIT_DIR"
+      fi
 
       exec ${pkgs.bubblewrap}/bin/bwrap \
         --ro-bind /nix/store /nix/store \
@@ -29,9 +33,9 @@
         --tmpfs /tmp \
         --tmpfs "$HOME" \
         --bind "$CWD" "$CWD" \
-        --bind "$GIT_DIR" "$GIT_DIR" \
         --bind "$HOME/.claude" "$HOME/.claude" \
         --bind "$HOME/.claude.json" "$HOME/.claude.json" \
+        $GIT_BIND \
         --symlink ${pkgs.bash}/bin/bash /bin/sh \
         --unshare-all \
         --share-net \
