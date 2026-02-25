@@ -1,4 +1,4 @@
-claude-rm() {
+claude-delete() {
 	local root
 	root=$(git rev-parse --show-toplevel 2>/dev/null) || {
 		echo "Not in a git repository" >&2
@@ -6,7 +6,7 @@ claude-rm() {
 	}
 	local task="$1"
 	if [ -z "$task" ]; then
-		echo "Usage: claude-rm <task-name>" >&2
+		echo "Usage: claude-delete <task-name>" >&2
 		return 1
 	fi
 	local worktree="$root/.claude/worktrees/$task"

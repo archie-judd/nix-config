@@ -1,4 +1,4 @@
-claude-cd() {
+claude-switch() {
 	local root
 	root=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || {
 		echo "Not in a git repository" >&2

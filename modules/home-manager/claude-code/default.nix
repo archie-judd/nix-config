@@ -34,14 +34,15 @@ in lib.mkMerge [
   {
     programs.bash.initExtra = ''
       ${builtins.readFile ./scripts/claude-task-completions.sh}
-      ${builtins.readFile ./scripts/claude-cd.sh}
-      ${builtins.readFile ./scripts/claude-rm.sh}
-      complete -F _claude_task_completions claude-cd
-      complete -F _claude_task_completions claude-rm
+      ${builtins.readFile ./scripts/claude-switch.sh}
+      ${builtins.readFile ./scripts/claude-delete.sh}
+      ${builtins.readFile ./scripts/claude-delegate.sh}
+      complete -F _claude_task_completions claude-switch
+      complete -F _claude_task_completions claude-delete
     '';
     home.file = {
-      ".claude/rules/git-workflow.md" = {
-        text = builtins.readFile ./claude/rules/git-workflow.md;
+      ".claude/prompts/claude-delegate.md" = {
+        text = builtins.readFile ./claude/prompts/claude-delegate.md;
       };
       ".claude/settings.json" = {
         text = builtins.readFile ./claude/settings.json;
