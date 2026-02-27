@@ -36,8 +36,8 @@ in lib.mkMerge [
       complete -F _copilot_task_completions copilot-switch
       complete -F _copilot_task_completions copilot-delete
     '';
-    home.file = { ".copilot.agents/" = { source = ./copilot/agents; }; };
-    home.file = { ".copilot.hooks/" = { source = ./copilot/hooks; }; };
+    home.file.".copilot/agents" = { source = ./copilot/agents; };
+    home.file.".copilot/hooks" = { source = ./copilot/hooks; };
   }
   (lib.mkIf pkgs.stdenv.isLinux { home.packages = [ copilot-sandboxed ]; })
   (lib.mkIf pkgs.stdenv.isDarwin { home.packages = [ pkgs-unstable.copilot ]; })
