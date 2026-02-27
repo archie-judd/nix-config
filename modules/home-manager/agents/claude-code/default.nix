@@ -1,17 +1,24 @@
 { lib, config, pkgs, claude-code-nix, ... }:
 let
   secretPath = config.sops.secrets.claude-code-oauth-token.path;
-  utils = import ./utils.nix { inherit pkgs secretPath; };
+  sandbox = import ../sandbox.nix { pkgs = pkgs; };
   claude-code-pkg =
     claude-code-nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  claude-code-authed = utils.withOAuthToken {
-    pkg = claude-code-pkg;
-    binName = "claude";
-  };
-  claude-code-sandboxed = utils.mkLinuxSandbox {
+  # We need to wrap the claude-code binaries to set the CLAUDE_CODE_OAUTH_TOKEN 
+  # environment variable from the secret file.
+  claude-code-authed = claude-code-pkg.overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+    postFixup = (old.postFixup or "") + ''
+      wrapProgram $out/bin/claude \
+        --run 'export CLAUDE_CODE_OAUTH_TOKEN="$(${pkgs.coreutils}/bin/cat ${secretPath})"'
+    '';
+  });
+  claude-code-sandboxed = sandbox.mkLinuxSandbox {
     pkg = claude-code-pkg;
     binName = "claude";
     outName = "claude";
+    stateDirs = [ "$HOME/.claude" ];
+    stateFiles = [ "$HOME/.claude.json" ];
     allowedPackages = [
       pkgs.coreutils
       pkgs.bash
@@ -22,8 +29,14 @@ let
       pkgs.gnugrep
       pkgs.findutils
       pkgs.jq
-      pkgs.tmux
     ];
+    extraEnv = {
+      CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat ${secretPath})";
+      GIT_AUTHOR_NAME = "claude-agent";
+      GIT_AUTHOR_EMAIL = "claude-agent@localhost";
+      GIT_COMMITTER_NAME = "claude-agent";
+      GIT_COMMITTER_EMAIL = "claude-agent@localhost";
+    };
   };
 
 in lib.mkMerge [
@@ -37,8 +50,8 @@ in lib.mkMerge [
       complete -F _claude_task_completions claude-delete
     '';
     home.file = {
-      ".claude/prompts/claude-delegate.md" = {
-        text = builtins.readFile ./claude/prompts/claude-delegate.md;
+      ".claude/prompts/delegate.md" = {
+        text = builtins.readFile ./claude/prompts/delegate.md;
       };
       ".claude/settings.json" = {
         text = builtins.readFile ./claude/settings.json;

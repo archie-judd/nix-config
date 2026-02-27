@@ -29,7 +29,8 @@
     ../../modules/home-manager/karabiner
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
-    ../../modules/home-manager/claude-code
+    ../../modules/home-manager/agents/claude-code
+    ../../modules/home-manager/agents/copilot
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
@@ -43,7 +44,6 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    pkgs-unstable.github-copilot-cli # need the --acp feature
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];

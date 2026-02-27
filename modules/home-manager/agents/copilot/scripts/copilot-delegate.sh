@@ -17,11 +17,9 @@ copilot-delegate() {
 	if [ ! -d "$worktree" ]; then
 		mkdir -p "$root/.copilot/worktrees"
 		git worktree add -b "$branch" "$worktree" || return 1
-		mkdir -p "$worktree/.github/agents"
-		cp "$HOME/.copilot/prompts/copilot-delegate.md" "$worktree/.github/agents/$task.agent.md"
 	fi
 
 	cd "$worktree" || return 1
-	copilot --agent "$task" "${@:2}"
+	copilot --agent "delegate" "${@:2}"
 	printf '\a' >/dev/tty
 }

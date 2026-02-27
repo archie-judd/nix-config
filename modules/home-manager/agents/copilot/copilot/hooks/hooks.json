@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionEnd": [
+      {
+        "type": "command",
+        "bash": "printf '\\a' > /dev/tty",
+        "timeoutSec": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "printf '\\a' > /dev/tty && cat",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}

@@ -28,7 +28,8 @@
     ../../modules/home-manager/tmux
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
-    ../../modules/home-manager/claude-code
+    ../../modules/home-manager/agents/claude-code
+    ../../modules/home-manager/agents/copilot
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/firefox.nix
@@ -54,7 +55,6 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    pkgs-unstable.github-copilot-cli # get acp
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];

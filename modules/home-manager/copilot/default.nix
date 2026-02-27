@@ -8,8 +8,8 @@
     complete -F _copilot_task_completions copilot-delete
   '';
 
-  home.file.".copilot/prompts/copilot-delegate.md" = {
-    text = builtins.readFile ./prompts/copilot-delegate.md;
+  home.file.".copilot/agents/delegate.md" = {
+    text = builtins.readFile ./agents/delegate.md;
   };
 
   home.packages = [ pkgs-unstable.github-copilot-cli ];
