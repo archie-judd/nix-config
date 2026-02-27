@@ -1,5 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }:
-{
+{ pkgs-unstable, ... }: {
   programs.bash.initExtra = ''
     ${builtins.readFile ./scripts/copilot-task-completions.sh}
     ${builtins.readFile ./scripts/copilot-switch.sh}
@@ -13,7 +12,5 @@
     text = builtins.readFile ./prompts/copilot-delegate.md;
   };
 
-  home.packages = [
-    pkgs-unstable.github-copilot-cli
-  ];
+  home.packages = [ pkgs-unstable.github-copilot-cli ];
 }
