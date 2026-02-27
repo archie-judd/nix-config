@@ -17,7 +17,15 @@ in {
       init.defaultBranch = "main";
       push.default = "nothing";
     };
-    ignores = [ "*~" "*.swp" "*.swo" ".DS_Store" "fontlist-v330.json" ];
+    ignores = [
+      "*~"
+      "*.swp"
+      "*.swo"
+      ".DS_Store"
+      "fontlist-v330.json"
+      ".copilot/"
+      ".claude/"
+    ];
   };
 
   home.packages = [ git-branch-rm git-tag-rm ];

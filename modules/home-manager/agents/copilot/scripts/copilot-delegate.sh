@@ -21,5 +21,4 @@ copilot-delegate() {
 
 	cd "$worktree" || return 1
 	copilot --agent "delegate" "${@:2}"
-	printf '\a' >/dev/tty
 }

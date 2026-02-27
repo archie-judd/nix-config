@@ -51,11 +51,9 @@ in lib.mkMerge [
     '';
     home.file = {
       ".claude/prompts/delegate.md" = {
-        text = builtins.readFile ./claude/prompts/delegate.md;
+        source = ./claude/prompts/delegate.md;
       };
-      ".claude/settings.json" = {
-        text = builtins.readFile ./claude/settings.json;
-      };
+      ".claude/settings.json" = { source = ./claude/settings.json; };
     };
   }
   (lib.mkIf pkgs.stdenv.isLinux { home.packages = [ claude-code-sandboxed ]; })
