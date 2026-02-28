@@ -20,5 +20,5 @@ copilot-delegate() {
 	fi
 
 	cd "$worktree" || return 1
-	copilot --agent "delegate" --allow-all "${@:2}"
+	copilot --agent "delegate" --yolo "${@:2}"
 }
