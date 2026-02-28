@@ -1,4 +1,71 @@
 { pkgs }: {
+
+  /*
+    mkLinuxSandbox — wraps a binary in a bubblewrap (bwrap) container.
+
+    Bubblewrap creates a lightweight Linux namespace sandbox. It builds an
+    entirely new mount tree from scratch — nothing is visible unless
+    explicitly mounted in. The sandbox also unshares all namespaces (PID,
+    user, IPC, UTS, cgroup) except network.
+
+    ## Filesystem layout inside the sandbox
+
+      Read-only bind mounts:
+        /nix/store    — so the wrapped binary and its deps are available
+        /etc/passwd   — user identity for programs that need it
+        /etc/resolv.conf — DNS resolution
+        /etc/ssl/certs   — TLS certificate verification
+      Kernel filesystems:
+        /proc   — mounted as a new procfs (only shows sandbox PIDs)
+        /dev    — minimal devtmpfs (null, zero, urandom, etc.)
+      Ephemeral tmpfs (empty, writable, lost on exit):
+        /tmp    — scratch space
+        $HOME   — prevents accidental reads of dotfiles; agent state
+                   dirs are bind-mounted back on top of this
+      Read-write bind mounts:
+        $CWD        — the project directory (always)
+        stateDirs   — each path gets a --bind (e.g., ~/.config/claude)
+        stateFiles  — each path gets a --bind (e.g., specific rc files)
+        $GIT_DIR    — the .git dir, auto-detected; only if inside a repo.
+                      Needed when CWD is a worktree and .git/common is
+                      outside CWD.
+      Symlinks:
+        /bin/sh -> bash — many scripts assume /bin/sh exists
+
+    ## Key bwrap flags
+
+      --unshare-all  Unshare every namespace type (mount, PID, user, IPC,
+                     UTS, cgroup). The process is fully isolated.
+      --share-net    Re-share the network namespace (undoes the network
+                     part of --unshare-all). Required for API calls.
+      --die-with-parent  Kill the sandbox if the parent shell exits, so
+                         orphaned sandboxes don't accumulate.
+      --setenv       Set environment variables inside the sandbox. PATH
+                     is explicitly constructed from allowedPackages, so
+                     only those binaries are callable.
+
+    ## Debugging tips
+
+      "No such file or directory":
+        The binary is trying to access a path that isn't mounted.
+        Run the wrapper with `strace -f -e trace=openat` to find the
+        path, then add it to stateDirs/stateFiles.
+
+      "Operation not permitted" on /proc or /dev:
+        Unprivileged user namespaces may be disabled on the host.
+        Check: sysctl kernel.unprivileged_userns_clone (needs to be 1).
+
+      Git operations fail:
+        If CWD is a git worktree, the real .git/common dir lives
+        elsewhere. The wrapper auto-detects this with git rev-parse
+        --git-common-dir, but it fails silently if git isn't available
+        outside the sandbox. Check that $GIT_BIND is non-empty.
+
+      DNS/TLS failures:
+        Ensure /etc/resolv.conf and /etc/ssl/certs exist on the host.
+        NixOS symlinks these — if the target is outside /etc, you may
+        need to bind-mount the real paths.
+  */
   mkLinuxSandbox = { pkg, binName, outName, allowedPackages, stateDirs ? [ ]
     , stateFiles ? [ ], extraEnv ? { } }:
     let
@@ -49,6 +116,138 @@
         ${extraEnvStr} \
         ${pkg}/bin/${binName} "$@"
     '';
+  /*
+    mkDarwinSandbox — wraps a binary using macOS Seatbelt (sandbox-exec).
+
+    Seatbelt uses a deny-default policy: everything is forbidden unless an
+    explicit (allow ...) rule permits it. This is the inverse of bubblewrap's
+    model (build an empty mount tree, then add things). Here the full
+    filesystem is always visible to the kernel, but the sandbox blocks
+    syscalls that access forbidden paths.
+
+    The policy is a Scheme-like DSL compiled to a .sb file at Nix build
+    time. Runtime values (CWD, HOME, GIT_DIR, etc.) are injected via
+    sandbox-exec -D NAME=VALUE parameters and referenced as (param "NAME")
+    in the profile.
+
+    ## Policy structure (the .sb profile)
+
+      (deny default)           — baseline: block everything
+      (allow process-exec)     — allow exec() so the agent can run tools
+      (allow process-fork)     — allow fork() for subprocesses
+      (allow signal)           — allow sending/receiving signals
+      (allow sysctl-read)      — allow reading kernel tuning values
+
+      Mach IPC:
+        Scoped to system services that most programs need. Each
+        (allow mach-lookup (global-name ...)) opens one IPC channel.
+        - com.apple.system.*           — core OS services
+        - com.apple.SystemConfiguration.* — network config (SCDynamicStore)
+        - com.apple.securityd.xpc      — Security framework (TLS, certs)
+        - com.apple.SecurityServer      — keychain authorization
+        - com.apple.trustd.agent        — certificate trust evaluation
+        - com.apple.FSEvents            — filesystem event monitoring
+        If the agent hangs or gets "bootstrap_look_up failed", a needed
+        Mach service is probably missing from this list.
+
+      Network:
+        (allow network*) — fully open; no port/host restrictions.
+
+      Device nodes & TTY:
+        /dev/null, /dev/urandom, /dev/random, /dev/zero for reads.
+        /dev/tty and /dev/ttysNNN for terminal I/O and ioctl (e.g.,
+        querying terminal size). /dev/fd/* for file descriptor access.
+
+      System libraries:
+        /usr/lib, /usr/share, /System — Apple frameworks and dylibs.
+        /Library/Preferences — system-wide plist defaults.
+        These are read-only. Without them, almost nothing runs on macOS.
+
+      Nix store:
+        /nix — read-only. All packages and their dependencies live here.
+
+      DNS / TLS / identity:
+        /etc/resolv.conf (and /private/etc/resolv.conf — macOS uses
+        /private/etc as the real location, with /etc as a symlink).
+        /etc/ssl + /private/etc/ssl for certificate bundles.
+        /etc/passwd + /private/etc/passwd for user identity lookups.
+
+      Security framework (keychain & trust):
+        /Library/Keychains — system keychain (root CA trust anchors).
+        /private/var/db/mds — security framework metadata caches (the
+        "MDS" directory). Without this, SecTrustEvaluate may fail with
+        errSecInternalComponent, breaking all TLS connections.
+        /private/var/run/systemkeychaincheck.done — signals keychain
+        migration is complete.
+
+      Temp directories:
+        /tmp, /private/tmp, $TMPDIR, and /private/var/folders (which
+        is where macOS actually puts per-user temp/cache dirs). All
+        are read-write. TMPDIR is injected as a -D parameter.
+
+      Timezone:
+        /private/var/db/timezone — so date/time formatting works.
+
+      Filesystem traversal (stat on parent dirs):
+        Allows stat() on /, /var, /private, /private/var, /Users,
+        $HOME, $CWD_PARENT, and $REPO_ROOT_PARENT. These are
+        read-only and restricted to literal paths (not subpath).
+        Needed because path resolution walks each component — without
+        this, even accessing an allowed subpath can fail with EPERM
+        during the stat() of a parent directory.
+
+      Working directory & repo:
+        $CWD (subpath)        — full read-write to the project
+        $REPO_ROOT (subpath)  — the repo root, which may differ from
+                                CWD if CWD is a subdirectory
+        $GIT_DIR (subpath)    — the .git dir (may be outside repo root
+                                for worktrees)
+        $GIT_CONFIG_DIR       — ~/.config/git (read-only) for user
+                                gitconfig, gitignore, etc.
+
+      stateDirs / stateFiles:
+        Each gets a (allow file-read* file-write* ...) rule. Dirs use
+        (subpath ...) so all contents are accessible. Files use
+        (literal ...) for exact-path access only.
+
+    ## Debugging tips
+
+      "Operation not permitted" / "denied by sandbox":
+        macOS logs sandbox violations to the system log. Query them:
+          log show --predicate 'eventMessage CONTAINS "deny"' --last 5m
+        Each entry shows the denied operation and path, telling you
+        exactly which (allow ...) rule is missing.
+
+      TLS / HTTPS failures ("SecureTransport" or "errSecInternalComponent"):
+        Usually means a Mach service or keychain path is blocked:
+        - Check that com.apple.securityd.xpc and com.apple.trustd.agent
+          are in the mach-lookup allows.
+        - Check that /Library/Keychains and /private/var/db/mds are
+          readable.
+
+      "sandbox-exec: ... (os/kern) invalid argument":
+        Syntax error in the .sb profile. Inspect the built file:
+          cat /nix/store/...-<outName>-sandbox.sb
+        Common causes: unmatched parens, bad regex syntax, or a
+        (param "X") with no corresponding -D X=value flag.
+
+      Agent can't find tools / PATH is empty:
+        PATH is set to the Nix-built basePath from allowedPackages.
+        It is NOT inherited from the parent shell. If a tool is missing,
+        add its package to allowedPackages.
+
+      Git operations fail:
+        GIT_DIR is auto-detected via git rev-parse. If you're outside
+        a repo, it falls back to /nonexistent-git-dir (a harmless dummy
+        that satisfies the (param "GIT_DIR") reference without granting
+        access to anything real).
+
+      NOTE: sandbox-exec is deprecated by Apple and may be removed in a
+      future macOS release. It still works as of macOS 15 (Sequoia) but
+      produces no deprecation warnings at runtime — only the man page
+      mentions it. There is no supported replacement for unprivileged
+      sandboxing on macOS.
+  */
   mkDarwinSandbox = { pkg, binName, outName, allowedPackages, stateDirs ? [ ]
     , stateFiles ? [ ], extraEnv ? { } }:
     let
