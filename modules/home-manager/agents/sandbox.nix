@@ -119,15 +119,23 @@
           (literal "/dev/null")
           (literal "/dev/urandom")
           (literal "/dev/random")
-          (literal "/dev/zero"))
+          (literal "/dev/zero")
+          (literal "/dev/ptmx"))
         (allow file-write* (literal "/dev/null"))
         (allow file-read* file-write*
           (literal "/dev/tty")
+          (literal "/dev/ptmx")
           (regex #"^/dev/fd/")
-          (regex #"^/dev/ttys[0-9]"))
+          (regex #"^/dev/ttys[0-9]")
+          (regex #"^/dev/pty")
+          (regex #"^/dev/ttyp"))
         (allow file-ioctl
           (literal "/dev/tty")
-          (regex #"^/dev/ttys[0-9]"))
+          (literal "/dev/ptmx")
+          (regex #"^/dev/ttys[0-9]")
+          (regex #"^/dev/pty")
+          (regex #"^/dev/ttyp"))
+        ;; Device nodes & terminal I/O
 
         ;; System libraries & frameworks
         (allow file-read*
