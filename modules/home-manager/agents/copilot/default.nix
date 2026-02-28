@@ -1,7 +1,8 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ lib, config, pkgs, pkgs-unstable, ... }:
 let
+  secretPath = config.sops.secrets.github-token.path;
   sandbox = import ../sandbox.nix { pkgs = pkgs; };
-  copilot-sandboxed = sandbox.mkLinuxSandbox {
+  sandboxParams = {
     pkg = pkgs-unstable.github-copilot-cli;
     binName = "copilot";
     outName = "copilot";
@@ -19,6 +20,7 @@ let
       pkgs.jq
     ];
     extraEnv = {
+      GITHUB_TOKEN = "$(${pkgs.coreutils}/bin/cat ${secretPath})";
       GIT_AUTHOR_NAME = "copilot-agent";
       GIT_AUTHOR_EMAIL = "copilot-agent@localhost";
       GIT_COMMITTER_NAME = "copilot-agent";
@@ -41,6 +43,10 @@ in lib.mkMerge [
       ".copilot/hooks" = { source = ./copilot/hooks; };
     };
   }
-  (lib.mkIf pkgs.stdenv.isLinux { home.packages = [ copilot-sandboxed ]; })
-  (lib.mkIf pkgs.stdenv.isDarwin { home.packages = [ pkgs-unstable.copilot ]; })
+  (lib.mkIf pkgs.stdenv.isLinux {
+    home.packages = [ (sandbox.mkLinuxSandbox sandboxParams) ];
+  })
+  (lib.mkIf pkgs.stdenv.isDarwin {
+    home.packages = [ (sandbox.mkDarwinSandbox sandboxParams) ];
+  })
 ]

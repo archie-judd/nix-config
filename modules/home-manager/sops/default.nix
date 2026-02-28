@@ -18,6 +18,7 @@
     secrets = {
       # anthropic-api-key = { }; # Not currently needed
       claude-code-oauth-token = { };
+      github-token = { };
     };
   };
 

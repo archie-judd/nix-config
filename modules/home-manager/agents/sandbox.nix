@@ -49,4 +49,171 @@
         ${extraEnvStr} \
         ${pkg}/bin/${binName} "$@"
     '';
+  mkDarwinSandbox = { pkg, binName, outName, allowedPackages, stateDirs ? [ ]
+    , stateFiles ? [ ], extraEnv ? { } }:
+    let
+      basePath = pkgs.lib.makeBinPath allowedPackages;
+      # Generate indexed param names
+      stateDirParams = builtins.genList (i: {
+        name = "STATE_DIR_${toString i}";
+        path = builtins.elemAt stateDirs i;
+      }) (builtins.length stateDirs);
+
+      stateFileParams = builtins.genList (i: {
+        name = "STATE_FILE_${toString i}";
+        path = builtins.elemAt stateFiles i;
+      }) (builtins.length stateFiles);
+
+      # For the .sb file
+      seatbeltAllowReadWrite = builtins.concatStringsSep "\n" (map
+        (p: ''(allow file-read* file-write* (subpath (param "${p.name}")))'')
+        stateDirParams);
+
+      seatbeltAllowFiles = builtins.concatStringsSep "\n" (map
+        (p: ''(allow file-read* file-write* (literal (param "${p.name}")))'')
+        stateFileParams);
+
+      # For the wrapper's sandbox-exec invocation
+      stateDirFlags = builtins.concatStringsSep " \\\n  "
+        (map (p: ''-D ${p.name}="${p.path}"'') stateDirParams);
+
+      stateFileFlags = builtins.concatStringsSep " \\\n  "
+        (map (p: ''-D ${p.name}="${p.path}"'') stateFileParams);
+
+      mkDirsStr = builtins.concatStringsSep "\n"
+        (map (dir: ''mkdir -p "${dir}"'') stateDirs);
+      mkFilesStr = builtins.concatStringsSep "\n"
+        (map (file: ''touch "${file}"'') stateFiles);
+
+      extraEnvStr = builtins.concatStringsSep "\n"
+        (map (name: ''export ${name}="${extraEnv.${name}}"'')
+          (builtins.attrNames extraEnv));
+
+      seatbeltProfile = pkgs.writeText "${outName}-sandbox.sb" ''
+        (version 1)
+        (deny default)
+
+        ;; --- Process operations ---
+        (allow process-exec)
+        (allow process-fork)
+        (allow signal)
+        (allow sysctl-read)
+
+        ;; --- Mach/IPC (needed by most macOS programs) ---
+        (allow mach-lookup)
+        (allow mach-register)
+        (allow ipc-posix-shm-read-data)
+        (allow ipc-posix-shm-write-data)
+        (allow ipc-posix-shm-write-create)
+
+        ;; --- Network (equivalent to --share-net) ---
+        (allow network*)
+
+        ;; --- Device nodes ---
+        (allow file-read*
+          (literal "/dev/null")
+          (literal "/dev/urandom")
+          (literal "/dev/random")
+          (literal "/dev/zero"))
+        (allow file-write* (literal "/dev/null"))
+        (allow file-read* file-write*
+          (literal "/dev/tty")
+          (regex #"^/dev/fd/")
+          (regex #"^/dev/ttys[0-9]"))
+
+        ;; --- System libraries & frameworks ---
+        (allow file-read*
+          (subpath "/usr/lib")
+          (subpath "/usr/share")
+          (subpath "/System")
+          (subpath "/Library/Preferences")
+          (subpath "/private/var/db/timezone"))
+
+        ;; --- Nix store (read-only, equivalent to --ro-bind /nix/store) ---
+        (allow file-read* (subpath "/nix"))
+
+        ;; --- DNS / TLS (equivalent to --ro-bind resolv.conf, ssl certs) ---
+        (allow file-read*
+          (literal "/etc/resolv.conf")
+          (literal "/private/etc/resolv.conf")
+          (subpath "/etc/ssl")
+          (subpath "/private/etc/ssl")
+          (literal "/etc/passwd")
+          (literal "/private/etc/passwd")
+          (literal "/private/var/run/resolv.conf"))
+
+        ;; --- Temp directories ---
+        (allow file-read* file-write*
+          (subpath "/tmp")
+          (subpath "/private/tmp")
+          (subpath (param "TMPDIR")))
+
+        ;; --- The result of testing ---
+        (allow file-ioctl)
+        (allow file-read* (literal "/var"))
+        (allow file-read* (literal "/"))
+        (allow file-read* (literal "/Users"))
+        (allow file-read* (literal (param "HOME")))
+        (allow file-read* (subpath "/Library/Keychains"))
+        (allow file-read* (literal "/Users/archie/Library/Keychains"))
+        (allow file-read* (subpath "/Users/archie/Library/Keychains"))
+        (allow file-read* (literal (param "CWD_PARENT")))
+        (allow file-read* (literal "/private"))
+        (allow file-read* (subpath "/private/var"))
+        (allow file-read* (subpath "/private/etc"))
+        (allow file-read* (subpath "/private/tmp"))
+        (allow file-read* file-write* (subpath (param "REPO_ROOT")))
+        (allow file-read* (literal (param "REPO_ROOT_PARENT")))
+        (allow file-read* (subpath (param "GIT_CONFIG_DIR")))
+
+        ;; --- CWD (read-write, equivalent to --bind "$CWD" "$CWD") ---
+        (allow file-read* file-write* (subpath (param "CWD")))
+
+        ;; --- Git common dir (conditional, equivalent to $GIT_BIND) ---
+        ;; When not in a git repo, this points to a nonexistent path and matches nothing.
+        (allow file-read* file-write* (subpath (param "GIT_DIR")))
+
+        ;; --- Explicit state dirs (read-write) ---
+        ${seatbeltAllowReadWrite}
+
+        ;; --- Explicit state files (read-write) ---
+        ${seatbeltAllowFiles}
+      '';
+
+    in pkgs.writeShellScriptBin outName ''
+      CWD=$(pwd)
+      ${mkDirsStr}
+      ${mkFilesStr}
+
+      if GIT_DIR=$(${pkgs.git}/bin/git rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+        GIT_DIR_PARAM="$GIT_DIR"
+      else
+        GIT_DIR_PARAM="/nonexistent-git-dir"
+      fi
+
+      export HOME="$HOME"
+      export TERM="$TERM"
+      export SHELL="${pkgs.bash}/bin/bash"
+      export PATH="${basePath}"
+      export SSL_CERT_FILE="''${SSL_CERT_FILE:-/etc/ssl/certs/ca-certificates.crt}"
+      export SSL_CERT_DIR="''${SSL_CERT_DIR:-/etc/ssl/certs}"
+      ${extraEnvStr}
+      export CWD_PARENT="$(dirname "$CWD")"
+      export REPO_ROOT=$(dirname "$GIT_DIR_PARAM")
+      export REPO_ROOT_PARENT=$(dirname "$REPO_ROOT")
+      export GIT_CONFIG_DIR="$HOME/.config/git"
+
+
+      exec /usr/bin/sandbox-exec \
+        -f ${seatbeltProfile} \
+        -D CWD="$CWD" \
+        -D CWD_PARENT="$CWD_PARENT" \
+        -D GIT_DIR="$GIT_DIR_PARAM" \
+        -D REPO_ROOT="$REPO_ROOT" \
+        -D REPO_ROOT_PARENT="$REPO_ROOT_PARENT" \
+        -D GIT_CONFIG_DIR="$GIT_CONFIG_DIR" \
+        -D TMPDIR="''${TMPDIR:-/tmp}" \
+        -D HOME="$HOME" ${stateDirFlags} ${stateFileFlags} \
+        ${pkg}/bin/${binName} "$@"
+    '';
 }

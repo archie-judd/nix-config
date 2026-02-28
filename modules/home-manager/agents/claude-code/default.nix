@@ -13,7 +13,7 @@ let
         --run 'export CLAUDE_CODE_OAUTH_TOKEN="$(${pkgs.coreutils}/bin/cat ${secretPath})"'
     '';
   });
-  claude-code-sandboxed = sandbox.mkLinuxSandbox {
+  sandboxParams = {
     pkg = claude-code-pkg;
     binName = "claude";
     outName = "claude";
@@ -56,6 +56,10 @@ in lib.mkMerge [
       ".claude/settings.json" = { source = ./claude/settings.json; };
     };
   }
-  (lib.mkIf pkgs.stdenv.isLinux { home.packages = [ claude-code-sandboxed ]; })
-  (lib.mkIf pkgs.stdenv.isDarwin { home.packages = [ claude-code-authed ]; })
+  (lib.mkIf pkgs.stdenv.isLinux {
+    home.packages = [ (sandbox.mkLinuxSandbox sandboxParams) ];
+  })
+  (lib.mkIf pkgs.stdenv.isDarwin {
+    home.packages = [ (sandbox.mkDarwinSandbox sandboxParams) ];
+  })
 ]
