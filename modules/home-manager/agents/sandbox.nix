@@ -93,23 +93,28 @@
         (version 1)
         (deny default)
 
-        ;; --- Process operations ---
+        ;; Process control
         (allow process-exec)
         (allow process-fork)
         (allow signal)
         (allow sysctl-read)
 
-        ;; --- Mach/IPC (needed by most macOS programs) ---
-        (allow mach-lookup)
+        ;; Mach IPC — scoped to system services, security framework, FSEvents
+        (allow mach-lookup (global-name-prefix "com.apple.system."))
+        (allow mach-lookup (global-name-prefix "com.apple.SystemConfiguration."))
+        (allow mach-lookup (global-name "com.apple.securityd.xpc"))
+        (allow mach-lookup (global-name "com.apple.SecurityServer"))
+        (allow mach-lookup (global-name "com.apple.trustd.agent"))
+        (allow mach-lookup (global-name "com.apple.FSEvents"))
         (allow mach-register)
         (allow ipc-posix-shm-read-data)
         (allow ipc-posix-shm-write-data)
         (allow ipc-posix-shm-write-create)
 
-        ;; --- Network (equivalent to --share-net) ---
+        ;; Network
         (allow network*)
 
-        ;; --- Device nodes ---
+        ;; Device nodes & terminal I/O
         (allow file-read*
           (literal "/dev/null")
           (literal "/dev/urandom")
@@ -120,64 +125,66 @@
           (literal "/dev/tty")
           (regex #"^/dev/fd/")
           (regex #"^/dev/ttys[0-9]"))
+        (allow file-ioctl
+          (literal "/dev/tty")
+          (regex #"^/dev/ttys[0-9]"))
 
-        ;; --- System libraries & frameworks ---
+        ;; System libraries & frameworks
         (allow file-read*
           (subpath "/usr/lib")
           (subpath "/usr/share")
           (subpath "/System")
-          (subpath "/Library/Preferences")
-          (subpath "/private/var/db/timezone"))
+          (subpath "/Library/Preferences"))
 
-        ;; --- Nix store (read-only, equivalent to --ro-bind /nix/store) ---
+        ;; Nix store (read-only)
         (allow file-read* (subpath "/nix"))
 
-        ;; --- DNS / TLS (equivalent to --ro-bind resolv.conf, ssl certs) ---
+        ;; DNS, TLS & name resolution
         (allow file-read*
           (literal "/etc/resolv.conf")
           (literal "/private/etc/resolv.conf")
+          (literal "/private/var/run/resolv.conf")
           (subpath "/etc/ssl")
           (subpath "/private/etc/ssl")
           (literal "/etc/passwd")
-          (literal "/private/etc/passwd")
-          (literal "/private/var/run/resolv.conf"))
+          (literal "/private/etc/passwd"))
 
-        ;; --- Temp directories ---
+        ;; Security framework — system keychains & trust databases
+        (allow file-read*
+          (subpath "/Library/Keychains")
+          (subpath "/private/var/db/mds")
+          (literal "/private/var/run/systemkeychaincheck.done"))
+
+        ;; Temp directories
         (allow file-read* file-write*
           (subpath "/tmp")
           (subpath "/private/tmp")
-          (subpath (param "TMPDIR")))
+          (subpath (param "TMPDIR"))
+          (subpath "/private/var/folders"))
 
-        ;; --- The result of testing ---
-        (allow file-ioctl)
-        (allow file-read* (literal "/var"))
-        (allow file-read* (literal "/"))
-        (allow file-read* (literal "/Users"))
-        (allow file-read* (literal (param "HOME")))
-        (allow file-read* (subpath "/Library/Keychains"))
-        (allow file-read* (literal "/Users/archie/Library/Keychains"))
-        (allow file-read* (subpath "/Users/archie/Library/Keychains"))
-        (allow file-read* (literal (param "CWD_PARENT")))
-        (allow file-read* (literal "/private"))
-        (allow file-read* (subpath "/private/var"))
-        (allow file-read* (subpath "/private/etc"))
-        (allow file-read* (subpath "/private/tmp"))
+        ;; Timezone
+        (allow file-read* (subpath "/private/var/db/timezone"))
+
+        ;; Filesystem traversal — stat() on parent dirs for path resolution
+        (allow file-read*
+          (literal "/")
+          (literal "/var")
+          (literal "/private")
+          (literal "/private/var")
+          (literal "/Users")
+          (literal (param "HOME"))
+          (literal (param "CWD_PARENT"))
+          (literal (param "REPO_ROOT_PARENT")))
+
+        ;; Working directory & repository
+        (allow file-read* file-write* (subpath (param "CWD")))
         (allow file-read* file-write* (subpath (param "REPO_ROOT")))
-        (allow file-read* (literal (param "REPO_ROOT_PARENT")))
+        (allow file-read* file-write* (subpath (param "GIT_DIR")))
         (allow file-read* (subpath (param "GIT_CONFIG_DIR")))
 
-        ;; --- CWD (read-write, equivalent to --bind "$CWD" "$CWD") ---
-        (allow file-read* file-write* (subpath (param "CWD")))
-
-        ;; --- Git common dir (conditional, equivalent to $GIT_BIND) ---
-        ;; When not in a git repo, this points to a nonexistent path and matches nothing.
-        (allow file-read* file-write* (subpath (param "GIT_DIR")))
-
-        ;; --- Explicit state dirs (read-write) ---
+        ;; Explicit state directories & files
         ${seatbeltAllowReadWrite}
-
-        ;; --- Explicit state files (read-write) ---
-        ${seatbeltAllowFiles}
+        ${seatbeltAllowFiles};
       '';
 
     in pkgs.writeShellScriptBin outName ''
