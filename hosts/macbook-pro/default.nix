@@ -1,5 +1,5 @@
 { nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, overlays, sops-nix
-, neovim-config, claude-code-nix, ... }:
+, neovim-config, agent-sandbox-nix, claude-code-nix, ... }:
 
 let
   system = "aarch64-darwin";
@@ -21,6 +21,7 @@ in nix-darwin.lib.darwinSystem {
     pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;
+    agent-sandbox-nix = agent-sandbox-nix;
     claude-code-nix = claude-code-nix;
   };
 

@@ -1,5 +1,5 @@
 { nixpkgs, nixpkgs-unstable, home-manager, overlays, sops-nix, neovim-config
-, claude-code-nix, kolide-launcher, ... }:
+, agent-sandbox-nix, claude-code-nix, kolide-launcher, ... }:
 
 let
   system = "x86_64-linux";
@@ -21,6 +21,7 @@ in nixpkgs.lib.nixosSystem {
     pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;
+    agent-sandbox-nix = agent-sandbox-nix;
     claude-code-nix = claude-code-nix;
   };
 

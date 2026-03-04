@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, neovim-config, nixpkgs, ... }:
+{ pkgs, neovim-config, nixpkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -28,8 +28,8 @@
     ../../modules/home-manager/tmux
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
-    ../../modules/home-manager/agents/claude-code
-    ../../modules/home-manager/agents/copilot
+    ../../modules/home-manager/claude-code
+    ../../modules/home-manager/copilot
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/firefox.nix

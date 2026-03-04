@@ -16,6 +16,9 @@
 
     neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
+    agent-sandbox-nix.url =
+      "git+ssh://git@github.com/archie-judd/agent-sandbox.nix";
+
     claude-code-nix.url = "github:sadjow/claude-code-nix";
 
     bbc-to-spotify.url =
@@ -29,8 +32,8 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , sops-nix, neovim-config, claude-code-nix, bbc-to-spotify, kolide-launcher
-    , ... }:
+    , sops-nix, neovim-config, agent-sandbox-nix, claude-code-nix
+    , bbc-to-spotify, kolide-launcher, ... }:
     let overlays = import ./overlays.nix;
     in {
 
@@ -41,8 +44,9 @@
           home-manager = home-manager;
           overlays = overlays;
           sops-nix = sops-nix;
-          claude-code-nix = claude-code-nix;
           neovim-config = neovim-config;
+          agent-sandbox-nix = agent-sandbox-nix;
+          claude-code-nix = claude-code-nix;
           kolide-launcher = kolide-launcher;
         };
       };
@@ -52,11 +56,12 @@
           nixpkgs = nixpkgs;
           nixpkgs-unstable = nixpkgs-unstable;
           home-manager = home-manager;
+          nix-darwin = nix-darwin;
           overlays = overlays;
           sops-nix = sops-nix;
-          claude-code-nix = claude-code-nix;
           neovim-config = neovim-config;
-          nix-darwin = nix-darwin;
+          agent-sandbox-nix = agent-sandbox-nix;
+          claude-code-nix = claude-code-nix;
         };
       };
 
