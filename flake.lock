@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1772628638,
-        "narHash": "sha256-AvkuwBCjRzElWt0rv1vZoXMcLPYZHoB/5irM+L8L244=",
+        "lastModified": 1772633180,
+        "narHash": "sha256-X12iFUaZSzC9Aw+ehBHpI/U0Z/YrreqCW8O1+azJgJI=",
         "ref": "refs/heads/main",
-        "rev": "c342db371b585fe2fd31f3723d219b6f2afed83b",
-        "revCount": 7,
+        "rev": "1ee2a337117d0f668223c4b85c59af967ef9dc4d",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@github.com/archie-judd/agent-sandbox.nix"
       },
@@ -209,11 +209,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772380125,
-        "narHash": "sha256-8C+y46xA9bxcchj9GeDPJaRUDApaA3sy2fhJr1bTbUw=",
+        "lastModified": 1772633058,
+        "narHash": "sha256-SO7JapRy2HPhgmqiLbfnW1kMx5rakPMKZ9z3wtRLQjI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a07a44a839eb036e950bf397d9b782916f8dcab3",
+        "rev": "080657a04188aca25f8a6c70a0fb2ea7e37f1865",
         "type": "github"
       },
       "original": {

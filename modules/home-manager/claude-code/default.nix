@@ -34,9 +34,11 @@ let
 in {
   programs.bash.initExtra = ''
     ${builtins.readFile ./scripts/claude-task-completions.sh}
+    ${builtins.readFile ./scripts/claude-delegate.sh}
+    ${builtins.readFile ./scripts/claude-resume.sh}
     ${builtins.readFile ./scripts/claude-switch.sh}
     ${builtins.readFile ./scripts/claude-delete.sh}
-    ${builtins.readFile ./scripts/claude-delegate.sh}
+    complete -F _claude_task_completions claude-resume
     complete -F _claude_task_completions claude-switch
     complete -F _claude_task_completions claude-delete
   '';
