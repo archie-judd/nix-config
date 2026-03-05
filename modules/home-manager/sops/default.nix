@@ -1,7 +1,7 @@
 { config, ... }:
 
 /* Add new secrets with:
-   `nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml` (from the root of the repo)
+   `SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml` (from the root of the repo)
 
    To add a new key:
    1. create a key file with: `age-keygen -o ~/.config/sops/age/keys.txt`
