@@ -26,7 +26,6 @@ let
         GIT_COMMITTER_NAME = "copilot-agent";
         GIT_COMMITTER_EMAIL = "copilot-agent@localhost";
       };
-      inheritPath = true;
     };
 
 in {

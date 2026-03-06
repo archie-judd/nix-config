@@ -28,7 +28,6 @@ let
         GIT_COMMITTER_NAME = "claude-agent";
         GIT_COMMITTER_EMAIL = "claude-agent@localhost";
       };
-      inheritPath = true;
     };
 
 in {

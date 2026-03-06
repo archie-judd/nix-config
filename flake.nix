@@ -17,7 +17,7 @@
     neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
     agent-sandbox-nix.url =
-      "git+ssh://git@github.com/archie-judd/agent-sandbox.nix";
+      "github:archie-judd/agent-sandbox.nix?ref=refs/heads/main";
 
     claude-code-nix.url = "github:sadjow/claude-code-nix";
 
