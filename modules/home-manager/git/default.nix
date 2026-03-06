@@ -34,6 +34,9 @@ in {
     source ${pkgs.git}/share/bash-completion/completions/git
     __git_complete git-branch-rm _git_switch
     __git_complete git-tag-rm _git_switch
-        		'';
+  '' +
+    # can't be writeShellScriptBin because cd in a subshell wouldn't change the directory of the parent shell
+    # the parent shell
+    builtins.readFile ./scripts/git-worktree-switch.sh;
 
 }
