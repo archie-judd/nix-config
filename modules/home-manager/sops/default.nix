@@ -20,6 +20,16 @@
       claude-code-oauth-token = { };
       github-token = { };
     };
+    templates."nix-access-tokens" = {
+      content = ''
+        access-tokens = github.com=${config.sops.placeholder."github-token"}
+      '';
+    };
   };
+
+  # Gets written to ~/.config/nix/nix.conf and is used by nix commands. 
+  nix.extraOptions = ''
+    !include ${config.sops.templates."nix-access-tokens".path}
+  '';
 
 }
