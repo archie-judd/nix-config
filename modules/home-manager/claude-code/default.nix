@@ -31,15 +31,7 @@ let
 in {
   home.packages = [ claude-sandboxed ];
   home.file = {
-    ".claude/prompts/delegate.md" = { source = ./claude/prompts/delegate.md; };
     ".claude/settings.json" = { source = ./claude/settings.json; };
-  };
-  programs.bash.shellAliases = {
-    claude-delegate = ''
-      claude --append-system-prompt-file "$HOME/.claude/prompts/delegate.md" --dangerously-skip-permissions'';
-    claude-resume = ''
-      claude --continue --append-system-prompt-file "$HOME/.claude/prompts/delegate.md" --dangerously-skip-permissions'';
-
   };
   programs.bash.initExtra = ''
     qq() { claude --model sonnet -p "$*"; }

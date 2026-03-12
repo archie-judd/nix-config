@@ -5,11 +5,8 @@ let
     (builtins.readFile ./scripts/git-branch-delete.sh);
   git-tag-delete = pkgs.writeShellScriptBin "git-tag-delete"
     (builtins.readFile ./scripts/git-tag-delete.sh);
-  git-worktree-add = pkgs.writeShellScriptBin "git-worktree-add"
-    (builtins.readFile ./scripts/git-worktree-add.sh);
-  git-worktree-delete = pkgs.writeShellScriptBin "git-worktree-delete"
-    (builtins.readFile ./scripts/git-worktree-delete.sh);
   gitWorktreeSwitchSource = builtins.readFile ./scripts/git-worktree-switch.sh;
+  gitCompletionsSource = builtins.readFile ./scripts/git-completions.sh;
 
 in {
   programs.git = {
@@ -34,8 +31,7 @@ in {
     ];
   };
 
-  home.packages =
-    [ git-branch-delete git-tag-delete git-worktree-add git-worktree-delete ];
+  home.packages = [ git-branch-delete git-tag-delete ];
 
   programs.bash = {
     initExtra = ''
@@ -47,12 +43,10 @@ in {
     '' +
       # can't be writeShellScriptBin because cd in a subshell wouldn't change the directory of the parent shell
       # the parent shell
-      gitWorktreeSwitchSource;
+      gitWorktreeSwitchSource + gitCompletionsSource;
     shellAliases = {
       "gbd" = "git-branch-delete";
       "gtd" = "git-tag-delete";
-      "gwa" = "git-worktree-add";
-      "gwd" = "git-worktree-delete";
       "gws" = "git-worktree-switch";
     };
   };

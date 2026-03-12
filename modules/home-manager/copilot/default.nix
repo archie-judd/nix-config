@@ -31,12 +31,5 @@ let
 
 in {
   home.packages = [ copilot-sandboxed ];
-  home.file = {
-    ".copilot/agents" = { source = ./copilot/agents; };
-    ".copilot/hooks" = { source = ./copilot/hooks; };
-  };
-  programs.bash.shellAliases = {
-    copilot-delegate = "copilot --agent delegate --yolo";
-    copilot-resume = "copilot --agent delegate --yolo --continue";
-  };
+  home.file = { ".copilot/hooks" = { source = ./copilot/hooks; }; };
 }
