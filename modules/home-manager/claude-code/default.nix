@@ -32,7 +32,6 @@ in {
   home.packages = [ claude-sandboxed ];
   home.file = {
     ".claude/prompts/delegate.md" = { source = ./claude/prompts/delegate.md; };
-    ".claude/keybindings.json" = { source = ./claude/keybindings.json; };
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
   programs.bash.shellAliases = {
