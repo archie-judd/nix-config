@@ -42,6 +42,8 @@ in {
       source ${pkgs.git}/share/bash-completion/completions/git
       __git_complete git-branch-delete _git_switch
       __git_complete git-tag-delete _git_switch
+      __git_complete gbd _git_switch
+      __git_complete gtd _git_switch
     '' +
       # can't be writeShellScriptBin because cd in a subshell wouldn't change the directory of the parent shell
       # the parent shell

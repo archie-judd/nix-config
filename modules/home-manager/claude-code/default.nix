@@ -42,6 +42,7 @@ in {
 
   };
   programs.bash.initExtra = ''
-    qq() { claude --model haiku -p "$*"; }
+    qq() { claude --model sonnet -p "$*"; }
+    qqc() { claude --model sonnet -p "$*" --continue; }
   '';
 }

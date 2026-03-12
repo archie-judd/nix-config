@@ -17,3 +17,4 @@ _git_worktree_switch() {
 	COMPREPLY=($(compgen -W "$worktrees" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _git_worktree_switch git-worktree-switch
+complete -F _git_worktree_switch gws
