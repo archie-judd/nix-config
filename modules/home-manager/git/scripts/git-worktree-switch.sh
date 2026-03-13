@@ -1,6 +1,6 @@
 git-worktree-switch() {
 	if [ -z "$1" ]; then
-		cd "$(git rev-parse --show-toplevel)" || return 1
+		cd "$(git rev-parse --git-common-dir)/.." || return 1
 		return
 	fi
 	local matches
