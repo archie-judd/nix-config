@@ -27,4 +27,11 @@ in {
   };
 
   home.packages = [ tmux-vsplit tmux-hsplit ];
+
+  programs.bash.shellAliases = {
+    vsp = "tmux-vsplit";
+    hsp = "tmux-hsplit";
+    tmux =
+      "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
+  };
 }
