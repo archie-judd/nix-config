@@ -12,7 +12,7 @@
       "--color='bg+:-1,fg+:-1,fg:#AEACAA,fg+:#FFFBF6'"
     ];
     defaultCommand = null;
-    changeDirWidgetCommand = "fd . $HOME --type d";
+    changeDirWidgetCommand = "fd . --type d";
     changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
     fileWidgetCommand = "fd --type file --hidden --follow --exclude .git";
   };
