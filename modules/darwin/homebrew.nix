@@ -20,6 +20,7 @@
       "claude"
       # "libreoffice" # LibreOffice for apple silicon doesn't work via homebrew
       "nordvpn"
+      "alacritty"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

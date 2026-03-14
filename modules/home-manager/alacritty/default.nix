@@ -3,6 +3,7 @@
 {
   programs.alacritty = {
     enable = true;
+    package = if pkgs.stdenv.isDarwin then null else pkgs.alacritty;
     settings = {
       general = { import = [ ./catppuccin-mocha.toml ]; };
       env = { TERM = "xterm-256color"; };
