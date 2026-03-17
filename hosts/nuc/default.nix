@@ -1,21 +1,19 @@
-{ nixpkgs, nixpkgs-unstable, home-manager, overlays, neovim-config, ... }:
+{ inputs, overlays }:
 
 let system = "x86_64-linux";
-in home-manager.lib.homeManagerConfiguration {
-  pkgs = import nixpkgs {
+in inputs.home-manager.lib.homeManagerConfiguration {
+  pkgs = import inputs.nixpkgs {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
   modules = [ ./home.nix ];
   extraSpecialArgs = {
-    nixpkgs = nixpkgs;
-    nixpkgs-unstable = nixpkgs-unstable;
-    pkgs-unstable = import nixpkgs-unstable {
+    pkgs-unstable = import inputs.nixpkgs-unstable {
       system = system;
       config.allowUnfree = true;
       overlays = overlays;
     };
-    neovim-config = neovim-config;
+    inputs = inputs;
   };
 }

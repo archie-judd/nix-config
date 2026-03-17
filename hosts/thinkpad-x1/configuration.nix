@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ nixpkgs, nixpkgs-unstable, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # imports = [ # Include the results of the hardware scan.
@@ -168,8 +168,8 @@
   };
 
   # Ensure nix shell nixpkgs# commands follow the flake's nixpkgs
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   # Ensure nix-shell import <nixpkgs> and <nixpkgs-unstable> follow the flake's 
   # nixpkgs

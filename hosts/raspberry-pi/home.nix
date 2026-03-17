@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, pkgs, neovim-config, bbc-to-spotify, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -40,8 +40,8 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.vim
-    bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
+    inputs.bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
   ];
 
   nix.gc = {
@@ -56,6 +56,6 @@
   };
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 }

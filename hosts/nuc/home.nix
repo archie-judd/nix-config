@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, pkgs, neovim-config, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -41,7 +41,7 @@
     pkgs.eza
     pkgs.awscli2
     pkgs.nix-direnv
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Point system nixPath(used by import <nixpkgs> {}) to the same nixpkgs as my flake
@@ -50,6 +50,6 @@
   };
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 }

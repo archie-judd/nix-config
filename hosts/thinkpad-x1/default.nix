@@ -1,36 +1,30 @@
-{ nixpkgs, nixpkgs-unstable, home-manager, overlays, sops-nix, neovim-config
-, agent-sandbox-nix, claude-code-nix, kolide-launcher, ... }:
+{ inputs, overlays }:
 
 let
   system = "x86_64-linux";
-  pkgs = import nixpkgs {
+  pkgs = import inputs.nixpkgs {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-  pkgs-unstable = import nixpkgs-unstable {
+  pkgs-unstable = import inputs.nixpkgs-unstable {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-in nixpkgs.lib.nixosSystem {
+in inputs.nixpkgs.lib.nixosSystem {
   system = system;
   pkgs = pkgs;
   specialArgs = {
-    nixpkgs = nixpkgs;
-    nixpkgs-unstable = nixpkgs-unstable;
     pkgs-unstable = pkgs-unstable;
-    sops-nix = sops-nix;
-    neovim-config = neovim-config;
-    agent-sandbox-nix = agent-sandbox-nix;
-    claude-code-nix = claude-code-nix;
+    inputs = inputs;
   };
 
   modules = [
     ./configuration.nix
     ./home-manager.nix
-    home-manager.nixosModules.home-manager
-    sops-nix.nixosModules.sops
-    kolide-launcher.nixosModules.kolide-launcher
+    inputs.home-manager.nixosModules.home-manager
+    inputs.sops-nix.nixosModules.sops
+    inputs.kolide-launcher.nixosModules.kolide-launcher
   ];
 }

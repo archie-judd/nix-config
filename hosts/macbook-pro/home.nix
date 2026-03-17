@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, neovim-config, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -44,11 +44,11 @@
     pkgs.eza
     pkgs.nix-direnv
     pkgs.transmission_4
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
 }

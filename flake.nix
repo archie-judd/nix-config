@@ -31,56 +31,33 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-darwin
-    , sops-nix, neovim-config, agent-sandbox-nix, claude-code-nix
-    , bbc-to-spotify, kolide-launcher, ... }:
+  outputs = inputs:
     let overlays = import ./overlays.nix;
     in {
 
       nixosConfigurations = {
         thinkpad-x1 = import ./hosts/thinkpad-x1 {
-          nixpkgs = nixpkgs;
-          nixpkgs-unstable = nixpkgs-unstable;
-          home-manager = home-manager;
+          inputs = inputs;
           overlays = overlays;
-          sops-nix = sops-nix;
-          neovim-config = neovim-config;
-          agent-sandbox-nix = agent-sandbox-nix;
-          claude-code-nix = claude-code-nix;
-          kolide-launcher = kolide-launcher;
         };
       };
 
       darwinConfigurations = {
         macbook-pro = import ./hosts/macbook-pro {
-          nixpkgs = nixpkgs;
-          nixpkgs-unstable = nixpkgs-unstable;
-          home-manager = home-manager;
-          nix-darwin = nix-darwin;
+          inputs = inputs;
           overlays = overlays;
-          sops-nix = sops-nix;
-          neovim-config = neovim-config;
-          agent-sandbox-nix = agent-sandbox-nix;
-          claude-code-nix = claude-code-nix;
         };
       };
 
       # Home manager only configurations
       homeConfigurations = {
         archiejudd = import ./hosts/nuc {
-          nixpkgs = nixpkgs;
-          nixpkgs-unstable = nixpkgs-unstable;
-          home-manager = home-manager;
+          inputs = inputs;
           overlays = overlays;
-          neovim-config = neovim-config;
         };
         archie = import ./hosts/raspberry-pi {
-          nixpkgs = nixpkgs;
-          nixpkgs-unstable = nixpkgs-unstable;
-          home-manager = home-manager;
+          inputs = inputs;
           overlays = overlays;
-          bbc-to-spotify = bbc-to-spotify;
-          neovim-config = neovim-config;
         };
       };
     };

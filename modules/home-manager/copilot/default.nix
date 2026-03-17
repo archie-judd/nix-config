@@ -1,10 +1,10 @@
-{ config, pkgs, pkgs-unstable, agent-sandbox-nix, neovim-config, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 let
   secretPath = config.sops.secrets.github-token.path;
   neovim =
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   copilot-sandboxed =
-    agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
+    inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.github-copilot-cli;
       binName = "copilot";
       outName = "copilot-sandboxed";

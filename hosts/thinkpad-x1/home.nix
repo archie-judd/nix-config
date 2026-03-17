@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -55,13 +55,13 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
-    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
 
   # Fixes firefox right-click cursor offset
   gtk.enable = true;
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 }

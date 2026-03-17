@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-unstable, pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -46,8 +46,8 @@
   };
 
   # Pin nix shell #nixpkgs to the flake
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   # Pin import <nixpkgs> {} to the flake
   nix.nixPath =

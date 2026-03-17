@@ -1,34 +1,28 @@
-{ nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, overlays, sops-nix
-, neovim-config, agent-sandbox-nix, claude-code-nix, ... }:
+{ inputs, overlays }:
 
 let
   system = "aarch64-darwin";
-  pkgs = import nixpkgs {
+  pkgs = import inputs.nixpkgs {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-  pkgs-unstable = import nixpkgs-unstable {
+  pkgs-unstable = import inputs.nixpkgs-unstable {
     system = system;
     config.allowUnfree = true;
     overlays = overlays;
   };
-in nix-darwin.lib.darwinSystem {
+in inputs.nix-darwin.lib.darwinSystem {
   system = system;
   pkgs = pkgs;
   specialArgs = {
-    nixpkgs = nixpkgs;
-    nixpkgs-unstable = nixpkgs-unstable;
     pkgs-unstable = pkgs-unstable;
-    sops-nix = sops-nix;
-    neovim-config = neovim-config;
-    agent-sandbox-nix = agent-sandbox-nix;
-    claude-code-nix = claude-code-nix;
+    inputs = inputs;
   };
 
   modules = [
     ./configuration.nix
     ./home-manager.nix
-    home-manager.darwinModules.home-manager
+    inputs.home-manager.darwinModules.home-manager
   ];
 }
