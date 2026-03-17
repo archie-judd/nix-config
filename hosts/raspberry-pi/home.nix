@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, bbc-to-spotify, ... }:
+{ pkgs, nixpkgs, neovim-config, bbc-to-spotify, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -27,7 +27,6 @@
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/tmux
     ../../modules/home-manager/git
-    ../../modules/home-manager/nvim-minimal
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
@@ -42,6 +41,7 @@
     pkgs.nix-direnv
     pkgs.vim
     bbc-to-spotify.packages.${pkgs.stdenv.hostPlatform.system}.default
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake

@@ -1,4 +1,5 @@
-{ nixpkgs, nixpkgs-unstable, home-manager, overlays, bbc-to-spotify, ... }:
+{ nixpkgs, nixpkgs-unstable, home-manager, overlays, neovim-config
+, bbc-to-spotify, ... }:
 
 let system = "aarch64-linux";
 in home-manager.lib.homeManagerConfiguration {
@@ -15,6 +16,7 @@ in home-manager.lib.homeManagerConfiguration {
       overlays = overlays;
     };
     nixpkgs = nixpkgs;
+    neovim-config = neovim-config;
     bbc-to-spotify = bbc-to-spotify;
   };
 }

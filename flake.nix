@@ -80,6 +80,7 @@
           home-manager = home-manager;
           overlays = overlays;
           bbc-to-spotify = bbc-to-spotify;
+          neovim-config = neovim-config;
         };
       };
     };
