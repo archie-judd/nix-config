@@ -1,6 +1,8 @@
-{ config, pkgs, pkgs-unstable, agent-sandbox-nix, ... }:
+{ config, pkgs, pkgs-unstable, agent-sandbox-nix, neovim-config, ... }:
 let
   secretPath = config.sops.secrets.github-token.path;
+  neovim =
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   copilot-sandboxed =
     agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.github-copilot-cli;
@@ -17,11 +19,13 @@ let
         pkgs.gnugrep
         pkgs.findutils
         pkgs.jq
+        neovim
       ];
       stateDirs = [ "$HOME/.config/github-copilot" "$HOME/.copilot" ];
       stateFiles = [ ];
       extraEnv = {
         CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat ${secretPath})";
+        EDITOR = "nvim";
         GIT_AUTHOR_NAME = "copilot-agent";
         GIT_AUTHOR_EMAIL = "copilot-agent@localhost";
         GIT_COMMITTER_NAME = "copilot-agent";

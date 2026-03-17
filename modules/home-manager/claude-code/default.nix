@@ -1,6 +1,8 @@
-{ config, pkgs, pkgs-unstable, agent-sandbox-nix, ... }:
+{ config, pkgs, pkgs-unstable, agent-sandbox-nix, neovim-config, ... }:
 let
   secretPath = config.sops.secrets.claude-code-oauth-token.path;
+  neovim =
+    neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude-sandboxed =
     agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.claude-code;
@@ -17,11 +19,13 @@ let
         pkgs.gnugrep
         pkgs.findutils
         pkgs.jq
+        neovim
       ];
       stateDirs = [ "$HOME/.claude" ];
       stateFiles = [ "$HOME/.claude.json" "$HOME/.claude.json.lock" ];
       extraEnv = {
         CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat ${secretPath})";
+        EDITOR = "nvim";
         GIT_AUTHOR_NAME = "claude-agent";
         GIT_AUTHOR_EMAIL = "claude-agent@localhost";
         GIT_COMMITTER_NAME = "claude-agent";
