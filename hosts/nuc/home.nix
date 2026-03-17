@@ -1,4 +1,4 @@
-{ pkgs, neovim-config, nixpkgs, ... }:
+{ nixpkgs, nixpkgs-unstable, pkgs, neovim-config, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -44,6 +44,12 @@
     neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+  # Point system nixPath(used by import <nixpkgs> {}) to the same nixpkgs as my flake
+  home.sessionVariables = {
+    NIX_PATH = "nixpkgs=flake:nixpkgs:nixpkgs-unstable=flake:nixpkgs-unstable";
+  };
+
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
   nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
 }

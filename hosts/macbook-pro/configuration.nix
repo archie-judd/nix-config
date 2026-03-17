@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ nixpkgs, nixpkgs-unstable, pkgs, ... }:
 
 {
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -44,5 +44,13 @@
     };
     options = "--delete-older-than 30d";
   };
+
+  # Pin nix shell #nixpkgs to the flake
+  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry.nixpkgs-unstable.flake = nixpkgs-unstable;
+
+  # Pin import <nixpkgs> {} to the flake
+  nix.nixPath =
+    [ "nixpkgs=flake:nixpkgs" "nixpkgs-unstable=flake:nixpkgs-unstable" ];
 
 }

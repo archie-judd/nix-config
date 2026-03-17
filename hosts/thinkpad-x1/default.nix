@@ -18,6 +18,7 @@ in nixpkgs.lib.nixosSystem {
   pkgs = pkgs;
   specialArgs = {
     nixpkgs = nixpkgs;
+    nixpkgs-unstable = nixpkgs-unstable;
     pkgs-unstable = pkgs-unstable;
     sops-nix = sops-nix;
     neovim-config = neovim-config;

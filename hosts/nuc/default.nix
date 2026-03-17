@@ -9,12 +9,13 @@ in home-manager.lib.homeManagerConfiguration {
   };
   modules = [ ./home.nix ];
   extraSpecialArgs = {
+    nixpkgs = nixpkgs;
+    nixpkgs-unstable = nixpkgs-unstable;
     pkgs-unstable = import nixpkgs-unstable {
       system = system;
       config.allowUnfree = true;
       overlays = overlays;
     };
-    nixpkgs = nixpkgs;
     neovim-config = neovim-config;
   };
 }
