@@ -19,6 +19,7 @@
       # anthropic-api-key = { }; # Not currently needed
       claude-code-oauth-token = { };
       github-read-token = { };
+      github-copilot-token = { };
     };
     templates."nix-access-tokens" = {
       content = ''

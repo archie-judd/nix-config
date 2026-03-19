@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   git-branch-delete = pkgs.writeShellScriptBin "git-branch-delete"
@@ -21,6 +21,10 @@ in {
       };
       init.defaultBranch = "main";
       push.default = "nothing";
+    };
+    extraConfig = {
+      credential.helper =
+        if pkgs.stdenv.isDarwin then "osxkeychain" else "store";
     };
     ignores = [
       "*~"
