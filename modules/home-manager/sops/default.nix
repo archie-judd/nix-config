@@ -18,11 +18,13 @@
     secrets = {
       # anthropic-api-key = { }; # Not currently needed
       claude-code-oauth-token = { };
-      github-token = { };
+      github-read-token = { };
     };
     templates."nix-access-tokens" = {
       content = ''
-        access-tokens = github.com=${config.sops.placeholder."github-token"}
+        access-tokens = github.com=${
+          config.sops.placeholder."github-read-token"
+        }
       '';
     };
   };
