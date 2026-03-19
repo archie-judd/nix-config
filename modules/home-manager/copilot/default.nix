@@ -7,7 +7,7 @@ let
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.github-copilot-cli;
       binName = "copilot";
-      outName = "copilot-sandboxed";
+      outName = "copilot";
       allowedPackages = [
         pkgs.coreutils
         pkgs.which
