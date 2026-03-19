@@ -1,6 +1,6 @@
 { config, pkgs, pkgs-unstable, inputs, ... }:
 let
-  github-read-token-path = config.sops.secrets.github-read-token.path;
+  github-copilot-token-path = config.sops.secrets.github-copilot-token.path;
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   copilot-sandboxed =
@@ -24,7 +24,8 @@ let
       stateDirs = [ "$HOME/.config/github-copilot" "$HOME/.copilot" ];
       stateFiles = [ ];
       extraEnv = {
-        GITHUB_TOKEN = "$(${pkgs.coreutils}/bin/cat ${github-read-token-path})";
+        GITHUB_TOKEN =
+          "$(${pkgs.coreutils}/bin/cat ${github-copilot-token-path})";
         EDITOR = "nvim";
         GIT_AUTHOR_NAME = "copilot-agent";
         GIT_AUTHOR_EMAIL = "copilot-agent@localhost";
