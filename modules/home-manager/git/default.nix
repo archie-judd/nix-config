@@ -21,8 +21,6 @@ in {
       };
       init.defaultBranch = "main";
       push.default = "nothing";
-    };
-    extraConfig = {
       credential.helper =
         if pkgs.stdenv.isDarwin then "osxkeychain" else "store";
     };
