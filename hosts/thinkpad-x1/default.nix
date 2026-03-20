@@ -19,7 +19,6 @@ in inputs.nixpkgs.lib.nixosSystem {
     pkgs-unstable = pkgs-unstable;
     inputs = inputs;
   };
-
   modules = [
     ./configuration.nix
     ./home-manager.nix
