@@ -19,8 +19,6 @@
     agent-sandbox-nix.url =
       "github:archie-judd/agent-sandbox.nix?ref=refs/heads/main";
 
-    claude-code-nix.url = "github:sadjow/claude-code-nix";
-
     bbc-to-spotify.url =
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
 
