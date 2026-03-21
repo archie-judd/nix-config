@@ -2,9 +2,10 @@ set -euo pipefail
 
 name="$1"
 if [ -z "$name" ]; then
-	echo "Usage: git-worktree-remove <worktree-name>" >&2
+	echo "Usage: git-worktree-remove <worktree-name> [extra args...]" >&2
 	exit 1
 fi
+shift
 
 matches=$(git worktree list --porcelain 2>/dev/null | grep "^worktree " | cut -d' ' -f2 | grep -E "(^|/)$name$")
 
@@ -19,4 +20,4 @@ if [ "$(echo "$matches" | wc -l)" -gt 1 ]; then
 	exit 1
 fi
 
-git worktree remove "$matches"
+git worktree remove "$@" "$matches"
