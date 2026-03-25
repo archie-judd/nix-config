@@ -42,7 +42,6 @@ in {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
   programs.bash.initExtra = ''
-    qq() { claude --model sonnet -p "$*"; }
-    qqc() { claude --model sonnet -p "$*" --continue; }
+    qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
 }
