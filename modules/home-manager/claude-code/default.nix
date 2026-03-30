@@ -1,7 +1,5 @@
 { config, pkgs, pkgs-unstable, inputs, ... }:
 let
-  claude-code-oath-token-path =
-    config.sops.secrets.claude-code-oauth-token.path;
   github-read-token-path = config.sops.secrets.github-read-token.path;
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
@@ -26,8 +24,6 @@ let
       stateDirs = [ "$HOME/.claude" ];
       stateFiles = [ "$HOME/.claude.json" "$HOME/.claude.json.lock" ];
       extraEnv = {
-        CLAUDE_CODE_OAUTH_TOKEN =
-          "$(${pkgs.coreutils}/bin/cat ${claude-code-oath-token-path})";
         GITHUB_TOKEN = "$(${pkgs.coreutils}/bin/cat ${github-read-token-path})";
         EDITOR = "nvim";
         GIT_AUTHOR_NAME = "claude-agent";
