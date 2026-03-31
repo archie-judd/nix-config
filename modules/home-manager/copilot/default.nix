@@ -32,7 +32,6 @@ let
     };
 
 in {
-  programs.bash.shellAliases = { copilots = "copilot-sandboxed"; };
   home.packages = [ pkgs-unstable.github-copilot-cli copilot-sandboxed ];
   home.file = { ".copilot/hooks" = { source = ./copilot/hooks; }; };
 }

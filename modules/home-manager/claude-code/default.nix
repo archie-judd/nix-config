@@ -35,7 +35,6 @@ in {
   home.file = {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
-  programs.bash.shellAliases = { claudes = "claude-sandboxed"; };
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
