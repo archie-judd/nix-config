@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, inputs, ... }:
+{ lib, config, pkgs, pkgs-unstable, inputs, ... }:
 let
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
@@ -22,7 +22,12 @@ let
       ];
       stateDirs = [ "$HOME/.claude" ];
       stateFiles = [ "$HOME/.claude.json" "$HOME/.claude.json.lock" ];
-      extraEnv = { EDITOR = "nvim"; };
+      extraEnv = {
+        EDITOR = "nvim";
+      } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        CLAUDE_CODE_OAUTH_TOKEN =
+          "$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.claude-code-oauth-token.path})";
+      };
       restrictNetwork = true;
       allowedDomains = {
         "anthropic.com" = "*";

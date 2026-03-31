@@ -1,17 +1,15 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 let
-  github-copilot-token-path = config.sops.secrets.github-copilot-token.path;
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   copilot-sandboxed =
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.github-copilot-cli;
       binName = "copilot";
-      outName = "copilot-sandboxed";
+      outName = "copilot-sandboxed"; # or whatever alias you'd like
       allowedPackages = [
         pkgs.coreutils
         pkgs.which
-        pkgs.bashNonInteractive
         pkgs.git
         pkgs.ripgrep
         pkgs.fd
@@ -20,17 +18,17 @@ let
         pkgs.findutils
         pkgs.jq
         neovim
-      ];
+      ]; # bash is allowed by default - it is required by the sandbox
       stateDirs = [ "$HOME/.config/github-copilot" "$HOME/.copilot" ];
       stateFiles = [ ];
-      extraEnv = {
-        GITHUB_TOKEN =
-          "$(${pkgs.coreutils}/bin/cat ${github-copilot-token-path})";
-        EDITOR = "nvim";
+      extraEnv = { };
+      restrictNetwork = true;
+      allowedDomains = {
+        "githubcopilot.com" = "*";
+        "github.com" = "*";
+        "githubusercontent.com" = [ "GET" "HEAD" ];
       };
-      allowedDomains = { "githubcopilot.com" = "*"; };
     };
-
 in {
   home.packages = [ pkgs-unstable.github-copilot-cli copilot-sandboxed ];
   home.file = { ".copilot/hooks" = { source = ./copilot/hooks; }; };

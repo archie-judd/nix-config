@@ -16,7 +16,6 @@
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     secrets = {
-      # anthropic-api-key = { }; # Not currently needed
       claude-code-oauth-token = { };
       github-read-token = { };
       github-copilot-token = { };
