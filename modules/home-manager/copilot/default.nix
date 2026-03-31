@@ -7,7 +7,7 @@ let
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.github-copilot-cli;
       binName = "copilot";
-      outName = "copilot";
+      outName = "copilot-sandboxed";
       allowedPackages = [
         pkgs.coreutils
         pkgs.which
@@ -27,14 +27,12 @@ let
         GITHUB_TOKEN =
           "$(${pkgs.coreutils}/bin/cat ${github-copilot-token-path})";
         EDITOR = "nvim";
-        GIT_AUTHOR_NAME = "copilot-agent";
-        GIT_AUTHOR_EMAIL = "copilot-agent@localhost";
-        GIT_COMMITTER_NAME = "copilot-agent";
-        GIT_COMMITTER_EMAIL = "copilot-agent@localhost";
       };
+      allowedDomains = { "githubcopilot.com" = "*"; };
     };
 
 in {
-  home.packages = [ copilot-sandboxed ];
+  programs.bash.shellAliases = { copilots = "copilot-sandboxed"; };
+  home.packages = [ pkgs-unstable.copilot copilot-sandboxed ];
   home.file = { ".copilot/hooks" = { source = ./copilot/hooks; }; };
 }

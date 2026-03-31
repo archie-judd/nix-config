@@ -1,6 +1,5 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 let
-  github-read-token-path = config.sops.secrets.github-read-token.path;
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude-sandboxed =
@@ -23,10 +22,7 @@ let
       ];
       stateDirs = [ "$HOME/.claude" ];
       stateFiles = [ "$HOME/.claude.json" "$HOME/.claude.json.lock" ];
-      extraEnv = {
-        GITHUB_TOKEN = "$(${pkgs.coreutils}/bin/cat ${github-read-token-path})";
-        EDITOR = "nvim";
-      };
+      extraEnv = { EDITOR = "nvim"; };
       restrictNetwork = true;
       allowedDomains = {
         "anthropic.com" = "*";
@@ -39,7 +35,7 @@ in {
   home.file = {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
-  programs.bash.shellAliases = { cs = "claude-sandboxed"; };
+  programs.bash.shellAliases = { claudes = "claude-sandboxed"; };
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
