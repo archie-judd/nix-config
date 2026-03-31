@@ -11,9 +11,9 @@
       ls = "eza";
       reload = ''exec "$SHELL"'';
     };
+    # homeManager.sessionVariables aren't persisted after re-login
     sessionVariables = {
-      EDITOR =
-        "nvim"; # homeManager.sessionVariables aren't persisted after re-login
+      EDITOR = "nvim";
       PROMPT_COMMAND = "history -a;history -c;history -r";
     };
     shellOptions = [ "histappend" "checkwinsize" ];

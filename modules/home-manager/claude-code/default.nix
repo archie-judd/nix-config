@@ -7,7 +7,7 @@ let
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs-unstable.claude-code;
       binName = "claude";
-      outName = "claude";
+      outName = "claude-sandboxed";
       allowedPackages = [
         pkgs.coreutils
         pkgs.which
@@ -26,17 +26,20 @@ let
       extraEnv = {
         GITHUB_TOKEN = "$(${pkgs.coreutils}/bin/cat ${github-read-token-path})";
         EDITOR = "nvim";
-        GIT_AUTHOR_NAME = "claude-agent";
-        GIT_AUTHOR_EMAIL = "claude-agent@localhost";
-        GIT_COMMITTER_NAME = "claude-agent";
-        GIT_COMMITTER_EMAIL = "claude-agent@localhost";
       };
+      restrictNetwork = true;
+      allowedDomains = {
+        "anthropic.com" = "*";
+        "claude.com" = "*";
+      };
+
     };
 in {
-  home.packages = [ claude-sandboxed ];
+  home.packages = [ claude-sandboxed pkgs-unstable.claude-code ];
   home.file = {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
+  programs.bash.shellAliases = { cs = "claude-sandboxed"; };
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
