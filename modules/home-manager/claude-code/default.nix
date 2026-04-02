@@ -4,7 +4,7 @@ let
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude-sandboxed =
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
-      pkg = pkgs-unstable.claude-code;
+      pkg = pkgs.claude-code;
       binName = "claude";
       outName = "claude-sandboxed";
       allowedPackages = [
@@ -36,7 +36,7 @@ let
 
     };
 in {
-  home.packages = [ claude-sandboxed pkgs-unstable.claude-code ];
+  home.packages = [ claude-sandboxed pkgs.claude-code ];
   home.file = {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
