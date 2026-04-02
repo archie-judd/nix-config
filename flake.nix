@@ -17,7 +17,7 @@
     neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
     agent-sandbox-nix.url =
-      "github:archie-judd/agent-sandbox.nix?ref=refs/heads/feat/unshare-net";
+      "github:archie-judd/agent-sandbox.nix?ref=refs/heads/main";
 
     bbc-to-spotify.url =
       "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.4";
