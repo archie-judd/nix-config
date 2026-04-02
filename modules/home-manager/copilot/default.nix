@@ -21,7 +21,7 @@ let
       ]; # bash is allowed by default - it is required by the sandbox
       stateDirs = [ "$HOME/.config/github-copilot" "$HOME/.copilot" ];
       stateFiles = [ ];
-      extraEnv = { };
+      extraEnv = { EDITOR = "nvim"; };
       restrictNetwork = true;
       allowedDomains = {
         "githubcopilot.com" = "*";
