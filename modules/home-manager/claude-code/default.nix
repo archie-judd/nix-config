@@ -32,6 +32,8 @@ let
       allowedDomains = {
         "anthropic.com" = "*";
         "claude.com" = "*";
+        "api.github.com" = [ "GET" "HEAD" ];
+        "githubusercontent.com" = [ "GET" "HEAD" ];
       };
 
     };
