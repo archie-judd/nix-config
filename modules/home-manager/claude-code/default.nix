@@ -32,7 +32,7 @@ let
       allowedDomains = {
         "anthropic.com" = "*";
         "claude.com" = "*";
-        "github.com" = [ "GET" "HEAD" ];
+        "github.com" = "*";
         "githubusercontent.com" = [ "GET" "HEAD" ];
       };
 
