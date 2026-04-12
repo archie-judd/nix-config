@@ -1,9 +1,20 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
-{
+let
+  tasks-path = "${config.home.homeDirectory}/workspaces/personal/tasks.md";
+  tmux-task-count = pkgs.writeShellScriptBin "tmux-task-count" ''
+    file="${tasks-path}"
+    [[ -f "$file" ]] || exit 0
+    count=$(grep -c "^- \[ \]" "$file" 2>/dev/null || true)
+    [[ "$count" -gt 0 ]] && echo " $count"
+  '';
+in {
   home.sessionVariables = {
-    TASKS_PATH = "${config.home.homeDirectory}/workspaces/personal/tasks.md";
+    TASKS_PATH = tasks-path;
   };
+
+  home.packages = [ tmux-task-count ];
+
   programs.bash.initExtra = ''
     t() {
       local file="$TASKS_PATH"
