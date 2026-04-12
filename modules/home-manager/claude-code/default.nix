@@ -10,7 +10,6 @@ let
       allowedPackages = [
         pkgs.coreutils
         pkgs.which
-        pkgs.bashNonInteractive
         pkgs.git
         pkgs.ripgrep
         pkgs.fd
