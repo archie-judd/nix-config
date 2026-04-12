@@ -43,7 +43,6 @@
     pkgs.fd
     pkgs.eza
     pkgs.nix-direnv
-    pkgs.transmission_4
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
