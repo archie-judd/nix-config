@@ -32,4 +32,8 @@ git-worktree-add() {
 		fi
 	fi
 	cd "$worktree_path"
+
+	if [[ -f "$repo_root/.git-worktree-add-hook" ]]; then
+		source "$repo_root/.git-worktree-add-hook"
+	fi
 }
