@@ -11,6 +11,7 @@ let
         pkgs.coreutils
         pkgs.which
         pkgs.git
+        pkgs.less
         pkgs.ripgrep
         pkgs.fd
         pkgs.gnused
