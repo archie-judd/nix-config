@@ -24,6 +24,7 @@ let
       stateFiles = [ "$HOME/.claude.json" "$HOME/.claude.json.lock" ];
       extraEnv = {
         EDITOR = "nvim";
+        COLORTERM = "truecolor";
       } // lib.optionalAttrs pkgs.stdenv.isDarwin {
         CLAUDE_CODE_OAUTH_TOKEN =
           "$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.claude-code-oauth-token.path})";
