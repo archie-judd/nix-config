@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs-unstable, ... }:
 
 {
   programs.direnv = {
     enable = true;
+    pkg = pkgs-unstable.direnv;
     enableBashIntegration = true;
     nix-direnv.enable = true;
     # Write the following the global .direnvrc file: If the TMUX_PANE environment variable is set don't restore it from the cache, reset it from the global environment.
