@@ -57,6 +57,7 @@
     pkgs.spotify
     pkgs.chromium
     pkgs.libreoffice
+    pkgs.gh
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
