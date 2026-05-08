@@ -21,14 +21,13 @@ let
         neovim
       ];
       stateDirs = [ "$HOME/.claude" ];
-      stateFiles = [ ];
       extraEnv = {
         EDITOR = "nvim";
         COLORTERM = "truecolor";
+        CLAUDE_CONFIG_DIR = "$HOME/.claude";
       } // lib.optionalAttrs pkgs.stdenv.isDarwin {
         CLAUDE_CODE_OAUTH_TOKEN =
           "$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.claude-code-oauth-token.path})";
-        CLAUDE_CONFIG_DIR = "$HOME/.claude";
       };
       restrictNetwork = true;
       allowedDomains = {
