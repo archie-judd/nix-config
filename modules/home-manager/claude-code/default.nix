@@ -2,6 +2,7 @@
 let
   neovim =
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
+  claude_config_dir = "$HOME/.claude";
   claude-sandboxed =
     inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
       pkg = pkgs.claude-code;
@@ -20,11 +21,11 @@ let
         pkgs.jq
         neovim
       ];
-      stateDirs = [ "$HOME/.claude" ];
+      stateDirs = [ claude_config_dir ];
       extraEnv = {
         EDITOR = "nvim";
         COLORTERM = "truecolor";
-        CLAUDE_CONFIG_DIR = "$HOME/.claude";
+        CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
       } // lib.optionalAttrs pkgs.stdenv.isDarwin {
         CLAUDE_CODE_OAUTH_TOKEN =
           "$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.claude-code-oauth-token.path})";
