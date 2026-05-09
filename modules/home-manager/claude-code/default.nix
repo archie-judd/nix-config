@@ -41,6 +41,7 @@ let
     };
 in {
   home.packages = [ claude-sandboxed pkgs.claude-code ];
+  home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
   home.file = {
     ".claude/settings.json" = { source = ./claude/settings.json; };
   };
