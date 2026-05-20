@@ -1,7 +1,8 @@
 { config, ... }:
 
 /* Add new secrets to an existing secrets.yaml file:
-   `SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml` (from the root of the repo)
+   SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml
+   (from the root of the repo)
 
    Add a new secrets.yaml file:
    1. Add a matching creation rule to .sops.yaml
