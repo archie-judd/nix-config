@@ -5,6 +5,7 @@
     enable = true;
     profiles = {
       archie = {
+        settings = { "widget.wayland.fractional-scale.enabled" = false; };
         containersForce = true;
         containers = {
           personal = {
