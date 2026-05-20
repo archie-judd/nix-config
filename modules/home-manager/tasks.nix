@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  tasks-path = "${config.home.homeDirectory}/workspaces/personal/tasks.md";
+  tasks-path = "${config.home.homeDirectory}/workspaces/notes/tasks.md";
   tmux-task-count = pkgs.writeShellScriptBin "tmux-task-count" ''
     file="${tasks-path}"
     [[ -f "$file" ]] || exit 0
@@ -9,9 +9,7 @@ let
     [[ "$count" -gt 0 ]] && echo " $count"
   '';
 in {
-  home.sessionVariables = {
-    TASKS_PATH = tasks-path;
-  };
+  home.sessionVariables = { TASKS_PATH = tasks-path; };
 
   home.packages = [ tmux-task-count ];
 

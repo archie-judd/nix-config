@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    NOTES_PATH = "${config.home.homeDirectory}/workspaces/personal/notes.md";
+    NOTES_PATH = "${config.home.homeDirectory}/workspaces/notes/notes.md";
   };
   programs.bash.initExtra = ''
     n() {
