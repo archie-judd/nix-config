@@ -3,7 +3,7 @@ keys:
   - &mac age1vcnrvnqg7lxxsrfuvphr8sf2vz8cwc3hptskmxhznusdqghfrs6qardu77
 
 creation_rules:
-  - path_regex: secrets\.yaml$
+  - path_regex: secrets-shared\.yaml$
     key_groups:
       - age:
           - *thinkpad
@@ -11,5 +11,4 @@ creation_rules:
   - path_regex: personal-git-crypt\.key$
     key_groups:
       - age:
-          - *thinkpad
           - *mac

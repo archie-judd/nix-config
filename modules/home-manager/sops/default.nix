@@ -1,7 +1,11 @@
 { config, ... }:
 
-/* Add new secrets to secrets.yml with:
+/* Add new secrets to an existing secrets.yaml file:
    `SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml` (from the root of the repo)
+
+   Add a new secrets.yaml file:
+   1. Add a matching creation rule to .sops.yaml
+   2. SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets-new.yaml
 
    Add new binary secret files:
    1. Add a matching creation rule to .sops.yaml
@@ -19,11 +23,8 @@
 {
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets.yaml;
     secrets = {
-      claude-code-oauth-token = { };
-      github-read-token = { };
-      github-copilot-token = { };
+      github-read-token = { sopsFile = ./secrets-shared.yaml; };
       personal-git-crypt-key = {
         format = "binary";
         sopsFile = ./personal-git-crypt.key;

@@ -26,9 +26,6 @@ let
         EDITOR = "nvim";
         COLORTERM = "truecolor";
         CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
-      } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-        CLAUDE_CODE_OAUTH_TOKEN =
-          "$(${pkgs.coreutils}/bin/cat ${config.sops.secrets.claude-code-oauth-token.path})";
       };
       restrictNetwork = true;
       allowedDomains = {
