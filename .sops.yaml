@@ -8,3 +8,8 @@ creation_rules:
       - age:
           - *thinkpad
           - *mac
+  - path_regex: personal-git-crypt\.key$
+    key_groups:
+      - age:
+          - *thinkpad
+          - *mac

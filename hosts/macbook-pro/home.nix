@@ -43,6 +43,7 @@
     pkgs.fd
     pkgs.eza
     pkgs.nix-direnv
+    pkgs.git-crypt
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
