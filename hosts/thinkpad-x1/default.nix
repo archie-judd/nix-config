@@ -23,7 +23,6 @@ in inputs.nixpkgs.lib.nixosSystem {
     ./configuration.nix
     ./home-manager.nix
     inputs.home-manager.nixosModules.home-manager
-    inputs.sops-nix.nixosModules.sops
     inputs.kolide-launcher.nixosModules.kolide-launcher
   ];
 }
