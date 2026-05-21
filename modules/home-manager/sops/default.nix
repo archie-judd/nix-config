@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 
 /* Add new secrets to an existing secrets.yaml file:
    SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml
@@ -26,6 +26,8 @@
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
       github-read-token = { sopsFile = ./secrets-shared.yaml; };
+    } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      trading_212_api_key = { sopsFile = ./secrets-personal.yaml; };
       personal-git-crypt-key = {
         format = "binary";
         sopsFile = ./personal-git-crypt.key;
@@ -40,7 +42,11 @@
     };
   };
 
-  # Gets written to ~/.config/nix/nix.conf and is used by nix commands. 
+  home.sessionVariables = {
+    SOPS_DECRYPTED_DIR = config.sops.defaultSymlinkPath;
+  };
+
+  # Gets written to ~/.config/nix/nix.conf and is used by nix commands.
   nix.extraOptions = ''
     !include ${config.sops.templates."nix-access-tokens".path}
   '';

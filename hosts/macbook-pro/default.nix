@@ -24,5 +24,6 @@ in inputs.nix-darwin.lib.darwinSystem {
     ./configuration.nix
     ./home-manager.nix
     inputs.home-manager.darwinModules.home-manager
+    inputs.sops-nix.darwinModules.sops
   ];
 }

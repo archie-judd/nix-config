@@ -34,7 +34,6 @@ let
         "github.com" = "*";
         "githubusercontent.com" = [ "GET" "HEAD" ];
       };
-
     };
 in {
   home.packages = [ claude-sandboxed pkgs.claude-code ];
