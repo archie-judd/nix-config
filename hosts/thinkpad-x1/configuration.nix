@@ -131,7 +131,7 @@
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
     # Commented out because linuxKernel_6_18 caused excessive flickering on this device
-    # .camera.nix
+    ./camera.nix
     ./fingerprint.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/keyd.nix
