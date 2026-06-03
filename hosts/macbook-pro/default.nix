@@ -2,17 +2,23 @@
 
 let
   system = "aarch64-darwin";
+  allowUnfreePredicate =
+    pkg:
+    builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+      "claude-code"
+    ];
   pkgs = import inputs.nixpkgs {
     system = system;
-    config.allowUnfree = true;
     overlays = overlays;
+    config.allowUnfreePredicate = allowUnfreePredicate;
   };
   pkgs-unstable = import inputs.nixpkgs-unstable {
     system = system;
-    config.allowUnfree = true;
     overlays = overlays;
+    config.allowUnfreePredicate = allowUnfreePredicate;
   };
-in inputs.nix-darwin.lib.darwinSystem {
+in
+inputs.nix-darwin.lib.darwinSystem {
   system = system;
   pkgs = pkgs;
   specialArgs = {

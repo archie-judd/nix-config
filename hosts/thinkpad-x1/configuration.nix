@@ -82,7 +82,10 @@
   users.users.archie = {
     isNormalUser = true;
     description = "Archie";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     # packages = with pkgs;
     # [
     #  thunderbird
@@ -131,7 +134,7 @@
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
     # Commented out because linuxKernel_6_18 caused excessive flickering on this device
-    ./camera.nix
+    # ./camera.nix
     ./fingerprint.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/keyd.nix
@@ -144,11 +147,19 @@
     ../../modules/nixos/tailscale.nix
   ];
 
-  environment.systemPackages =
-    [ pkgs.git pkgs.vim pkgs.wget pkgs.curl pkgs.htop ];
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.vim
+    pkgs.wget
+    pkgs.curl
+    pkgs.htop
+  ];
 
   # Enable flake and new CLI
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Remove documentation app
   documentation.nixos.enable = false;
@@ -156,8 +167,7 @@
   # Enable Avahi ip resolution
   services.avahi = {
     enable = true;
-    nssmdns4 =
-      true; # Enable name switch service for ipV4 addresses (to find .local names).
+    nssmdns4 = true; # Enable name switch service for ipV4 addresses (to find .local names).
   };
 
   # Nix garbage collection
@@ -171,9 +181,11 @@
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
-  # Ensure nix-shell import <nixpkgs> and <nixpkgs-unstable> follow the flake's 
+  # Ensure nix-shell import <nixpkgs> and <nixpkgs-unstable> follow the flake's
   # nixpkgs
-  nix.nixPath =
-    [ "nixpkgs=flake:nixpkgs" "nixpkgs-unstable=flake:nixpkgs-unstable" ];
+  nix.nixPath = [
+    "nixpkgs=flake:nixpkgs"
+    "nixpkgs-unstable=flake:nixpkgs-unstable"
+  ];
 
 }

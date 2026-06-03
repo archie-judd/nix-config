@@ -15,7 +15,7 @@
   };
 
   # 5. Add camera-specific packages
-  # Because this is a separate file/module, NixOS will MERGE this list 
+  # Because this is a separate file/module, NixOS will MERGE this list
   # with the one in your main configuration.nix automatically!
   boot.blacklistedKernelModules = [ "v4l2loopback" ];
 }
