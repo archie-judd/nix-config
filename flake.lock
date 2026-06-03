@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1780291399,
-        "narHash": "sha256-51EsKA2/pDaIgKp9zbZIW2Wtk04ABrj7FKF5h/6BJ/I=",
+        "lastModified": 1780525070,
+        "narHash": "sha256-tqRtwV5L8gcoZtK6pYcwgDd0bK+Y7Stviby+w7Oe3S8=",
         "owner": "archie-judd",
         "repo": "agent-sandbox.nix",
-        "rev": "a9f650ea3a96800f4799741ef466a8db2b1c9563",
+        "rev": "471aae2d5e7c2e5b5bdd89d7d24711c6e80e10be",
         "type": "github"
       },
       "original": {
@@ -218,11 +218,11 @@
         "telescope-words": "telescope-words"
       },
       "locked": {
-        "lastModified": 1780499201,
-        "narHash": "sha256-mIchchGWojGh5jHSFTJihj9GLN2OdWySSOyXdxZWuEg=",
+        "lastModified": 1780524884,
+        "narHash": "sha256-nNis+zs9Ds8z3pZJoHcLDEPAtVnq9JZJ+GRAomlflH0=",
         "owner": "archie-judd",
         "repo": "neovim-config",
-        "rev": "41bec98045e400cdab69f062a02cfcb4739dc6db",
+        "rev": "cb2de50589e279ddfa155adcfc506defacdce518",
         "type": "github"
       },
       "original": {
