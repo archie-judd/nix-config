@@ -2,10 +2,10 @@
 
 let
   system = "aarch64-darwin";
-  allowUnfreePredicate =
-    pkg:
+  allowUnfreePredicate = pkg:
     builtins.elem (inputs.nixpkgs.lib.getName pkg) [
       "claude-code"
+      "github-copilot-cli"
     ];
   pkgs = import inputs.nixpkgs {
     system = system;
@@ -17,8 +17,7 @@ let
     overlays = overlays;
     config.allowUnfreePredicate = allowUnfreePredicate;
   };
-in
-inputs.nix-darwin.lib.darwinSystem {
+in inputs.nix-darwin.lib.darwinSystem {
   system = system;
   pkgs = pkgs;
   specialArgs = {
