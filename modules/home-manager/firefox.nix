@@ -3,7 +3,8 @@
 {
   programs.firefox = {
     enable = true;
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
+    # Pinned: NixOS' Firefox wrapper still reads ~/.mozilla/firefox, not the XDG path home-manager 26.05 defaults to (https://github.com/nix-community/home-manager/pull/9176).
+    configPath = ".mozilla/firefox";
     profiles = {
       archie = {
         containersForce = true;
