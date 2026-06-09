@@ -25,12 +25,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    claude-code.url = "github:sadjow/claude-code-nix";
+
   };
 
   outputs =
     inputs:
     let
-      overlays = import ./overlays.nix;
+      overlays = import ./overlays.nix ++ [ inputs.claude-code.overlays.default ];
     in
     {
 
