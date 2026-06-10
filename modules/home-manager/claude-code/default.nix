@@ -32,7 +32,10 @@ let
       pkgs.gnused
       pkgs.gnugrep
       pkgs.findutils
+      pkgs.diffutils
       pkgs.jq
+      pkgs.gawk
+      pkgs.nix
       neovim
     ];
     stateDirs = [ claude_config_dir ];
