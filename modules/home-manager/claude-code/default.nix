@@ -60,11 +60,9 @@ in
   ]
   ++ lib.optionals pkgs.stdenv.isDarwin [ claude-refresh-creds ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
-  home.file = {
-    ".claude/settings.json" = {
-      source = ./claude/settings.json;
-    };
-  };
+  home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run install -Dm644 ${./claude/settings.json} "${config.home.homeDirectory}/.claude/settings.json"
+  ''; # write the file - don't symlink it -D means create parent directories, -m644 sets permissions (rw- for owner, r-- for group and others)
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
