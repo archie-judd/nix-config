@@ -35,7 +35,6 @@ let
       pkgs.diffutils
       pkgs.jq
       pkgs.gawk
-      pkgs.nix
       neovim
     ];
     stateDirs = [ claude_config_dir ];
