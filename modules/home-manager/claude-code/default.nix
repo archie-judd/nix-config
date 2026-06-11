@@ -62,9 +62,15 @@ in
   ]
   ++ lib.optionals pkgs.stdenv.isDarwin [ claude-refresh-creds ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
+
+  # write the file - don't symlink it -D means create parent directories, -m644 sets permissions (rw- for owner, r-- for group and others)
   home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run install -Dm644 ${./claude/settings.json} "${config.home.homeDirectory}/.claude/settings.json"
-  ''; # write the file - don't symlink it -D means create parent directories, -m644 sets permissions (rw- for owner, r-- for group and others)
+  '';
+  home.activation.claudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run install -Dm644 ${./claude/CLAUDE.md} "${config.home.homeDirectory}/.claude/CLAUDE.md"
+  '';
+
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
   '';
