@@ -21,7 +21,9 @@
 
   # ADDITIONS:
 
-  home.sessionVariables = { EDITOR = "nvim"; };
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
   imports = [
     ../../modules/home-manager/alacritty
@@ -30,7 +32,6 @@
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
     ../../modules/home-manager/claude-code
-    ../../modules/home-manager/copilot
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
