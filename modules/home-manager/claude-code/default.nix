@@ -18,32 +18,20 @@ let
     ];
     text = builtins.readFile ./refresh-credentials.sh;
   };
-  claude-sandboxed = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system}.mkSandbox {
+  agent-sandbox = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system};
+  claude-sandboxed = agent-sandbox.mkSandbox {
     pkg = pkgs.claude-code;
     binName = "claude";
     outName = "claude-sandboxed";
-    allowedPackages = [
-      pkgs.coreutils
-      pkgs.which
-      pkgs.git
-      pkgs.less
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.gnused
-      pkgs.gnugrep
-      pkgs.findutils
-      pkgs.diffutils
-      pkgs.jq
-      pkgs.gawk
+    allowedPackages = agent-sandbox.commonTools ++ [
       neovim
     ];
-    stateDirs = [ claude_config_dir ];
-    extraEnv = {
+    rwDirs = [ claude_config_dir ];
+    env = {
       EDITOR = "nvim";
       COLORTERM = "truecolor";
       CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
     };
-    restrictNetwork = true;
     allowedDomains = {
       "anthropic.com" = "*";
       "claude.com" = "*";
