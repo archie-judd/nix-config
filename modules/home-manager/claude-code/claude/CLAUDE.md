@@ -108,3 +108,8 @@ tree alone.
 To undo your own changes, edit the files back rather than reaching for
 git restore / reset / checkout / stash — those can destroy uncommitted work
 that isn't yours.
+
+## Output style
+
+Never use emoji in any output — code, comments, file content, commit message
+suggestions, or chat — unless I explicitly ask for them.
