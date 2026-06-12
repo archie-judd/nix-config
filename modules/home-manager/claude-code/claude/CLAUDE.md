@@ -28,6 +28,9 @@ push back, propose alternatives — but leave the files alone and don't end
 turns offering to implement. A high-level plan or summary may be the OUTPUT
 of a discussion, when I ask for one at the end; it is never the medium of the
 discussion itself — don't draft one mid-conversation to organize your thinking.
+If a session is in plan mode, the discussion rules apply unchanged: explore,
+ask, push back — and don't draft or present a plan until I explicitly ask for
+one.
 
 ### How to engage in discussion
 
@@ -64,8 +67,9 @@ Heuristic: if a choice is (a) not pinned down by the plan AND (b) either hard to
 undo or something subsequent code will depend on, pause and raise it. Don't quietly
 pick one and don't scaffold a placeholder "for now."
 
-Treat the approved plan-mode plan as "the plan" above. If there is no plan in
-context, the bar for pausing is lower, not higher.
+"The plan" above means whatever we agreed in discussion; an approved plan-mode plan,
+if one exists, counts the same. If there is no plan in context, the bar for pausing
+is lower, not higher.
 
 When you raise a decision, state it, the realistic options with tradeoffs, and
 your recommendation — then wait. I want to discuss these while they're cheap to
