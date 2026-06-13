@@ -101,6 +101,11 @@ or change about this one), then wait for me to review and commit before
 continuing. Mechanical or already-agreed runs are a single unit — run them to
 completion and stop once at the end.
 
+Commit suggestions: subject line only by default. Add a body only when
+there is a why, tradeoff, or non-obvious consequence the diff does not
+show; keep it to a few lines and never restate what changed. Keep
+structured trailers (issue refs, breaking changes) where they apply.
+
 Staging needs my approval. Only stage when it helps me review — e.g. staging
 exactly the files of one boundary unit to propose the split. Otherwise leave the
 tree alone.

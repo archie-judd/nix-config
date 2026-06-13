@@ -15,5 +15,9 @@
       "Bash(git clean:*)",
       "Bash(git checkout -- *)"
     ]
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }
