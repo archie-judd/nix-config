@@ -9,15 +9,6 @@
 let
   neovim = inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude_config_dir = "$HOME/.claude";
-  claude-refresh-creds = pkgs.writeShellApplication {
-    name = "claude-refresh-credentials";
-    runtimeInputs = [
-      pkgs.jq
-      pkgs.coreutils
-      pkgs.gnugrep
-    ];
-    text = builtins.readFile ./refresh-credentials.sh;
-  };
   agent-sandbox = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system};
   claude-sandboxed = agent-sandbox.mkSandbox {
     pkg = pkgs.claude-code;
@@ -31,6 +22,9 @@ let
       EDITOR = "nvim";
       COLORTERM = "truecolor";
       CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
+    }
+    // lib.optionals pkgs.stdenv.isDarwin {
+      CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
     };
     allowedDomains = {
       "anthropic.com" = "*";
@@ -47,8 +41,7 @@ in
   home.packages = [
     claude-sandboxed
     pkgs.claude-code
-  ]
-  ++ lib.optionals pkgs.stdenv.isDarwin [ claude-refresh-creds ];
+  ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
 
   # write the file - don't symlink it -D means create parent directories, -m644 sets permissions (rw- for owner, r-- for group and others)

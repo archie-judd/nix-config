@@ -1,33 +1,47 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-/* Add new secrets to an existing secrets.yaml file:
-   SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml
-   (from the root of the repo)
+/*
+  Add new secrets to an existing secrets.yaml file:
+  SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets.yaml
+  (from the root of the repo)
 
-   Add a new secrets.yaml file:
-   1. Add a matching creation rule to .sops.yaml
-   2. SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets-new.yaml
+  Add a new secrets.yaml file:
+  1. Add a matching creation rule to .sops.yaml
+  2. SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops -- modules/home-manager/sops/secrets-new.yaml
 
-   Add new binary secret files:
-   1. Add a matching creation rule to .sops.yaml
-   2. SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops --encrypt --input-type binary --output-type binary /path/to/file/<filename>  modules/home-manager/sops/<filename>
-   (make sure the in and out filenames are the same)
+  Add new binary secret files:
+  1. Add a matching creation rule to .sops.yaml
+  2. SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt nix run nixpkgs#sops --encrypt --input-type binary --output-type binary /path/to/file/<filename>  modules/home-manager/sops/<filename>
+  (make sure the in and out filenames are the same)
 
-   To add a new key:
-   1. create a key file with: `age-keygen -o ~/.config/sops/age/keys.txt`
-   2. Copy the public key and add it to your sops config at the the root of the repo (.sops.yaml)
-   3. Push the changes to your git repo.
-   4. Update the secrets file (on a machine that can already decrypt the secrets) with:
-   `SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops updatekeys modules/home-manager/sops/secrets.yaml`
+  To add a new key:
+  1. create a key file with: `age-keygen -o ~/.config/sops/age/keys.txt`
+  2. Copy the public key and add it to your sops config at the the root of the repo (.sops.yaml)
+  3. Push the changes to your git repo.
+  4. Update the secrets file (on a machine that can already decrypt the secrets) with:
+  `SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt sops updatekeys modules/home-manager/sops/secrets.yaml`
 */
 
 {
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
-      github-read-token = { sopsFile = ./secrets-shared.yaml; };
-    } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      trading_212_api_key = { sopsFile = ./secrets-personal.yaml; };
+      github-read-token = {
+        sopsFile = ./secrets-shared.yaml;
+      };
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      trading-212-api-key = {
+        sopsFile = ./secrets-personal.yaml;
+      };
+      claude-code-oauth-token = {
+        sopsFile = ./secrets-personal.yaml;
+      };
       personal-git-crypt-key = {
         format = "binary";
         sopsFile = ./personal-git-crypt.key;
@@ -35,9 +49,7 @@
     };
     templates."nix-access-tokens" = {
       content = ''
-        access-tokens = github.com=${
-          config.sops.placeholder."github-read-token"
-        }
+        access-tokens = github.com=${config.sops.placeholder."github-read-token"}
       '';
     };
   };
