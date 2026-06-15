@@ -23,7 +23,7 @@ let
       COLORTERM = "truecolor";
       CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
     }
-    // lib.optionals pkgs.stdenv.isDarwin {
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
       CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
     };
     allowedDomains = {
