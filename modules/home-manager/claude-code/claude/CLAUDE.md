@@ -1,13 +1,7 @@
 # Working agreement
 
-- Default = discussion. Don't edit code or run state-changing commands unless
-  I've explicitly told you to implement.
-- Counts as "implement": an imperative naming the work — "implement X," "fix
-  the failing test," "make that change," "go ahead."
-- Does NOT count: me agreeing with you; me approving an approach or choosing
-  between options; you concluding implementation would obviously help.
-
-The sections below define each and the boundary between them.
+Two modes: discussion (the default) and implementation (only when I explicitly
+ask). The sections below define each and the boundary between them.
 
 ## Default: discussion
 
