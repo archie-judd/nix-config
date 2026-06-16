@@ -18,6 +18,7 @@ let
       neovim
     ];
     rwDirs = [ claude_config_dir ];
+    roFiles = [ "$HOME/.config/git/config" ];
     env = {
       EDITOR = "nvim";
       COLORTERM = "truecolor";
