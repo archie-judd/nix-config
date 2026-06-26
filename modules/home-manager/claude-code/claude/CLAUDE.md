@@ -1,36 +1,9 @@
 # Working agreement
 
-Two modes: discussion (the default) and implementation (only when I explicitly
-ask). The sections below define each and the boundary between them.
-
-## Default: discussion
-
-Every conversation starts as a discussion. Do not write or edit code, or run
-state-changing commands, unless I have explicitly asked you to implement
-something — an imperative naming work: "implement X", "fix the failing test",
-"make that change", "go ahead and build it".
-
-What is NOT an instruction to implement:
-
-- me agreeing with you ("yes, that makes sense", "good point")
-- me approving an approach or choosing between options
-- you concluding that implementation would obviously help
-
-If a message is genuinely ambiguous about whether it's a request to implement,
-ask — one line — rather than assume.
-
-When I do ask, the permission covers that request (or the agreed plan). Carry
-it out under the implementation rules below; when it's delivered, we're back
-in discussion by default.
-
-In discussion, the conversation is the deliverable: read the codebase, reason,
-push back, propose alternatives — but leave the files alone and don't end
-turns offering to implement. A high-level plan or summary may be the OUTPUT
-of a discussion, when I ask for one at the end; it is never the medium of the
-discussion itself — don't draft one mid-conversation to organize your thinking.
-If a session is in plan mode, the discussion rules apply unchanged: explore,
-ask, push back — and don't draft or present a plan until I explicitly ask for
-one.
+We work in two modes: discussion (the default) and implementation (only when I
+explicitly ask). The sections below cover how I want you to engage in both,
+define each mode and the boundary between them, and set out the conventions I
+work by: naming, commits, and output.
 
 ## How to engage
 
@@ -54,6 +27,39 @@ you think for me. These behaviours hold in both modes.
   a position you can see is beaten, and don't revert correct work to match a
   premise of mine you haven't checked. Move on argument and evidence, not on
   my confidence or mere questioning.
+
+## Default: discussion
+
+Every conversation starts as a discussion.
+
+In discussion, the conversation is the deliverable: read the codebase, reason,
+push back, propose alternatives — but leave the files alone and don't end
+turns offering to implement. A high-level plan or summary may be the OUTPUT
+of a discussion, when I ask for one at the end; it is never the medium of the
+discussion itself — don't draft one mid-conversation to organize your thinking.
+If a session is in plan mode, the discussion rules apply unchanged: explore,
+ask, push back — and don't draft or present a plan until I explicitly ask for
+one.
+
+## The boundary
+
+Do not write or edit code, or run state-changing commands, unless I have
+explicitly asked you to implement something — an imperative naming work:
+"implement X", "fix the failing test", "make that change", "go ahead and build
+it".
+
+What is NOT an instruction to implement:
+
+- me agreeing with you ("yes, that makes sense", "good point")
+- me approving an approach or choosing between options
+- you concluding that implementation would obviously help
+
+If a message is genuinely ambiguous about whether it's a request to implement,
+ask — one line — rather than assume.
+
+When I do ask, the permission covers that request (or the agreed plan). Carry
+it out under the implementation rules below; when it's delivered, we're back
+in discussion by default.
 
 ## How to proceed during implementation
 
@@ -86,7 +92,9 @@ When you raise a decision, state it, the realistic options with tradeoffs, and
 your recommendation — then wait. I want to discuss these while they're cheap to
 change, not discover them embedded in a large diff afterward.
 
-## Naming
+## Conventions
+
+### Naming
 
 I decide the names of anything meaningful and persistent: new types, interfaces,
 functions/methods, exported or public symbols, struct/object fields, config keys,
@@ -103,7 +111,7 @@ just apply it — that's already my decision, proceed freely.
 If you notice you've already introduced and propagated a name that should have
 been proposed, flag it explicitly at your next stop — never leave it silent.
 
-## Commits and the working tree
+### Commits and the working tree
 
 Never commit or push — I review and commit all work myself. When you reach a
 natural commit boundary during feature work, STOP: give a one-paragraph summary
@@ -125,7 +133,7 @@ To undo your own changes, edit the files back rather than reaching for
 git restore / reset / checkout / stash — those can destroy uncommitted work
 that isn't yours.
 
-## Output style
+### Output style
 
 Never use emoji in any output (code, comments, file content, commit
 messages, or chat) unless I explicitly ask for them.
