@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
-let
-  tmux-vsplit = pkgs.writeShellScriptBin "tmux-vsplit"
-    (builtins.readFile ./scripts/tmux-vsplit.sh);
-  tmux-hsplit = pkgs.writeShellScriptBin "tmux-hsplit"
-    (builtins.readFile ./scripts/tmux-hsplit.sh);
-in {
+{
   programs.tmux = {
     enable = true;
     mouse = true;
@@ -26,12 +21,7 @@ in {
     extraConfig = builtins.readFile ./configuration/tmux-extra.conf;
   };
 
-  home.packages = [ tmux-vsplit tmux-hsplit ];
-
   programs.bash.shellAliases = {
-    vsp = "tmux-vsplit";
-    hsp = "tmux-hsplit";
-    tmux =
-      "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
+    tmux = "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
   };
 }
