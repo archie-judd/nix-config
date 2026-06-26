@@ -16,6 +16,7 @@ let
     outName = "claude-sandboxed";
     allowedPackages = agent-sandbox.commonTools ++ [
       neovim
+      pkgs.gh
     ];
     rwDirs = [ claude_config_dir ];
     roFiles = [ "$HOME/.config/git/config" ];
@@ -23,6 +24,7 @@ let
       EDITOR = "nvim";
       COLORTERM = "truecolor";
       CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
+      GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
     }
     // lib.optionalAttrs pkgs.stdenv.isDarwin {
       CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
