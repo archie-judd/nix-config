@@ -31,6 +31,7 @@
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
     ../../modules/home-manager/claude-code
+    ../../modules/home-manager/claude-agent-acp.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/firefox.nix
