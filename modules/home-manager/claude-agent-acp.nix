@@ -7,7 +7,6 @@
 }:
 let
   neovim = inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
-  claude_config_dir = "$HOME/.claude";
   agent-sandbox = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system};
   claude-agent-acp-sandboxed = agent-sandbox.mkSandbox {
     pkg = pkgs-unstable.claude-agent-acp;
@@ -17,10 +16,10 @@ let
       neovim
       pkgs.gh
     ];
-    rwDirs = [ claude_config_dir ];
+    rwDirs = [ "$CLAUDE_CONFIG_DIR" ]; # set in claude/default.nix
     roFiles = [ "$HOME/.config/git/config" ];
     env = {
-      CLAUDE_CONFIG_DIR = claude_config_dir;
+      CLAUDE_CONFIG_DIR = "$CLAUDE_CONFIG_DIR";
       GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
     }
     // lib.optionalAttrs pkgs.stdenv.isDarwin {
