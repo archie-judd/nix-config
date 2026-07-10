@@ -10,40 +10,48 @@ let
   neovim = inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude_config_dir = "$HOME/.claude";
   agent-sandbox = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system};
-  claude-sandboxed = agent-sandbox.mkSandbox {
-    pkg = pkgs.claude-code;
-    binName = "claude";
-    outName = "claude-sandboxed";
-    allowedPackages = agent-sandbox.commonTools ++ [
-      neovim
-      pkgs.gh
-    ];
-    rwDirs = [ claude_config_dir ];
-    roFiles = [ "$HOME/.config/git/config" ];
-    env = {
-      EDITOR = "nvim";
-      COLORTERM = "truecolor";
-      CLAUDE_CONFIG_DIR = claude_config_dir;
-      GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
-    }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
-      CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
-    };
-    allowedDomains = {
-      "anthropic.com" = "*";
-      "claude.com" = "*";
-      "github.com" = "*";
-      "githubusercontent.com" = [
-        "GET"
-        "HEAD"
+  mkClaudeSandbox =
+    pkg: binName: outName:
+    agent-sandbox.mkSandbox {
+      pkg = pkg;
+      binName = binName;
+      outName = outName;
+      allowedPackages = agent-sandbox.commonTools ++ [
+        neovim
+        pkgs.gh
       ];
+      rwDirs = [ claude_config_dir ];
+      roFiles = [ "$HOME/.config/git/config" ];
+      env = {
+        EDITOR = "nvim";
+        COLORTERM = "truecolor";
+        CLAUDE_CONFIG_DIR = claude_config_dir;
+        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
+      }
+      // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
+      };
+      allowedDomains = {
+        "anthropic.com" = "*";
+        "claude.com" = "*";
+        "github.com" = "*";
+        "githubusercontent.com" = [
+          "GET"
+          "HEAD"
+        ];
+      };
     };
-  };
+  claude-sandboxed = mkClaudeSandbox pkgs.claude-code "claude" "claude-sandboxed";
+  claude-agent-acp-sandboxed =
+    mkClaudeSandbox pkgs.claude-agent-acp "claude-agent-acp"
+      "claude-agent-acp";
 in
 {
   home.packages = [
-    claude-sandboxed
     pkgs.claude-code
+    claude-sandboxed
+    claude-agent-acp-sandboxed
+
   ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
 
