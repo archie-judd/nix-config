@@ -19,6 +19,7 @@ let
       allowedPackages = agent-sandbox.commonTools ++ [
         neovim
         pkgs.gh
+        pkgs.curl
       ];
       rwDirs = [ claude_config_dir ];
       roFiles = [ "$HOME/.config/git/config" ];
