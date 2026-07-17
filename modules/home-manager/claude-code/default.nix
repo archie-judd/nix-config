@@ -20,6 +20,7 @@ let
         neovim
         pkgs.gh
         pkgs.curl
+        pkgs.python3
       ];
       rwDirs = [ claude_config_dir ];
       roFiles = [ "$HOME/.config/git/config" ];
