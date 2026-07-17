@@ -14,4 +14,10 @@
       "image/png" = [ "org.gnome.Loupe.desktop" ];
     };
   };
+
+  programs.bash.initExtra = ''
+    open() {
+      xdg-open "$@" >/dev/null 2>&1 &
+    }
+  '';
 }
