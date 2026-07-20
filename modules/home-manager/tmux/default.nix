@@ -4,7 +4,7 @@
   programs.tmux = {
     enable = true;
     mouse = true;
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     escapeTime = 30;
     plugins = [
       {
@@ -19,9 +19,5 @@
       { plugin = pkgs.tmuxPlugins.open; }
     ];
     extraConfig = builtins.readFile ./configuration/tmux-extra.conf;
-  };
-
-  programs.bash.shellAliases = {
-    tmux = "direnv exec / tmux"; # run tmux from the root directory to avoid issues with direnv
   };
 }
