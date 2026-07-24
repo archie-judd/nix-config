@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  pkgs-claude-desktop,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -60,6 +65,7 @@
     pkgs.libreoffice
     pkgs.gh
     pkgs.git-crypt
+    pkgs-claude-desktop.claude-desktop
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];

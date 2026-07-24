@@ -10,6 +10,7 @@
     pkgs.gnomeExtensions.draw-on-gnome # annotate
   ];
 
+  # dump this with
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -28,6 +29,7 @@
         "org.gnome.Settings.desktop"
         "slack.desktop"
         "spotify.desktop"
+        "claude-desktop.desktop"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -114,12 +116,11 @@
       switch-to-application-4 = [ ];
       toggle-quick-settings = [ ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
-      {
-        binding = "<Super>t";
-        command = "alacritty -e tmux";
-        name = "Terminal";
-      };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>t";
+      command = "alacritty -e tmux";
+      name = "Terminal";
+    };
     "org/gnome/shell/extensions/dash-to-dock" = {
       animate-show-apps = true;
       apply-custom-theme = true;
