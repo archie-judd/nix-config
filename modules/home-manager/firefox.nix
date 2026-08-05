@@ -43,8 +43,8 @@
                   url = "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
                 }
                 {
-                  name = "excalidraw";
-                  url = "https://excalidraw.com";
+                  name = "paint.js";
+                  url = "https://paint.js.org/";
                 }
                 {
                   name = "Anthropic";
