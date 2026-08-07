@@ -65,6 +65,7 @@
     pkgs.libreoffice
     pkgs.gh
     pkgs.git-crypt
+    pkgs.python3
     pkgs-claude-desktop.claude-desktop
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
