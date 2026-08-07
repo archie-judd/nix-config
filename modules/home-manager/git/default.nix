@@ -1,17 +1,22 @@
 { config, pkgs, ... }:
 
 let
-  git-branch-delete = pkgs.writeShellScriptBin "git-branch-delete"
-    (builtins.readFile ./scripts/git-branch-delete.sh);
-  git-tag-delete = pkgs.writeShellScriptBin "git-tag-delete"
-    (builtins.readFile ./scripts/git-tag-delete.sh);
-  git-worktree-remove = pkgs.writeShellScriptBin "git-worktree-remove"
-    (builtins.readFile ./scripts/git-worktree-remove.sh);
+  git-branch-delete = pkgs.writeShellScriptBin "git-branch-delete" (
+    builtins.readFile ./scripts/git-branch-delete.sh
+  );
+  git-tag-delete = pkgs.writeShellScriptBin "git-tag-delete" (
+    builtins.readFile ./scripts/git-tag-delete.sh
+  );
+  git-worktree-remove = pkgs.writeShellScriptBin "git-worktree-remove" (
+    builtins.readFile ./scripts/git-worktree-remove.sh
+  );
   gitWorktreeSwitchSource = builtins.readFile ./scripts/git-worktree-switch.sh;
   gitWorktreeAddSource = builtins.readFile ./scripts/git-worktree-add.sh;
   gitCompletionsSource = builtins.readFile ./scripts/git-completions.sh;
 
-in {
+in
+{
+
   programs.git = {
     enable = true;
     settings = {
@@ -21,8 +26,8 @@ in {
       };
       init.defaultBranch = "main";
       push.default = "nothing";
-      credential.helper =
-        if pkgs.stdenv.isDarwin then "osxkeychain" else "store";
+      credential.helper = if pkgs.stdenv.isDarwin then "osxkeychain" else "store";
+      core.hooksPath = "${config.home.homeDirectory}/.config/git/hooks";
     };
     ignores = [
       "*~"
@@ -36,7 +41,15 @@ in {
     ];
   };
 
-  home.packages = [ git-branch-delete git-tag-delete git-worktree-remove ];
+  home.packages = [
+    git-branch-delete
+    git-tag-delete
+    git-worktree-remove
+  ];
+
+  home.file.".config/git/hooks/pre-commit".source = pkgs.writeShellScript "pre-commit" ''
+    ! git diff --cached --check | grep 'leftover conflict marker'
+  '';
 
   programs.bash = {
     initExtra = ''
@@ -45,10 +58,13 @@ in {
       __git_complete git-tag-delete _git_switch
       __git_complete gbd _git_switch
       __git_complete gtd _git_switch
-    '' +
+    ''
+    +
       # can't be writeShellScriptBin because cd in a subshell wouldn't change the directory of the parent shell
       # the parent shell
-      gitWorktreeSwitchSource + gitWorktreeAddSource + gitCompletionsSource;
+      gitWorktreeSwitchSource
+    + gitWorktreeAddSource
+    + gitCompletionsSource;
     shellAliases = {
       "gbd" = "git-branch-delete";
       "gtd" = "git-tag-delete";
