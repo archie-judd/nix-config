@@ -47,6 +47,7 @@
     pkgs.git-crypt
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
+    pkgs.gh
   ];
 
   # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
