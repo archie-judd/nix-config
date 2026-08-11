@@ -13,6 +13,12 @@ let
   gitWorktreeSwitchSource = builtins.readFile ./scripts/git-worktree-switch.sh;
   gitWorktreeAddSource = builtins.readFile ./scripts/git-worktree-add.sh;
   gitCompletionsSource = builtins.readFile ./scripts/git-completions.sh;
+  checkConflictMarkers =
+    pkgs.writeShellScript "check-conflict-markers"
+      # bash
+      ''
+        ! git diff --cached --check | grep 'leftover conflict marker' >&2
+      '';
 
 in
 {
@@ -41,15 +47,22 @@ in
     ];
   };
 
-  home.packages = [
-    git-branch-delete
-    git-tag-delete
-    git-worktree-remove
-  ];
+  home = {
+    packages = [
+      git-branch-delete
+      git-tag-delete
+      git-worktree-remove
+    ];
 
-  home.file.".config/git/hooks/pre-commit".source = pkgs.writeShellScript "pre-commit" ''
-    ! git diff --cached --check | grep 'leftover conflict marker'
-  '';
+    # Disallow committing files with conflict markers in them (git rebase uses
+    # git commit --no-verify to commit the merge result, which skips the
+    # pre-commit hook, so we also add a prepare-commit-msg hook to catch those
+    # cases)
+    file = {
+      ".config/git/hooks/pre-commit".source = checkConflictMarkers;
+      ".config/git/hooks/prepare-commit-msg".source = checkConflictMarkers;
+    };
+  };
 
   programs.bash = {
     initExtra = ''
@@ -60,8 +73,8 @@ in
       __git_complete gtd _git_switch
     ''
     +
-      # can't be writeShellScriptBin because cd in a subshell wouldn't change the directory of the parent shell
-      # the parent shell
+      # can't be writeShellScriptBin because cd in a subshell wouldn't change
+      # the directory of the parent shell the parent shell
       gitWorktreeSwitchSource
     + gitWorktreeAddSource
     + gitCompletionsSource;
