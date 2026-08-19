@@ -49,6 +49,7 @@
       screenreader = [ ];
       screensaver = [ "<Shift><Super>q" ];
     };
+    "org/gnome/shell/app-switcher".current-workspace-only = true; # only show apps from current workspace in alt-tab
     "org/gnome/desktop/wm/keybindings" = {
       begin-move = [ ];
       begin-resize = [ ];
@@ -70,7 +71,7 @@
       move-to-workspace-2 = [ "<Shift><Super>2" ];
       move-to-workspace-3 = [ "<Shift><Super>3" ];
       move-to-workspace-4 = [ "<Shift><Super>4" ];
-      move-to-workspace-last = [ ];
+      move-to-workspace-last = [ "<Super>o" ];
       move-to-workspace-left = [ ];
       move-to-workspace-right = [ ];
       raise = [ ];
