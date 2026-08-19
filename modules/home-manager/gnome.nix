@@ -23,13 +23,13 @@
         "draw-on-gnome@daveprowse.github.io"
       ];
       favorite-apps = [
-        "org.gnome.Nautilus.desktop"
         "Alacritty.desktop"
+        "com.anthropic.Claude.desktop"
         "firefox.desktop"
-        "org.gnome.Settings.desktop"
         "slack.desktop"
+        "org.gnome.Nautilus.desktop"
+        "org.gnome.Settings.desktop"
         "spotify.desktop"
-        "claude-desktop.desktop"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -67,11 +67,11 @@
       move-to-monitor-left = [ "<Shift><Super>h" ];
       move-to-monitor-right = [ "<Shift><Super>l" ];
       move-to-monitor-up = [ "<Shift><Super>k" ];
-      move-to-workspace-1 = [ "<Shift><Super>1" ];
-      move-to-workspace-2 = [ "<Shift><Super>2" ];
-      move-to-workspace-3 = [ "<Shift><Super>3" ];
-      move-to-workspace-4 = [ "<Shift><Super>4" ];
-      move-to-workspace-last = [ "<Super>o" ];
+      move-to-workspace-1 = [ ];
+      move-to-workspace-2 = [ ];
+      move-to-workspace-3 = [ ];
+      move-to-workspace-4 = [ ];
+      move-to-workspace-last = [ ];
       move-to-workspace-left = [ ];
       move-to-workspace-right = [ ];
       raise = [ ];
@@ -82,10 +82,10 @@
       switch-group-backward = [ "<Shift><Alt>Tab" ];
       switch-panels = [ ];
       switch-panels-backward = [ ];
-      switch-to-workspace-1 = [ "<Super>1" ];
-      switch-to-workspace-2 = [ "<Super>2" ];
-      switch-to-workspace-3 = [ "<Super>3" ];
-      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-1 = [ ];
+      switch-to-workspace-2 = [ ];
+      switch-to-workspace-3 = [ ];
+      switch-to-workspace-4 = [ ];
       switch-to-workspace-last = [ ];
       switch-to-workspace-left = [ "<Shift><Super>p" ];
       switch-to-workspace-right = [ "<Shift><Super>n" ];
@@ -111,10 +111,15 @@
       screenshot-window = [ ];
       show-screen-recording-ui = [ ];
       show-screenshot-ui = [ "<Super>s" ];
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
+      switch-to-application-1 = [ "<Super>1" ];
+      switch-to-application-2 = [ "<Super>2" ];
+      switch-to-application-3 = [ "<Super>3" ];
+      switch-to-application-4 = [ "<Super>4" ];
+      switch-to-application-5 = [ "<Super>5" ];
+      switch-to-application-6 = [ "<Super>6" ];
+      switch-to-application-7 = [ "<Super>7" ];
+      switch-to-application-8 = [ "<Super>8" ];
+      switch-to-application-9 = [ "<Super>9" ];
       toggle-quick-settings = [ ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
