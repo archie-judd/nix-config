@@ -45,7 +45,8 @@
     ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/ssl.nix
     ../../modules/home-manager/tasks.nix
-    ../../modules/home-manager/notes.nix
+    ../../modules/home-manager/log.nix
+    ../../modules/home-manager/obsidian.nix
   ];
 
   home.packages = [

@@ -27,6 +27,7 @@
         "com.anthropic.Claude.desktop"
         "firefox.desktop"
         "slack.desktop"
+        "obsidian.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.Settings.desktop"
         "spotify.desktop"

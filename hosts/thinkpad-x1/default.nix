@@ -14,6 +14,7 @@ let
       "slack"
       "spotify"
       "kolide-launcher"
+      "obsidian"
     ];
   pkgs = import inputs.nixpkgs {
     system = system;
