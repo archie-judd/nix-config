@@ -6,7 +6,7 @@ let
     file="${tasks-path}"
     [[ -f "$file" ]] || exit 0
     count=$(grep -c "^- \[ \]" "$file" 2>/dev/null || true)
-    [[ "$count" -gt 0 ]] && echo " $count"
+    [[ "$count" -gt 0 ]] && echo "$count"
   '';
 in
 {
