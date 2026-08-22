@@ -45,77 +45,6 @@
                                           ]
                                    },
                                    {
-                                          "description": "Control + Left/Right to jump words in terminal applications",
-                                          "manipulators": [
-                                                 {
-                                                        "conditions": [
-                                                               {
-                                                                      "bundle_identifiers": [
-                                                                             "^com\\.apple\\.Terminal$",
-                                                                             "^com\\.googlecode\\.iterm2$",
-                                                                             "^co\\.zeit\\.hyperterm$",
-                                                                             "^co\\.zeit\\.hyper$",
-                                                                             "^io\\.alacritty$",
-                                                                             "^org\\.alacritty$",
-                                                                             "^net\\.kovidgoyal\\.kitty$"
-                                                                      ],
-                                                                      "type": "frontmost_application_if"
-                                                               }
-                                                        ],
-                                                        "from": {
-                                                               "key_code": "left_arrow",
-                                                               "modifiers": {
-                                                                      "mandatory": [
-                                                                             "control"
-                                                                      ]
-                                                               }
-                                                        },
-                                                        "to": [
-                                                               {
-                                                                      "key_code": "escape"
-                                                               },
-                                                               {
-                                                                      "key_code": "b"
-                                                               }
-                                                        ],
-                                                        "type": "basic"
-                                                 },
-                                                 {
-                                                        "conditions": [
-                                                               {
-                                                                      "bundle_identifiers": [
-                                                                             "^com\\.apple\\.Terminal$",
-                                                                             "^com\\.googlecode\\.iterm2$",
-                                                                             "^co\\.zeit\\.hyperterm$",
-                                                                             "^co\\.zeit\\.hyper$",
-                                                                             "^io\\.alacritty$",
-                                                                             "^org\\.alacritty$",
-                                                                             "^net\\.kovidgoyal\\.kitty$"
-                                                                      ],
-                                                                      "type": "frontmost_application_if"
-                                                               }
-                                                        ],
-                                                        "from": {
-                                                               "key_code": "right_arrow",
-                                                               "modifiers": {
-                                                                      "mandatory": [
-                                                                             "control"
-                                                                      ]
-                                                               }
-                                                        },
-                                                        "to": [
-                                                               {
-                                                                      "key_code": "escape"
-                                                               },
-                                                               {
-                                                                      "key_code": "f"
-                                                               }
-                                                        ],
-                                                        "type": "basic"
-                                                 }
-                                          ]
-                                   },
-                                   {
                                           "description": "command-f1 and f2 to adjust keyboard brightness",
                                           "manipulators": [
                                                  {
@@ -153,48 +82,24 @@
                                           ]
                                    },
                                    {
-                                          "description": "Change Cmd-N to Cmd-Tab (Next program)",
+                                          "description": "Right command to hyper (control+option+command)",
                                           "manipulators": [
                                                  {
                                                         "type": "basic",
                                                         "from": {
-                                                               "key_code": "n",
+                                                               "key_code": "right_command",
                                                                "modifiers": {
-                                                                      "mandatory": [
-                                                                             "command"
+                                                                      "optional": [
+                                                                             "any"
                                                                       ]
                                                                }
                                                         },
                                                         "to": [
                                                                {
-                                                                      "key_code": "tab",
+                                                                      "key_code": "left_command",
                                                                       "modifiers": [
-                                                                             "command"
-                                                                      ]
-                                                               }
-                                                        ]
-                                                 }
-                                          ]
-                                   },
-                                   {
-                                          "description": "Change Cmd-p to Cmd-Shift-Tab (Previous program)",
-                                          "manipulators": [
-                                                 {
-                                                        "type": "basic",
-                                                        "from": {
-                                                               "key_code": "p",
-                                                               "modifiers": {
-                                                                      "mandatory": [
-                                                                             "command"
-                                                                      ]
-                                                               }
-                                                        },
-                                                        "to": [
-                                                               {
-                                                                      "key_code": "tab",
-                                                                      "modifiers": [
-                                                                             "command",
-                                                                             "shift"
+                                                                             "left_control",
+                                                                             "left_option"
                                                                       ]
                                                                }
                                                         ]

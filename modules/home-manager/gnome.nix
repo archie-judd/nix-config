@@ -41,6 +41,10 @@
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
       ];
       help = [ ];
       home = [ ];
@@ -76,7 +80,7 @@
       move-to-workspace-left = [ ];
       move-to-workspace-right = [ ];
       raise = [ ];
-      raise-or-lower = [ "<Super>k" ];
+      raise-or-lower = [ ];
       switch-applications = [ "<Super>Tab" ];
       switch-applications-backward = [ "<Shift><Super>Tab" ];
       switch-group = [ "<Alt>Tab" ];
@@ -112,21 +116,46 @@
       screenshot-window = [ ];
       show-screen-recording-ui = [ ];
       show-screenshot-ui = [ "<Super>s" ];
-      switch-to-application-1 = [ "<Super>1" ];
-      switch-to-application-2 = [ "<Super>2" ];
-      switch-to-application-3 = [ "<Super>3" ];
-      switch-to-application-4 = [ "<Super>4" ];
-      switch-to-application-5 = [ "<Super>5" ];
-      switch-to-application-6 = [ "<Super>6" ];
-      switch-to-application-7 = [ "<Super>7" ];
-      switch-to-application-8 = [ "<Super>8" ];
-      switch-to-application-9 = [ "<Super>9" ];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
+      switch-to-application-5 = [ ];
+      switch-to-application-6 = [ ];
+      switch-to-application-7 = [ ];
+      switch-to-application-8 = [ ];
+      switch-to-application-9 = [ ];
       toggle-quick-settings = [ ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>t";
       command = "alacritty -e tmux";
       name = "Terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>c";
+      command = "claude-desktop";
+      name = "Claude";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>b";
+      command = "firefox";
+      name = "Browser";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = "<Super>o";
+      command = "obsidian";
+      name = "Obsidian";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+      binding = "<Super>f";
+      command = "nautilus";
+      name = "Files";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+      binding = "<Super>m";
+      command = "slack";
+      name = "Slack";
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
       animate-show-apps = true;

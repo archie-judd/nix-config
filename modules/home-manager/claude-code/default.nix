@@ -65,6 +65,6 @@ in
     run install -Dm644 ${./claude/CLAUDE.md} "${config.home.homeDirectory}/.claude/CLAUDE.md"
   '';
   programs.bash.initExtra = ''
-    qq() { local msg="$1"; shift; claude --model sonnet "$@" -p "$msg"; }
+    qq() { local msg="$1"; shift; claude-sandboxed --model sonnet "$@" -p "$msg"; }
   '';
 }

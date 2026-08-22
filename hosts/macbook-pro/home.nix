@@ -29,6 +29,7 @@
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/tmux
     ../../modules/home-manager/karabiner
+    ../../modules/home-manager/hammerspoon
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
     ../../modules/home-manager/claude-code

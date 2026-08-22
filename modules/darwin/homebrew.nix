@@ -10,7 +10,7 @@
       "1password"
       "karabiner-elements"
       "vlc"
-      "rectangle"
+      "hammerspoon"
       "spotify"
       "maccy"
       "google-chrome"
