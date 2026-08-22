@@ -40,7 +40,7 @@
       };
     }
     // lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin {
-      "${config.home.homeDirectory}/workspaces/personal" = {
+      "${config.home.homeDirectory}/workspaces/personal/notes" = {
         enable = true;
       };
     };
