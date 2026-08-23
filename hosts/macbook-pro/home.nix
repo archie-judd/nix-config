@@ -37,7 +37,6 @@
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
     ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/obsidian.nix
   ];
 
   home.packages = [

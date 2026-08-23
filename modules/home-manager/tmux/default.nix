@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   programs.tmux = {
     enable = true;
+    # package = pkgs-unstable.tmux;
     mouse = true;
     terminal = "tmux-256color";
     escapeTime = 30;

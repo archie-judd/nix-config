@@ -46,7 +46,6 @@
     ../../modules/home-manager/ssl.nix
     ../../modules/home-manager/tasks.nix
     ../../modules/home-manager/log.nix
-    ../../modules/home-manager/obsidian.nix
   ];
 
   home.packages = [
@@ -68,6 +67,7 @@
     pkgs.git-crypt
     pkgs.python3
     pkgs-claude-desktop.claude-desktop
+    pkgs.obsidian
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
