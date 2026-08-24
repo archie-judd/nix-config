@@ -1,5 +1,46 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
+let
+  # Ordered as the dock shows them; the keys mirror the apps table in
+  # hammerspoon/init.lua, so both platforms launch-or-focus the same set.
+  favourites = [
+    {
+      desktop = "Alacritty.desktop";
+      key = "t";
+    }
+    {
+      desktop = "com.anthropic.Claude.desktop";
+      key = "c";
+    }
+    {
+      desktop = "firefox.desktop";
+      key = "b";
+    }
+    {
+      desktop = "slack.desktop";
+      key = "s";
+    }
+    {
+      desktop = "obsidian.desktop";
+      key = "o";
+    }
+    {
+      desktop = "org.gnome.Nautilus.desktop";
+      key = "f";
+    }
+    { desktop = "org.gnome.Settings.desktop"; }
+    { desktop = "spotify.desktop"; }
+  ];
+
+  # switch-to-application-N raises the app's most recent window, or launches it
+  # if it is not running. N indexes favorite-apps, hence the shared list above.
+  launchOrFocus = lib.listToAttrs (
+    lib.imap1 (i: app: {
+      name = "switch-to-application-${toString i}";
+      value = if app ? key then [ "<Super>${app.key}" ] else [ ];
+    }) favourites
+  );
+in
 {
   home.packages = [
     pkgs.gnomeExtensions.tophat # system resource monitor
@@ -22,30 +63,14 @@
         "tophat@fflewddur.github.io"
         "draw-on-gnome@daveprowse.github.io"
       ];
-      favorite-apps = [
-        "Alacritty.desktop"
-        "com.anthropic.Claude.desktop"
-        "firefox.desktop"
-        "slack.desktop"
-        "obsidian.desktop"
-        "org.gnome.Nautilus.desktop"
-        "org.gnome.Settings.desktop"
-        "spotify.desktop"
-      ];
+      favorite-apps = map (app: app.desktop) favourites;
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       show-battery-percentage = true;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
-      ];
+      custom-keybindings = [ ];
       help = [ ];
       home = [ ];
       magnifier = [ ];
@@ -112,51 +137,15 @@
     };
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [ ];
-      screenshot = [ "<Shift><Super>s" ];
+      screenshot = [ ];
       screenshot-window = [ ];
       show-screen-recording-ui = [ ];
-      show-screenshot-ui = [ "<Super>s" ];
-      switch-to-application-1 = [ ];
-      switch-to-application-2 = [ ];
-      switch-to-application-3 = [ ];
-      switch-to-application-4 = [ ];
-      switch-to-application-5 = [ ];
-      switch-to-application-6 = [ ];
-      switch-to-application-7 = [ ];
-      switch-to-application-8 = [ ];
-      switch-to-application-9 = [ ];
+      show-screenshot-ui = [ "<Shift><Super>s" ];
       toggle-quick-settings = [ ];
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Super>t";
-      command = "alacritty -e tmux";
-      name = "Terminal";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Super>c";
-      command = "claude-desktop";
-      name = "Claude";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Super>b";
-      command = "firefox";
-      name = "Browser";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-      binding = "<Super>o";
-      command = "obsidian";
-      name = "Obsidian";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
-      binding = "<Super>f";
-      command = "nautilus";
-      name = "Files";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
-      binding = "<Super>m";
-      command = "slack";
-      name = "Slack";
-    };
+      # GNOME offers nine slots; only the favourites above claim one.
+      switch-to-application-9 = [ ];
+    }
+    // launchOrFocus;
     "org/gnome/shell/extensions/dash-to-dock" = {
       animate-show-apps = true;
       apply-custom-theme = true;
