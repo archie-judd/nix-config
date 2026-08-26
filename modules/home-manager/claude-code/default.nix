@@ -57,13 +57,20 @@ in
   ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;
 
-  # write the file - don't symlink it -D means create parent directories, -m644 sets permissions (rw- for owner, r-- for group and others)
+  # write the file - don't symlink it, so claude can edit it if needed
   home.activation.claudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run install -Dm644 ${./claude/settings.json} "${config.home.homeDirectory}/.claude/settings.json"
   '';
-  home.activation.claudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run install -Dm644 ${./claude/CLAUDE.md} "${config.home.homeDirectory}/.claude/CLAUDE.md"
-  '';
+  # readonly, so symlink is fine
+  home.file = {
+    ".claude/skills/CLAUDE.md".source = ./claude/CLAUDE.md;
+    ".claude/skills/asd-ste100/SKILL.md".source = builtins.fetchurl {
+      url = "https://raw.githubusercontent.com/danyuchn/asd-ste100-skill/master/SKILL.md";
+      # Remember to replace this with the actual sha256 hash
+      # You can get it by running: nix-prefetch-url https://raw.githubusercontent.com/danyuchn/asd-ste100-skill/master/SKILL.md
+      sha256 = "sha256:134lpbaid62y3svn6r8ni7rfbmf9aqhv6phn2jkwlr212wjc2zyl";
+    };
+  };
   programs.bash.initExtra = ''
     qq() { local msg="$1"; shift; claude-sandboxed --model sonnet "$@" -p "$msg"; }
   '';
