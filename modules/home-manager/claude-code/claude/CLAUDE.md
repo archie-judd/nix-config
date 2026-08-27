@@ -146,8 +146,9 @@ docs, and commit messages. They do not apply to discussion.
 - When I do ask, comments explain why, not what. Skip any comment that
   restates what the code already says. Prefer a few well-placed comments to
   running commentary.
-- Keep READMEs, docs, and explanatory prose short and concrete. Plain language
-  over jargon; cut detail that does not change what the reader does next.
+- Keep READMEs, docs, and explanatory prose terse, straightforward, and to
+  the point. Plain language over jargon; cut detail that does not change what
+  the reader does next.
 - Do not use em-dashes. Use commas, parentheses, or separate sentences instead.
 - Do not add section-header or banner comments inside code, i.e. lines whose
   only purpose is to label a region, like "// ===== Helpers =====".
