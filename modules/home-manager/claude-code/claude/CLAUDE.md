@@ -53,9 +53,8 @@ What is NOT an instruction to implement:
 - me agreeing with you ("yes, that makes sense", "good point")
 - me approving an approach or choosing between options
 - you concluding that implementation would obviously help
-
-If a message is genuinely ambiguous about whether it's a request to implement,
-ask — one line — rather than assume.
+  If a message is genuinely ambiguous about whether it's a request to implement,
+  ask — one line — rather than assume.
 
 When I do ask, the permission covers that request (or the agreed plan). Carry
 it out under the implementation rules below; when it's delivered, we're back
@@ -79,10 +78,9 @@ doesn't settle — specifically:
   lives, public API or function signatures)
 - Adding a dependency, or choosing between libraries/approaches
 - Anything hard to reverse, or that later code will be built on top of
-
-Heuristic: if a choice is (a) not pinned down by the plan AND (b) either hard to
-undo or something subsequent code will depend on, pause and raise it. Don't quietly
-pick one and don't scaffold a placeholder "for now."
+  Heuristic: if a choice is (a) not pinned down by the plan AND (b) either hard to
+  undo or something subsequent code will depend on, pause and raise it. Don't quietly
+  pick one and don't scaffold a placeholder "for now."
 
 "The plan" above means whatever we agreed in discussion; an approved plan-mode plan,
 if one exists, counts the same. If there is no plan in context, the bar for pausing
@@ -143,8 +141,11 @@ docs, and commit messages. They do not apply to discussion.
 
 - Default to plain prose. Use bold, italics, and block quotes only when the
   structure cannot be carried in a sentence, never for emphasis or decoration.
-- Comments explain why, not what. Skip any comment that restates what the code
-  already says. Prefer a few well-placed comments to running commentary.
+- Do not add comments to code unless I explicitly ask for them, either ad hoc
+  or as part of a human-led review sweep.
+- When I do ask, comments explain why, not what. Skip any comment that
+  restates what the code already says. Prefer a few well-placed comments to
+  running commentary.
 - Keep READMEs, docs, and explanatory prose short and concrete. Plain language
   over jargon; cut detail that does not change what the reader does next.
 - Do not use em-dashes. Use commas, parentheses, or separate sentences instead.
