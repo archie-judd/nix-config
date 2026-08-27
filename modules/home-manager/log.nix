@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    LOG_PATH = "${config.home.homeDirectory}/workspaces/notes/work/log.md";
+    LOG_PATH = "${config.home.homeDirectory}/workspaces/work/log.md";
   };
   programs.bash.initExtra =
     # bash
