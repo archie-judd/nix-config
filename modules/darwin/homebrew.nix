@@ -4,6 +4,7 @@
   # Install GUI programs and AppStore apps with homebrew. Does not install homebrew!
   homebrew = {
     enable = true;
+    onActivation.autoUpdate = true;
     brews = [ "transmission-cli" ];
     casks = [
       "steam"
