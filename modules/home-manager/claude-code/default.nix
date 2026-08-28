@@ -63,11 +63,9 @@ in
   '';
   # readonly, so symlink is fine
   home.file = {
-    ".claude/skills/CLAUDE.md".source = ./claude/CLAUDE.md;
+    ".claude/CLAUDE.md".source = ./claude/CLAUDE.md;
     ".claude/skills/asd-ste100/SKILL.md".source = builtins.fetchurl {
       url = "https://raw.githubusercontent.com/danyuchn/asd-ste100-skill/master/SKILL.md";
-      # Remember to replace this with the actual sha256 hash
-      # You can get it by running: nix-prefetch-url https://raw.githubusercontent.com/danyuchn/asd-ste100-skill/master/SKILL.md
       sha256 = "sha256:134lpbaid62y3svn6r8ni7rfbmf9aqhv6phn2jkwlr212wjc2zyl";
     };
   };
