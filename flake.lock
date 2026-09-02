@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1787944199,
-        "narHash": "sha256-biRymPNrMO9HN6rRrQ81f3nQnixEiwT59toPZlxQ/rE=",
+        "lastModified": 1788371714,
+        "narHash": "sha256-t0lWMPu1OdZQNCohraWf1GoTQFnJtMHoyvavGxpg/RE=",
         "owner": "archie-judd",
         "repo": "agent-sandbox.nix",
-        "rev": "11c87ac626b97efd11711c7d9b68446d58295338",
+        "rev": "6e517f5e2181bcf227675642456560365cccf47d",
         "type": "github"
       },
       "original": {
