@@ -64,6 +64,7 @@ in
   # readonly, so symlink is fine
   home.file = {
     ".claude/CLAUDE.md".source = ./claude/CLAUDE.md;
+    ".claude/output-styles/prose-conventions.md".source = ./claude/output-styles/prose-conventions.md;
     ".claude/skills/asd-ste100/SKILL.md".source = builtins.fetchurl {
       url = "https://raw.githubusercontent.com/danyuchn/asd-ste100-skill/master/SKILL.md";
       sha256 = "sha256:134lpbaid62y3svn6r8ni7rfbmf9aqhv6phn2jkwlr212wjc2zyl";
