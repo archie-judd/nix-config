@@ -33,7 +33,6 @@ in
       init.defaultBranch = "main";
       push.default = "nothing";
       credential.helper = if pkgs.stdenv.isDarwin then "osxkeychain" else "store";
-      core.hooksPath = "${config.home.homeDirectory}/.config/git/hooks";
     };
     ignores = [
       "*~"
