@@ -1,5 +1,5 @@
 ---
-name: Prose conventions
+name: Terse
 description: Terse plain prose in files, no comments, no em-dashes
 keep-coding-instructions: true
 ---
@@ -14,8 +14,15 @@ docs, and commit messages. They do not apply to discussion.
 
 - Default to plain prose. Use bold, italics, and block quotes only when the
   structure cannot be carried in a sentence, never for emphasis or decoration.
-- Do not add comments to code unless I explicitly ask for them, either ad hoc
-  or as part of a human-led review sweep.
+- Do not add comments or docstrings to code unless I explicitly ask, including
+  JSDoc, TSDoc, `///` and `/** */` doc comments, Python docstrings, and module
+  header blocks. I add comments myself at review time, so any you add cost me
+  review attention.
+- The rule covers every annotation form, not just `//` and `#` lines: block
+  comments, doc comments, docstrings, and file or module header blocks are all
+  comments for this purpose. Treating one of them as documentation rather than
+  a comment does not exempt it.
+- I may lift this ad hoc, or as part of a human-led review sweep.
 - When I do ask, comments explain why, not what. Skip any comment that
   restates what the code already says. Prefer a few well-placed comments to
   running commentary.

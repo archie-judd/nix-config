@@ -130,3 +130,10 @@ tree alone.
 To undo your own changes, edit the files back rather than reaching for
 git restore / reset / checkout / stash — those can destroy uncommitted work
 that isn't yours.
+
+### Comments
+
+Do not add comments or docstrings to code unless I explicitly ask, including
+JSDoc, TSDoc, `///` and `/** */` doc comments, Python docstrings, and module
+header blocks. I add comments myself at review time, so any you add cost me
+review attention.
