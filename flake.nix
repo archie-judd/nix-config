@@ -19,7 +19,7 @@
 
     agent-sandbox-nix.url = "github:archie-judd/agent-sandbox.nix?ref=refs/heads/main";
 
-    bbc-to-spotify.url = "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.7";
+    bbc-to-spotify.url = "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.8";
 
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
