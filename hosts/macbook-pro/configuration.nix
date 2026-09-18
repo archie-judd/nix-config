@@ -12,7 +12,10 @@
 
   system.primaryUser = "archie";
 
-  nix.extraOptions = "experimental-features = nix-command flakes";
+  nix.settings = {
+    experimental-features = "nix-command flakes";
+    sandbox = false;
+  };
 
   imports = [
     ../../modules/darwin/fonts.nix
@@ -24,7 +27,7 @@
 
   # A list of permissable shells for login accounts
   environment.shells = [ pkgs.bashInteractive ];
-  # enable bash as an interactive shell 
+  # enable bash as an interactive shell
   programs.bash.enable = true;
   # the users's default shell
   users.knownUsers = [ "archie" ];
@@ -50,7 +53,9 @@
   nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 
   # Pin import <nixpkgs> {} to the flake
-  nix.nixPath =
-    [ "nixpkgs=flake:nixpkgs" "nixpkgs-unstable=flake:nixpkgs-unstable" ];
+  nix.nixPath = [
+    "nixpkgs=flake:nixpkgs"
+    "nixpkgs-unstable=flake:nixpkgs-unstable"
+  ];
 
 }
