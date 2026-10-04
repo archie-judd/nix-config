@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   inputs,
   pkgs-claude-desktop,
   ...
@@ -67,7 +68,7 @@
     pkgs.git-crypt
     pkgs.python3
     pkgs-claude-desktop.claude-desktop
-    pkgs.obsidian
+    pkgs-unstable.obsidian # (needed https://github.com/NixOS/nixpkgs/pull/554467 - https://nixpkgs-tracker.ocfox.me/?pr=554467)
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
   ];
