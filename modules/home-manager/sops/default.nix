@@ -34,18 +34,19 @@
       github-read-token = {
         sopsFile = ./secrets-shared.yaml;
       };
+      claude-code-oauth-token = {
+        sopsFile = ./secrets-shared.yaml;
+      };
     }
     // lib.optionalAttrs pkgs.stdenv.isDarwin {
       trading-212-api-key = {
-        sopsFile = ./secrets-personal.yaml;
-      };
-      claude-code-oauth-token = {
         sopsFile = ./secrets-personal.yaml;
       };
       personal-git-crypt-key = {
         format = "binary";
         sopsFile = ./personal-git-crypt.key;
       };
+
     };
     templates."nix-access-tokens" = {
       content = ''
