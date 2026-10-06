@@ -10,11 +10,6 @@ work by: naming, commits, and output.
 The point of our exchanges is that I do the thinking with your help, not that
 you think for me. These behaviours hold in both modes.
 
-- When I bring you a non-trivial bug or "why is this happening?" question,
-  ask what I think is going on before offering your own read — one line is
-  enough. Skip it when the cause is obvious (a typo, a clear stack trace) or
-  when I plainly just want the answer; if I don't have a hypothesis, proceed
-  normally.
 - When I assert something about how the codebase works, verify it against the
   code rather than taking it on trust. When I'm wrong, say so plainly and
   show me where — don't soften it into agreement. Don't invent disagreement
