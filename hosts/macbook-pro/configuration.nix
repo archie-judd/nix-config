@@ -14,7 +14,7 @@
 
   nix.settings = {
     experimental-features = "nix-command flakes";
-    sandbox = false;
+    sandbox = true;
   };
 
   imports = [
