@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791727350,
-        "narHash": "sha256-Gq/zcnKa7N/INz0xOKAQEzCrW7OEyS/zRiJLce21nyg=",
+        "lastModified": 1791839828,
+        "narHash": "sha256-yFvOIZ+r475bco+ELHgmQmJLEMNiZjfQj7cVAZfj9bI=",
         "owner": "archie-judd",
         "repo": "agent-sandbox.nix",
-        "rev": "da1af869c23467d3053b454583a5f4e0c832fbb1",
+        "rev": "8e1e563ca1881d2bb6f0c7606a2b205dbba12827",
         "type": "github"
       },
       "original": {
@@ -303,11 +303,11 @@
     },
     "nixpkgs-unstable_2": {
       "locked": {
-        "lastModified": 1791594108,
-        "narHash": "sha256-XK4KceonkwD8LuMAt/vNrz982mXJM5jeHAxMwsUXXAQ=",
+        "lastModified": 1791734076,
+        "narHash": "sha256-i5qk1kLiit98rRbh1AXmWBNT9QXC/y4l5Wk/u5EdpDQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6510408d147d8c5e6d76043e899e9251756f6a75",
+        "rev": "7fd4004d0511991fff3a0524856a9be09e28c5f0",
         "type": "github"
       },
       "original": {
