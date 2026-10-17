@@ -28,6 +28,8 @@
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
+    handy.url = "github:cjpais/Handy";
+
   };
 
   outputs =

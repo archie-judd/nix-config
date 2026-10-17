@@ -70,7 +70,9 @@ in
       show-battery-percentage = true;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ ];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
       help = [ ];
       home = [ ];
       magnifier = [ ];
@@ -78,6 +80,11 @@ in
       magnifier-zoom-out = [ ];
       screenreader = [ ];
       screensaver = [ "<Shift><Super>q" ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Handy";
+      command = "handy --toggle-transcription";
+      binding = "<Super>v";
     };
     "org/gnome/shell/app-switcher".current-workspace-only = true; # only show apps from current workspace in alt-tab
     "org/gnome/desktop/wm/keybindings" = {
@@ -141,6 +148,7 @@ in
       screenshot-window = [ ];
       show-screen-recording-ui = [ ];
       show-screenshot-ui = [ "<Shift><Super>s" ];
+      toggle-message-tray = [ ];
       toggle-quick-settings = [ ];
       # GNOME offers nine slots; only the favourites above claim one.
       switch-to-application-9 = [ ];

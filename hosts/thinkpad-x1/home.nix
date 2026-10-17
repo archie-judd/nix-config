@@ -45,6 +45,7 @@
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/xdg.nix
     ../../modules/home-manager/ssl.nix
+    ../../modules/home-manager/handy.nix
   ];
 
   home.packages = [

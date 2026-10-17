@@ -10,8 +10,9 @@
   home-manager.backupFileExtension = "backup";
   home-manager.users.archie = import ./home.nix;
   home-manager.sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-  ]; # Share sops config with all modules
+    inputs.sops-nix.homeManagerModules.sops # Share sops config with all modules
+    inputs.handy.homeManagerModules.default # Share handy config with all modules
+  ];
   home-manager.extraSpecialArgs = {
     pkgs-unstable = pkgs-unstable;
     pkgs-claude-desktop = pkgs-claude-desktop;

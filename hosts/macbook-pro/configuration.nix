@@ -58,4 +58,6 @@
     "nixpkgs-unstable=flake:nixpkgs-unstable"
   ];
 
+  users.users.archie.extraGroups = [ "input" ]; # handy
+
 }
