@@ -32,6 +32,7 @@
     ../../modules/home-manager/hammerspoon
     ../../modules/home-manager/git
     ../../modules/home-manager/sops
+    ../../modules/home-manager/sops/personal.nix
     ../../modules/home-manager/claude-code
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix
@@ -50,8 +51,5 @@
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-rtp
     pkgs.gh
   ];
-
-  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
 }

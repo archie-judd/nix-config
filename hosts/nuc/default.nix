@@ -21,5 +21,6 @@ inputs.home-manager.lib.homeManagerConfiguration {
   extraSpecialArgs = {
     pkgs-unstable = pkgs-unstable;
     inputs = inputs;
+    isPersonal = false;
   };
 }

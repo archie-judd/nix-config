@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   # imports = [ # Include the results of the hardware scan.
@@ -145,6 +145,7 @@
     ../../modules/nixos/logitech.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/tailscale.nix
+    ../../modules/common/nix-pinning.nix
   ];
 
   environment.systemPackages = [
@@ -176,16 +177,5 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-
-  # Ensure nix shell nixpkgs# commands follow the flake's nixpkgs
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
-
-  # Ensure nix-shell import <nixpkgs> and <nixpkgs-unstable> follow the flake's
-  # nixpkgs
-  nix.nixPath = [
-    "nixpkgs=flake:nixpkgs"
-    "nixpkgs-unstable=flake:nixpkgs-unstable"
-  ];
 
 }

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -21,6 +21,7 @@
     ../../modules/darwin/fonts.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/mac-os.nix
+    ../../modules/common/nix-pinning.nix
   ];
 
   environment.systemPackages = [ pkgs.vim ];
@@ -47,15 +48,5 @@
     };
     options = "--delete-older-than 30d";
   };
-
-  # Pin nix shell #nixpkgs to the flake
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
-
-  # Pin import <nixpkgs> {} to the flake
-  nix.nixPath = [
-    "nixpkgs=flake:nixpkgs"
-    "nixpkgs-unstable=flake:nixpkgs-unstable"
-  ];
 
 }

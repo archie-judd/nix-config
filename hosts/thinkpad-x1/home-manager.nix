@@ -17,5 +17,6 @@
     pkgs-unstable = pkgs-unstable;
     pkgs-claude-desktop = pkgs-claude-desktop;
     inputs = inputs;
+    isPersonal = false;
   };
 }

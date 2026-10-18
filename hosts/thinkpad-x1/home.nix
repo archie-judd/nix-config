@@ -74,7 +74,4 @@
 
   # Fixes firefox right-click cursor offset
   gtk.enable = true;
-
-  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 }

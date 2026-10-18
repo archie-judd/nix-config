@@ -31,6 +31,7 @@
     ../../modules/home-manager/direnv.nix
     ../../modules/home-manager/fzf.nix
     ../../modules/home-manager/starship.nix
+    ../../modules/home-manager/nix-pinning.nix
   ];
 
   home.packages = [
@@ -43,13 +44,4 @@
     pkgs.nix-direnv
     inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
-
-  # Point system nixPath(used by import <nixpkgs> {}) to the same nixpkgs as my flake
-  home.sessionVariables = {
-    NIX_PATH = "nixpkgs=flake:nixpkgs:nixpkgs-unstable=flake:nixpkgs-unstable";
-  };
-
-  # Point system nixpkgs(used by nix run & nix shell) to the same nixpkgs as my flake
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
 }

@@ -8,5 +8,6 @@
   home-manager.extraSpecialArgs = {
     pkgs-unstable = pkgs-unstable;
     inputs = inputs;
+    isPersonal = true;
   };
 }
