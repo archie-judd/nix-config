@@ -57,7 +57,6 @@
     pkgs._1password-cli
     pkgs._1password-gui
     pkgs.awscli2
-    pkgs.solaar
     pkgs.nix-direnv
     pkgs.slack
     pkgs.spotify
