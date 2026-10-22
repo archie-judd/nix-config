@@ -194,8 +194,12 @@
                       url = "https://search.nixos.org/packages";
                     }
                     {
-                      name = "NixHub";
-                      url = "https://www.nixhub.io/packages/python";
+                      name = "Nix PR tracker";
+                      url = "https://nixpkgs-tracker.ocfox.me";
+                    }
+                    {
+                      name = "Nix Multiverse";
+                      url = "https://nixmultiverse.com";
                     }
                     {
                       name = "Home Manager Options";
