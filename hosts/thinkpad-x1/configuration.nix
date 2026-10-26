@@ -178,4 +178,11 @@
     options = "--delete-older-than 30d";
   };
 
+  # Kolide's Linux agent reads the system CA bundle through osquery's `certificates`
+  # table, which parses OpenSSL `TRUSTED CERTIFICATE` blocks as ordinary trusted
+  # roots and ignores their "Rejected for" flags. The default NixOS bundle keeps
+  # blocklisted roots in that form, so Kolide still reports them as trusted.
+  # useCompatibleBundle installs the plain-PEM bundle, which omits them entirely.
+  security.pki.useCompatibleBundle = true;
+
 }
