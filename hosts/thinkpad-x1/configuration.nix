@@ -142,6 +142,7 @@
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nix-ld.nix
     ../../modules/nixos/docker.nix
+    ../../modules/nixos/handy.nix
     # ../../modules/nixos/logitech.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/tailscale.nix
