@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  imports = [ ./shared.nix ];
+
   sops.secrets = {
     trading-212-api-key = {
       sopsFile = ./secrets-personal.yaml;

@@ -35,7 +35,7 @@
     ../../modules/home-manager/alacritty
     ../../modules/home-manager/tmux
     ../../modules/home-manager/git
-    ../../modules/home-manager/sops
+    ../../modules/home-manager/sops/work.nix
     ../../modules/home-manager/claude-code
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/direnv.nix

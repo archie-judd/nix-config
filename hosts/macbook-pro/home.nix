@@ -31,7 +31,6 @@
     ../../modules/home-manager/karabiner
     ../../modules/home-manager/hammerspoon
     ../../modules/home-manager/git
-    ../../modules/home-manager/sops
     ../../modules/home-manager/sops/personal.nix
     ../../modules/home-manager/claude-code
     ../../modules/home-manager/bash.nix

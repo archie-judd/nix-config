@@ -29,10 +29,13 @@ let
         EDITOR = "nvim";
         COLORTERM = "truecolor";
         CLAUDE_CONFIG_DIR = claude_config_dir;
-        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
       }
       // lib.optionalAttrs isPersonal {
         CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
+        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
+      }
+      // lib.optionalAttrs (!isPersonal) {
+        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-pat)";
       };
       allowedDomains = {
         "anthropic.com" = "*";
