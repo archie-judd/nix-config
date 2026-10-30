@@ -10,5 +10,6 @@
           flag
       ) old.checkFlags;
     });
+    obsidian = prev.obsidian.override { electron = prev.electron_43-bin; };
   })
 ]

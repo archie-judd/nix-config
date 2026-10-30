@@ -21,7 +21,7 @@ let
       key = "s";
     }
     {
-      desktop = "obsidian.desktop";
+      desktop = "md.obsidian.Obsidian.desktop";
       key = "o";
     }
     {
