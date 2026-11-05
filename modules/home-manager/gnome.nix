@@ -78,6 +78,7 @@ in
       magnifier = [ ];
       magnifier-zoom-in = [ ];
       magnifier-zoom-out = [ ];
+      rotate-video-lock-static = [ "XF86RotationLockToggle" ];
       screenreader = [ ];
       screensaver = [ "<Shift><Super>q" ];
     };
