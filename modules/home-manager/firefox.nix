@@ -43,8 +43,8 @@
                   url = "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
                 }
                 {
-                  name = "paint.js";
-                  url = "https://paint.js.org/";
+                  name = "Web Whiteboard";
+                  url = "https://webwhiteboard.com";
                 }
                 {
                   name = "Anthropic";
