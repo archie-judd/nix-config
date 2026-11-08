@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  pkgs-unstable,
   inputs,
   isPersonal,
   ...
@@ -11,52 +10,61 @@ let
   neovim = inputs.neovim-config.packages.${pkgs.stdenv.hostPlatform.system}.nvim-minimal;
   claude_config_dir = "$HOME/.claude";
   agent-sandbox = inputs.agent-sandbox-nix.lib.${pkgs.stdenv.hostPlatform.system};
-  mkClaudeSandbox =
-    pkg: binName: outName:
-    agent-sandbox.mkSandbox {
-      pkg = pkg;
-      binName = binName;
-      outName = outName;
-      allowedPackages = agent-sandbox.commonTools ++ [
-        neovim
-        pkgs.gh
-        pkgs.curl
-        pkgs.python3
-      ];
-      rwDirs = [ claude_config_dir ];
-      roFiles = [ "$HOME/.config/git/config" ];
-      env = {
-        EDITOR = "nvim";
-        COLORTERM = "truecolor";
-        CLAUDE_CONFIG_DIR = claude_config_dir;
-      }
-      // lib.optionalAttrs isPersonal {
-        CLAUDE_CODE_OAUTH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/claude-code-oauth-token)";
-        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-read-token)";
-      }
-      // lib.optionalAttrs (!isPersonal) {
-        GH_TOKEN = "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/github-pat)";
+  readSecret = name: "$(${pkgs.coreutils}/bin/cat $SOPS_DECRYPTED_DIR/${name})";
+  claudeSecretName =
+    if isPersonal then "claude-code-oauth-token-personal" else "claude-code-oauth-token-work";
+  githubSecretName = if isPersonal then "github-read-token-personal" else "github-pat-work";
+  claude-sandboxed = agent-sandbox.mkSandbox {
+    pkg = pkgs.claude-code;
+    binName = "claude";
+    outName = "claude-sandboxed";
+    allowedPackages = agent-sandbox.commonTools ++ [
+      neovim
+      pkgs.gh
+      pkgs.curl
+      pkgs.python3
+    ];
+    rwDirs = [ claude_config_dir ];
+    roFiles = [ "$HOME/.config/git/config" ];
+    env = {
+      EDITOR = "nvim";
+      COLORTERM = "truecolor";
+      CLAUDE_CONFIG_DIR = claude_config_dir;
+    };
+    injectedCredentials = {
+      GH_TOKEN = {
+        secret = readSecret githubSecretName;
+        placeholder = "dummy";
+        hosts."api.githubcopilot.com" = {
+          scheme = "bearer";
+        };
       };
-      allowedDomains = {
-        "anthropic.com" = "*";
-        "claude.com" = "*";
-        "github.com" = "*";
-        "githubusercontent.com" = [
-          "GET"
-          "HEAD"
-        ];
+      CLAUDE_CODE_OAUTH_TOKEN = {
+        secret = readSecret claudeSecretName;
+        placeholder = "sk-ant-oat01-dummy";
+        hosts."api.anthropic.com" = {
+          scheme = "bearer";
+        };
       };
     };
-  claude-sandboxed = mkClaudeSandbox pkgs.claude-code "claude" "claude-sandboxed";
-  claude-agent-acp-sandboxed =
-    mkClaudeSandbox pkgs.claude-agent-acp "claude-agent-acp"
-      "claude-agent-acp";
+    allowedDomains = {
+      "anthropic.com" = "*";
+      "claude.com" = "*";
+      "api.githubcopilot.com/mcp/readonly" = [
+        "GET"
+        "POST"
+      ];
+      "githubusercontent.com" = [
+        "GET"
+        "HEAD"
+      ];
+    };
+  };
 in
 {
   home.packages = [
     pkgs.claude-code
     claude-sandboxed
-    claude-agent-acp-sandboxed
 
   ];
   home.sessionVariables.CLAUDE_CONFIG_DIR = claude_config_dir;

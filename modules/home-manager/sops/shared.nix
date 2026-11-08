@@ -29,16 +29,16 @@
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
-      github-read-token = {
+      github-read-token-personal = {
         sopsFile = ./secrets-shared.yaml;
       };
-      claude-code-oauth-token = {
+      claude-code-oauth-token-personal = {
         sopsFile = ./secrets-shared.yaml;
       };
     };
     templates."nix-access-tokens" = {
       content = ''
-        access-tokens = github.com=${config.sops.placeholder."github-read-token"}
+        access-tokens = github.com=${config.sops.placeholder."github-read-token-personal"}
       '';
     };
   };

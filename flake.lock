@@ -5,16 +5,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793867332,
-        "narHash": "sha256-YUCByGl6Mw2WN/eja9Ac9cAwPVnT5XroUjGHAmJxzBs=",
+        "lastModified": 1794137885,
+        "narHash": "sha256-tKDQ64UHyBznV77OpV5HEvfRTUQ/XHAL2kR6PjEjKF0=",
         "owner": "archie-judd",
         "repo": "agent-sandbox.nix",
-        "rev": "78aad2321ed4bcede7c3ab525557ce6c68219976",
+        "rev": "e3df7b09cb6a88d8af7e5b259b0a7acba176f343",
         "type": "github"
       },
       "original": {
         "owner": "archie-judd",
-        "ref": "refs/heads/main",
+        "ref": "refs/heads/feat/injected-credentials",
         "repo": "agent-sandbox.nix",
         "type": "github"
       }
