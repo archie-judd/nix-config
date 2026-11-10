@@ -31,20 +31,16 @@
                   url = "https://gcanti.github.io/fp-ts/modules/";
                 }
                 {
-                  name = "docs";
-                  url = "http://docs";
-                }
-                {
-                  name = "bob";
+                  name = "Bob";
                   url = "https://app.hibob.com/home";
                 }
                 {
-                  name = "lattice";
+                  name = "Lattice";
                   url = "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
                 }
                 {
-                  name = "Web Whiteboard";
-                  url = "https://webwhiteboard.com";
+                  name = "Excalidarw";
+                  url = "https://excalidraw.com/";
                 }
                 {
                   name = "Anthropic";
