@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   inputs,
   isWork,
   ...
@@ -31,14 +32,15 @@ let
       githubSecretName,
     }:
     agent-sandbox.mkSandbox {
-      pkg = pkgs.claude-code;
+      pkg = pkgs-unstable.claude-code;
       binName = "claude";
       outName = outName;
       allowedPackages = agent-sandbox.commonTools ++ [
         neovim
         pkgs.gh
         pkgs.curl
-        pkgs.python3
+        (pkgs.python3.withPackages (ps: with ps; [ pymupdf4llm ]))
+        pkgs.poppler
       ];
       rwDirs = [ configDir ];
       roFiles = [ "$HOME/.config/git/config" ];
@@ -93,7 +95,7 @@ let
 in
 {
   home.packages = [
-    pkgs.claude-code
+    pkgs-unstable.claude-code
     claude-sandboxed
   ]
   ++ lib.optional isWork claude-sandboxed-personal;

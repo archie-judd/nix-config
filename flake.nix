@@ -13,29 +13,27 @@
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.url = "github:Mic92/sops-nix/fe7b4228405aeac2ce7192c2049a6e2bc8637082";
 
     neovim-config.url = "github:archie-judd/neovim-config?ref=refs/heads/main";
 
-    agent-sandbox-nix.url = "github:archie-judd/agent-sandbox.nix?ref=refs/heads/feat/injected-credentials";
+    agent-sandbox-nix.url = "github:archie-judd/agent-sandbox.nix?ref=refs/tags/v5.10.0";
 
     bbc-to-spotify.url = "github:archie-judd/bbc-to-spotify?ref=refs/tags/v0.0.8";
 
     kolide-launcher = {
-      url = "github:/kolide/nix-agent/main";
+      url = "github:kolide/nix-agent/faddc6b4250ddf6cdc341b999b7b9b162f874c89";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-code.url = "github:sadjow/claude-code-nix";
-
-    handy.url = "github:cjpais/Handy";
+    handy.url = "github:cjpais/Handy?ref=refs/tags/v0.10.0";
 
   };
 
   outputs =
     inputs:
     let
-      overlays = import ./overlays.nix ++ [ inputs.claude-code.overlays.default ];
+      overlays = import ./overlays.nix;
     in
     {
 
