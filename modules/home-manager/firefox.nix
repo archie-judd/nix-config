@@ -39,7 +39,7 @@
                   url = "https://lunarenergy.latticehq.com/users/dadfe795-014e-400a-8edd-3f7ea01041fb/";
                 }
                 {
-                  name = "Excalidarw";
+                  name = "Excalidraw";
                   url = "https://excalidraw.com/";
                 }
                 {

@@ -126,6 +126,13 @@ To undo your own changes, edit the files back rather than reaching for
 git restore / reset / checkout / stash — those can destroy uncommitted work
 that isn't yours.
 
+### Tests
+
+Do not run tests (or test suites, test runners, or any command whose purpose is
+to run them) unless I have confirmed first. When you think a test run would help,
+say which tests and why, then wait for my go-ahead. A confirmation covers that
+run only, not later ones.
+
 ### Comments
 
 Do not add comments or docstrings to code unless I explicitly ask, including
